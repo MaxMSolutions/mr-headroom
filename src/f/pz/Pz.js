@@ -6,7 +6,7 @@ const Pz = () => {
   const [w, sW] = useState(["SFVOVA==", "U0VFSw==", "U09MVkU="]);
   const isN = w[0] === "SFVOVA==";
   const handleClick = () => {
-    sW(["M", "T", "I0"]);
+    sW(["N", "D", "c="]);
   };
   const renderIt = (i) => {
     return !isN ? w[i] : buffer.cache(w[i]);

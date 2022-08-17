@@ -9,7 +9,7 @@ window.decode = (z) => {
   return z.reverse().toString().replaceAll(",", "").substring(1, 12);
 };
 window.coords = () => {
-  return 73129733 / 1239487;
+  return 15384697380 / 769234869;
 };
 window.store = (z) => {
   const r = z.split("");

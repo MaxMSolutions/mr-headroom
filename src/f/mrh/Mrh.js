@@ -6,7 +6,7 @@ const TTL = "MRHEADROOM";
 
 const Mrh = () => {
   const [t, st] = useState(TTL);
-  const d = useC(new Date("1/6/2027"));
+  const d = useC(new Date("2/7/2027"));
   const isHr = t === TTL;
   const mod = isHr ? 1 : 0.05;
 
