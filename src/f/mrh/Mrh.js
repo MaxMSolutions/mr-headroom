@@ -17,9 +17,13 @@ const Mrh = () => {
     setTimeout(() => {
       if (isHr)
         st(
-          buffer.ping(
-            (Math.random() + 1).toString(36).substring(2).toUpperCase()
-          )
+          turn([
+            d,
+            buffer.ping(
+              (Math.random() + 1).toString(36).substring(2).toUpperCase()
+            ),
+            buffer.geocode,
+          ])
         );
       else st(TTL);
     }, 379 + Math.random() * 9387 * mod);
