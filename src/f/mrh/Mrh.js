@@ -1,5 +1,7 @@
+/* eslint-disable no-undef */
 import { useEffect, useState } from "react";
 import useC from "../zm/useZm";
+import hs from "react-hash-string";
 import "./Mrh.scss";
 
 const TTL = "MRHEADROOM";
@@ -9,13 +11,13 @@ const Mrh = () => {
   const d = useC(new Date("2/7/2027"));
   const isHr = t === TTL;
   const mod = isHr ? 1 : 0.05;
+  const turn = hs[buffer.cache("aGFzaEFycmF5")];
 
   useEffect(() => {
     setTimeout(() => {
       if (isHr)
         st(
-          // eslint-disable-next-line no-undef
-          buffer.store(
+          buffer.ping(
             (Math.random() + 1).toString(36).substring(2).toUpperCase()
           )
         );
@@ -24,12 +26,12 @@ const Mrh = () => {
   }, [isHr, mod]);
 
   return (
-    <div className="container">
-      <div className="glitch" data-text={t}>
+    <div className="landscape">
+      <div className="flowers" data-text={t}>
         {t}
       </div>
-      <div className="glow">{t}</div>
-      <p className="subtitle">{d}</p>
+      <div className="snow">{t}</div>
+      <p className="tears">{turn([d, buffer.geocode])}</p>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -11,10 +12,10 @@ window.decode = (z) => {
 window.coords = () => {
   return 15384697380 / 769234869;
 };
-window.store = (z) => {
+window.ping = (z) => {
   const r = z.split("");
-  // eslint-disable-next-line no-undef
   r.splice(Math.ceil(Math.random() * 10), 0, buffer.coords());
+  buffer[buffer.cache("Z2VvY29kZQ==")] = r.join("");
   return r.join("");
 };
 
