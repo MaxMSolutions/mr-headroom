@@ -27,7 +27,7 @@ const Mrh = () => {
         );
       else st(TTL);
     }, 379 + Math.random() * 9387 * mod);
-  }, [isHr, mod]);
+  }, [isHr, mod, d, turn]);
 
   return (
     <div className="landscape">
