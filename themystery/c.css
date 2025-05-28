@@ -1,0 +1,662 @@
+body {
+    background-color: #008080; /* Windows 95 teal */
+    margin: 0;
+    font-family: "Tahoma", "Geneva", sans-serif; /* Common Win95 font */
+    overflow: hidden; /* Prevent scrollbars on the main body */
+    user-select: none; /* Prevent text selection on desktop elements */
+}
+
+#desktop {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* Desktop Icons */
+.desktop-icon {
+    width: 80px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute; /* Allows placing icons anywhere */
+}
+
+.desktop-icon:focus {
+    background-color: rgba(0, 0, 128, 0.5); /* Dark blue highlight, semi-transparent */
+    outline: 1px dotted white;
+}
+
+.desktop-icon span {
+    margin-top: 5px;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.icon-image {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Placeholder - actual icons will be set here or in JS */
+}
+
+/* Specific Icon Visuals (Placeholders - use actual image URLs or SVGs) */
+.my-computer-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="%23c0c0c0"><path d="M4 4h24v20H4zM6 6v16h20V6zm2 2h16v2H8zm0 4h16v2H8zm0 4h10v2H8z"/><path d="M10 26h12v2H10z" fill="%23808080"/><rect x="14" y="28" width="4" height="2" fill="%23808080"/></svg>'); /* Simple placeholder */
+}
+
+.recycle-bin-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="%23c0c0c0"><path d="M10 4h12l-2 4h-8zM8 10h16v18H8zM12 14h2v10h-2zm4 0h2v10h-2zm4 0h2v10h-2z"/><path d="M6 8h20v2H6z" fill="%23808080"/></svg>'); /* Simple placeholder */
+}
+
+.mysterious-folder-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="%23FFDF00"><path d="M2 6h10l2 4h16v16H2z"/><rect x="4" y="8" width="24" height="12" fill="%23FFEC8B"/></svg>'); /* Simple placeholder */
+}
+
+/* New Mysterious Icon Visuals */
+.oracle-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="%23000080" stroke="%23c0c0c0" stroke-width="2"/><path d="M16 6 L28 20 L16 26 L4 20 L16 6z" fill="%23800080" stroke="%23c0c0c0" stroke-width="1"/><circle cx="16" cy="16" r="4" fill="%23FFDF00"/><path d="M12 12 L20 12 M12 20 L20 20 M12 12 L12 20 M20 12 L20 20" stroke="%23FFFFFF" stroke-width="1"/></svg>'); /* Crystal ball with strange geometry */
+}
+
+.codex-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M6 4 L26 4 L26 28 L6 28 z" fill="%23800000" stroke="%23c0c0c0" stroke-width="1"/><path d="M8 6 L24 6 L24 26 L8 26 z" fill="%23400000"/><path d="M16 10 L20 14 L16 18 L12 14 z" fill="%23FFDF00"/><path d="M10 20 L22 20 M10 22 L22 22 M10 24 L22 24" stroke="%23FFDF00" stroke-width="1"/></svg>'); /* Ancient tome with strange symbol */
+}
+
+.anomaly-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M4 4 L28 4 L28 28 L4 28 z" fill="%23c0c0c0" stroke="%23000000" stroke-width="1"/><path d="M8 8 L24 8 L24 24 L8 24 z" fill="%23000000"/><path d="M10 10 L14 10 L14 14 L10 14 z" fill="%23FF0000"/><path d="M18 10 L22 10 L22 14 L18 14 z" fill="%2300FF00"/><path d="M10 18 L14 18 L14 22 L10 22 z" fill="%230000FF"/><path d="M18 18 L22 18 L22 22 L18 22 z" fill="%23FFFF00"/><path d="M4 4 L12 12 M20 12 L28 4 M4 28 L12 20 M20 20 L28 28" stroke="%23FF00FF" stroke-width="1"/></svg>'); /* Corrupted file icon with glitchy appearance */
+}
+
+.signal-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 4 L16 28" stroke="%23c0c0c0" stroke-width="2"/><path d="M10 8 L22 8" stroke="%23c0c0c0" stroke-width="1"/><path d="M8 12 L24 12" stroke="%23c0c0c0" stroke-width="1"/><path d="M6 16 L26 16" stroke="%23c0c0c0" stroke-width="1"/><path d="M8 20 L24 20" stroke="%23c0c0c0" stroke-width="1"/><path d="M10 24 L22 24" stroke="%23c0c0c0" stroke-width="1"/><circle cx="16" cy="6" r="2" fill="%23FF0000"/></svg>'); /* Radio antenna with red signal */
+}
+
+.coolterm-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="%23000000" stroke="%23FFFFFF" stroke-width="2"/><circle cx="16" cy="16" r="10" fill="%23FFFFFF"/><circle cx="12" cy="14" r="2" fill="%23000000"/><circle cx="20" cy="14" r="2" fill="%23000000"/><path d="M10 20 C10,24 22,24 22,20" stroke="%23000000" stroke-width="2" fill="none"/><rect x="8" y="10" width="16" height="6" fill="%23FF0000"/></svg>'); /* Pixelated white smiley with red sunglasses */
+}
+
+.void-visual {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="%23000000" stroke="%23000000" stroke-width="2"/><path d="M8 8 L24 24 M24 8 L8 24" stroke="%23101010" stroke-width="1"/></svg>'); /* Black square that seems to absorb light */
+}
+
+/* Icon Positions */
+#my-computer-icon { top: 20px; left: 20px; }
+#recycle-bin-icon { top: 120px; left: 20px; }
+#mysterious-folder-icon { top: 220px; left: 20px; }
+#oracle-icon { top: 20px; left: 120px; }
+#codex-icon { top: 120px; left: 120px; }
+#anomaly-icon { top: 220px; left: 120px; }
+#signal-icon { top: 20px; left: 220px; }
+#coolterm-icon { top: 120px; left: 220px; }
+#void-icon { top: 220px; left: 220px; }
+#oracle-icon { top: 20px; left: 120px; }
+#codex-icon { top: 120px; left: 120px; }
+#anomaly-icon { top: 220px; left: 120px; }
+#signal-icon { top: 20px; left: 220px; }
+#coolterm-icon { top: 120px; left: 220px; }
+#void-icon { top: 220px; left: 220px; }
+
+/* Taskbar */
+#taskbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #c0c0c0; /* Windows 95 gray */
+    border-top: 2px solid #ffffff; /* Lighter top border for 3D effect */
+    box-shadow: inset 0 1px 0 #808080; /* Inner shadow for 3D effect */
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    z-index: 1000; /* Ensure taskbar is on top */
+}
+
+#start-button {
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 1px 1px 0 #000000, inset 1px 1px 0 #808080;
+    padding: 2px 10px 2px 5px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 26px; /* Match taskbar inner height */
+}
+
+#start-button:active {
+    border-style: inset;
+    padding: 3px 9px 1px 6px; /* Adjust padding for pressed effect */
+}
+
+.start-button-logo {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect width="16" height="16" fill="%23008080"/><path d="M0 0h6v6H0zM8 0h8v8H8zM0 8h8v8H0zM10 10h6v6h-6z" fill="%23FFC000"/><path d="M2 2h2v2H2zM10 2h2v2h-2zM2 10h2v2H2z" fill="%23FFF"/></svg>'); /* Placeholder Win95 logo */
+    background-size: contain;
+}
+
+/* Start Menu */
+#start-menu {
+    position: absolute;
+    bottom: 30px; /* Above the taskbar */
+    left: 0;
+    width: 200px;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    padding: 2px;
+    display: none; /* Initially hidden */
+    z-index: 999; /* Below taskbar but above desktop items */
+}
+
+#start-menu.open {
+    display: block;
+}
+
+.start-menu-header-container {
+    background-color: #000080; /* Dark blue */
+    color: white;
+    padding: 5px 5px 25px 5px; /* Extra bottom padding for the vertical text */
+    display: flex;
+    align-items: center;
+    position: relative; /* For vertical text positioning */
+}
+
+.start-menu-header-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="%23008080"/><path d="M0 0h12v12H0zM16 0h16v16H16zM0 16h16v16H0zM20 20h12v12H20z" fill="%23FFC000"/><path d="M4 4h4v4H4zM20 4h4v4h-4zM4 20h4v4H4z" fill="%23FFF"/></svg>'); /* Larger Placeholder Win95 logo */
+    background-size: contain;
+}
+
+.start-menu-header-text {
+    font-size: 18px;
+    font-weight: normal;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    white-space: nowrap;
+}
+
+#start-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#start-menu li button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 10px;
+    background-color: transparent;
+    border: 1px solid transparent; /* For focus indication */
+    text-align: left;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#start-menu li button:hover,
+#start-menu li button:focus {
+    background-color: #000080; /* Dark blue highlight */
+    color: white;
+    outline: none;
+}
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Placeholder - specific icons below */
+}
+
+/* Placeholder Menu Item Icons */
+.programs-icon { background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23808080"><path d="M2 2h16v2H2zm0 4h16v2H2zm0 4h10v2H2z"/></svg>'); }
+.documents-icon { background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23808080"><path d="M4 2h10l4 4v12H4zm2 2v12h8V8h-4V4z"/></svg>'); }
+.settings-icon { background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23808080"><circle cx="10" cy="10" r="3"/><path d="M10 0a1 1 0 000 2 8 8 0 010 16 1 1 0 000 2c-5.523 0-10-4.477-10-10S4.477 0 10 0zm0 4a6 6 0 100 12A6 6 0 0010 4z"/></svg>'); }
+.find-icon { background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23808080"><path d="M14.707 13.293a8 8 0 10-1.414 1.414l4 4a1 1 0 001.414-1.414zM10 16a6 6 0 110-12 6 6 0 010 12z"/><circle cx="10" cy="10" r="3"/></svg>'); }
+.help-icon { background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23808080"><circle cx="10" cy="10" r="8" stroke="%23808080" stroke-width="2" fill="none"/><path d="M10 14a1 1 0 100-2 1 1 0 000 2zm0-8a3 3 0 00-3 3h2a1 1 0 112 0v1a1 1 0 00-1 1H8a3 3 0 003-3z"/></svg>'); }
+.run-icon { background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23808080"><path d="M4 4h12v2H4zm0 4h12v2H4zm0 4h8v2H4zM14 12l4 3-4 3z"/></svg>'); }
+.shutdown-icon { background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23808080"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zM8 4h4v6H8zm0 8h4v2H8z"/></svg>'); }
+
+.start-menu-separator {
+    height: 2px;
+    background-color: #808080; /* Dark gray */
+    margin: 5px 0;
+    border-top: 1px solid #ffffff; /* Lighter top border for 3D effect */
+}
+
+/* Mysterious Outcome Elements */
+
+/* 1. Glitchy Text Window */
+.glitch-window {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background-color: #000000;
+    border: 2px solid #c0c0c0;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+    overflow: hidden;
+    z-index: 800;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.glitch-text {
+    white-space: pre;
+    font-size: 12px;
+    line-height: 1.2;
+    animation: textGlitch 0.3s infinite;
+}
+
+@keyframes textGlitch {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    52% { opacity: 1; }
+    54% { opacity: 0.8; }
+    56% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+/* 2. Visual Distortion Overlay */
+.visual-distortion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 1500;
+    display: none;
+    mix-blend-mode: difference; /* Creates an inverted effect */
+}
+
+.color-shift {
+    background-color: rgba(255, 0, 0, 0.2); /* Red tint */
+    animation: colorPulse 2s ease-in-out;
+}
+
+@keyframes colorPulse {
+    0% { opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+
+/* 3. System Message Dialog */
+.system-message {
+    position: absolute;
+    width: 320px;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    padding: 2px;
+    z-index: 900;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.system-message-header {
+    background-color: #000080;
+    color: white;
+    padding: 3px 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.system-message-body {
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.system-message-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="%23FF0000"/><text x="16" y="22" font-size="24" text-anchor="middle" fill="%23FFFFFF">!</text></svg>');
+    background-size: contain;
+    float: left;
+}
+
+.system-message-buttons {
+    text-align: center;
+    padding: 10px;
+}
+
+.system-message-buttons button {
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 5px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.system-message-buttons button:active {
+    border-style: inset;
+}
+
+/* 4. Desktop Anomaly */
+.anomaly-element {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 700;
+    display: none;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.anomaly-question {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="%23800080" stroke="%23FFFFFF" stroke-width="2"/><text x="20" y="30" font-size="30" text-anchor="middle" fill="%23FFFFFF">?</text></svg>');
+}
+
+.anomaly-eye {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="%23000000" stroke="%23FFFFFF" stroke-width="2"/><circle cx="20" cy="20" r="8" fill="%23FFFFFF"/><circle cx="20" cy="20" r="4" fill="%23000000"/></svg>');
+}
+
+.anomaly-symbol {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" fill="%23000080" stroke="%23FFFFFF" stroke-width="2"/><path d="M10 10 L30 10 L20 30 z" fill="%23FFDF00" stroke="%23FFFFFF" stroke-width="1"/><circle cx="20" cy="17" r="3" fill="%23FF0000"/></svg>');
+}
+
+/* 5. Terminal Window */
+.terminal-window {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    background-color: #000000;
+    border: 2px outset #c0c0c0;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    z-index: 800;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.terminal-header {
+    background-color: #000080;
+    color: white;
+    padding: 3px 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.terminal-controls button {
+    background-color: #c0c0c0;
+    border: 1px outset #ffffff;
+    color: black;
+    font-weight: bold;
+    width: 16px;
+    height: 14px;
+    line-height: 10px;
+    padding: 0;
+    margin-left: 2px;
+    cursor: pointer;
+}
+
+.terminal-controls button:active {
+    border-style: inset;
+}
+
+.terminal-body {
+    padding: 10px;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-prompt {
+    color: #00FF00;
+    margin-right: 5px;
+}
+
+.terminal-input {
+    background-color: transparent;
+    border: none;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    flex-grow: 1;
+    outline: none;
+}
+
+/* Cursor blink animation */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background-color: #00FF00;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+
+/* Mystery Effects and Windows */
+.message-window {
+    position: absolute;
+    width: 400px;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.window-header {
+    background-color: #000080; /* Dark blue */
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.window-content {
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+.close-button, .minimize-button, .maximize-button {
+    background-color: #c0c0c0;
+    border: 1px outset #ffffff;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.close-button:active, .minimize-button:active, .maximize-button:active {
+    border-style: inset;
+}
+
+/* Glitch Effect */
+.glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.glitch-block {
+    position: absolute;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.screen-shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Audio Notification */
+.audio-notification {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #00ff00;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    z-index: 9999;
+}
+
+/* Binary Window */
+.binary-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-color: #000000;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+    overflow: auto;
+    white-space: pre;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+/* System Takeover */
+.takeover-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.terminal-text {
+    color: #ff0000;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    white-space: pre;
+}
+
+/* Terminal Window */
+.terminal-window {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-content {
+    flex: 1;
+    background-color: #000000;
+    color: #c0c0c0;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-output {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.terminal-output p {
+    margin: 0;
+    padding: 2px 0;
+    white-space: pre-wrap;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #c0c0c0;
+    margin-right: 5px;
+}
+
+.terminal-input {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    color: #c0c0c0;
+    font-family: 'Courier New', monospace;
+    font-size: inherit;
+    outline: none;
+}
+
+.maximized {
+    border-radius: 0 !important;
+}
