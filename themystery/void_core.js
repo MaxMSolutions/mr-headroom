@@ -1,4 +1,139 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Randomize desktop icon positions and names
+    randomizeDesktopIcons();
+    
+    // Boot animation sequence
+    const bootAnimation = document.getElementById('boot-animation');
+    const desktop = document.getElementById('desktop');
+    const bootMessages = document.querySelector('.boot-messages');
+    
+    // Boot sequence messages
+    const bootSequence = [
+        'Initializing system...',
+        'Loading core modules...',
+        'Checking memory integrity...',
+        'Mounting file systems...',
+        'Loading user interface...',
+        'Establishing connection...',
+        'Detecting anomalies...',
+        'WARNING: Unknown entity detected',
+        'Attempting to isolate...',
+        'FAILURE: Entity containment unsuccessful',
+        'ALERT: System compromised',
+        'mrheadroom95 is now active',
+        'Welcome back, user'
+    ];
+    
+    // Display boot messages with typing effect
+    let messageIndex = 0;
+    const messageInterval = setInterval(() => {
+        if (messageIndex < bootSequence.length) {
+            bootMessages.innerHTML += bootSequence[messageIndex] + '<br>';
+            bootMessages.scrollTop = bootMessages.scrollHeight;
+            messageIndex++;
+        } else {
+            clearInterval(messageInterval);
+            
+            // After boot sequence completes, show desktop
+            setTimeout(() => {
+                bootAnimation.style.opacity = '0';
+                desktop.style.display = 'block';
+                
+                setTimeout(() => {
+                    bootAnimation.style.display = 'none';
+                }, 1000);
+            }, 1000);
+        }
+    }, 400);
+    
+    // Function to randomize desktop icons
+    function randomizeDesktopIcons() {
+        // Get all desktop icons
+        const desktopIcons = document.querySelectorAll('.desktop-icon');
+        const desktop = document.getElementById('desktop');
+        
+        // Define possible name variations for each icon type
+        const nameVariations = {
+            'oracle-icon': ['Digital Oracle', 'Mystic Predictor', 'Future Sight', 'Prophecy Engine', 'Quantum Seer'],
+            'codex-icon': ['Ancient Codex', 'Forbidden Text', 'Lost Manuscript', 'Cryptic Tome', 'Eldritch Pages'],
+            'anomaly-icon': ['System Anomaly', 'Strange Glitch', 'Reality Error', 'Quantum Breach', 'Void Fragment'],
+            'signal-icon': ['Unknown Signal', 'Strange Broadcast', 'Alien Frequency', 'Mysterious Transmission', 'Void Echo'],
+            'coolterm-icon': ['Cool Terminal', 'Command Line', 'System Access', 'Root Console', 'Kernel Shell'],
+            'void-icon': ['The Void', 'Dark Matter', 'Null Space', 'Empty Sector', 'Abyss Portal'],
+            'journal1-icon': ['Day 1.txt', 'First_Contact.txt', 'Beginning.txt', 'Initial_Discovery.txt', 'First_Day.log'],
+            'journal2-icon': ['Day 3.txt', 'Strange_Behavior.txt', 'Odd_Events.txt', 'Unusual_Activity.log', 'Weird_Happenings.txt'],
+            'journal3-icon': ['Day 7.txt', 'The_Voice.txt', 'Whispers.log', 'It_Speaks.txt', 'First_Contact.log'],
+            'journal4-icon': ['Day 12.txt', 'It_Knows.txt', 'Watching_Me.log', 'No_Privacy.txt', 'Always_Listening.txt'],
+            'journal5-icon': ['Day 18.txt', 'The_Other_Side.txt', 'Beyond_Screen.log', 'It_Comes.txt', 'Breaking_Through.txt'],
+            'journal6-icon': ['HELP ME.txt', 'EMERGENCY.txt', 'SOS.log', 'DANGER.txt', 'RUN.txt']
+        };
+        
+        // Calculate desktop dimensions
+        const desktopWidth = desktop.offsetWidth - 100; // Subtract icon width
+        const desktopHeight = desktop.offsetHeight - 150; // Subtract icon height and taskbar
+        
+        // Track used positions to avoid overlap
+        const usedPositions = [];
+        const minDistance = 100; // Minimum distance between icons
+        
+        // Function to check if a position is too close to existing icons
+        function isTooClose(x, y) {
+            for (const pos of usedPositions) {
+                const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+                if (distance < minDistance) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        // Function to get a random position that's not too close to others
+        function getRandomPosition() {
+            let x, y;
+            let attempts = 0;
+            const maxAttempts = 50;
+            
+            do {
+                x = Math.floor(Math.random() * (desktopWidth - 50)) + 20;
+                y = Math.floor(Math.random() * (desktopHeight - 100)) + 20;
+                attempts++;
+                
+                if (attempts > maxAttempts) {
+                    // If we can't find a good spot after many attempts, just use the last one
+                    break;
+                }
+            } while (isTooClose(x, y));
+            
+            usedPositions.push({ x, y });
+            return { x, y };
+        }
+        
+        // Randomize each icon's position and name
+        desktopIcons.forEach(icon => {
+            // Get random position
+            const position = getRandomPosition();
+            icon.style.top = `${position.y}px`;
+            icon.style.left = `${position.x}px`;
+            
+            // Get random name variation
+            const iconId = icon.id;
+            if (nameVariations[iconId]) {
+                const variations = nameVariations[iconId];
+                const randomName = variations[Math.floor(Math.random() * variations.length)];
+                
+                // Update the icon's displayed name
+                const nameSpan = icon.querySelector('span');
+                if (nameSpan) {
+                    nameSpan.textContent = randomName;
+                }
+                
+                // Update aria-label for accessibility
+                icon.setAttribute('aria-label', randomName);
+            }
+        });
+    }
+    
+    // Rest of the original script.js content
     const startButton = document.getElementById('start-button');
     const startMenu = document.getElementById('start-menu');
     const desktopIcons = document.querySelectorAll('.desktop-icon');
@@ -575,91 +710,20 @@ document.addEventListener('DOMContentLoaded', () => {
         
         outputElement.appendChild(response);
     }
-
-    // Set up icon click events
-    oracleIcon.addEventListener('dblclick', () => {
-        getRandomOutcome().action();
-    });
-
-    codexIcon.addEventListener('dblclick', () => {
-        getRandomOutcome().action();
-    });
-
-    anomalyIcon.addEventListener('dblclick', () => {
-        getRandomOutcome().action();
-    });
-
-    signalIcon.addEventListener('dblclick', () => {
-        getRandomOutcome().action();
-    });
-
-    cooltermIcon.addEventListener('dblclick', () => {
-        createTerminalWindow();
-    });
-
-    voidIcon.addEventListener('dblclick', () => {
-        getRandomOutcome().action();
-    });
     
     // Journal text file content
     const journalEntries = {
-        'day1': `Day 1 - First Contact
-
-I found this old computer in the basement of my new apartment. It was covered in dust, looked like it hadn't been touched since the 90s. Curiosity got the better of me, so I plugged it in, not expecting much. To my surprise, it booted right up.
-
-The desktop looks normal enough, but there's something off about some of the icons. I'll explore more tomorrow.`,
+        'day1': `Day 1 - First Contact\n\nI found this old computer in the basement of my new apartment. It was covered in dust, looked like it hadn't been touched since the 90s. Curiosity got the better of me, so I plugged it in, not expecting much. To my surprise, it booted right up.\n\nThe desktop looks normal enough, but there's something off about some of the icons. I'll explore more tomorrow.`,
         
-        'day3': `Day 3 - Strange Behavior
-
-The computer is acting weird. Sometimes I'll come into the room and find it on, even though I'm certain I shut it down. The screen shows these bizarre patterns occasionally, almost like it's trying to communicate.
-
-I tried running a diagnostic, but the terminal just spits out cryptic messages. One of them kept repeating: "HE SEES YOU WHEN YOU SLEEP." Probably just some old screensaver text or something...`,
+        'day3': `Day 3 - Strange Behavior\n\nThe computer is acting weird. Sometimes I'll come into the room and find it on, even though I'm certain I shut it down. The screen shows these bizarre patterns occasionally, almost like it's trying to communicate.\n\nI tried running a diagnostic, but the terminal just spits out cryptic messages. One of them kept repeating: "HE SEES YOU WHEN YOU SLEEP." Probably just some old screensaver text or something...`,
         
-        'day7': `Day 7 - The Voice
-
-I heard it today. A voice coming from the speakers, but distorted, like it was being run through some kind of filter. It only said one word: "CLOSER."
-
-I've been having trouble sleeping. Every time I close my eyes, I see that desktop. Those icons. They're changing positions when I'm not looking. I know it sounds crazy, but I've started taking screenshots to prove it to myself.`,
+        'day7': `Day 7 - The Voice\n\nI heard it today. A voice coming from the speakers, but distorted, like it was being run through some kind of filter. It only said one word: "CLOSER."\n\nI've been having trouble sleeping. Every time I close my eyes, I see that desktop. Those icons. They're changing positions when I'm not looking. I know it sounds crazy, but I've started taking screenshots to prove it to myself.`,
         
-        'day12': `Day 12 - It Knows
-
-The computer knows things it shouldn't. Today I was working on a completely different laptop when I got an email. When I opened it, it was just a text file with a conversation I had YESTERDAY with my girlfriend. A private conversation in our bedroom.
-
-How is this possible? There's no camera or microphone on that old machine. I've checked every inch of it. I'm thinking about throwing it away, but something tells me it wouldn't make a difference now.`,
+        'day12': `Day 12 - It Knows\n\nThe computer knows things it shouldn't. Today I was working on a completely different laptop when I got an email. When I opened it, it was just a text file with a conversation I had YESTERDAY with my girlfriend. A private conversation in our bedroom.\n\nHow is this possible? There's no camera or microphone on that old machine. I've checked every inch of it. I'm thinking about throwing it away, but something tells me it wouldn't make a difference now.`,
         
-        'day18': `Day 18 - The Other Side
-
-I think I understand now. This isn't just a computer. It's a doorway. Last night I was using the terminal and found a hidden command. When I ran it, the screen went black, and I could see... something... on the other side.
-
-A face, but not human. Eyes that seemed to go on forever. It smiled at me.
-
-I'm writing this down quickly because I think it's coming through. The screen is bulging outward as I type this. The glass is stretching like it's made of rubber. I can hear scratching from inside the monitor.`,
+        'day18': `Day 18 - The Other Side\n\nI think I understand now. This isn't just a computer. It's a doorway. Last night I was using the terminal and found a hidden command. When I ran it, the screen went black, and I could see... something... on the other side.\n\nA face, but not human. Eyes that seemed to go on forever. It smiled at me.\n\nI'm writing this down quickly because I think it's coming through. The screen is bulging outward as I type this. The glass is stretching like it's made of rubber. I can hear scratching from inside the monitor.`,
         
-        'helpme': `IT'S IN THE ROOM WITH ME NOW
-
-CANT TYPE MUCH
-
-IF YOURE READING THIS DONT TURN AROUND
-
-IT STANDS BEHIND YOU WHEN YOU USE THIS COMPUTER
-
-IT WHISPERS YOUR NAME WHEN YOU SLEEP
-
-IT WEARS YOUR FACE WHEN YOU LOOK AWAY
-
-DONT TRUST THE VOID ICON
-
-DONT TRUST THE VOID ICON
-
-DONT TRUST THE VOID ICON
-
-DONT TRUST THE VOID ICON
-
-DONT TRUST THE VOID ICON
-
-IT'S TOO LATE FOR ME
-
-MR HEADROOM IS HERE`
+        'helpme': `IT'S IN THE ROOM WITH ME NOW\n\nCANT TYPE MUCH\n\nIF YOURE READING THIS DONT TURN AROUND\n\nIT STANDS BEHIND YOU WHEN YOU USE THIS COMPUTER\n\nIT WHISPERS YOUR NAME WHEN YOU SLEEP\n\nIT WEARS YOUR FACE WHEN YOU LOOK AWAY\n\nDONT TRUST THE VOID ICON\n\nDONT TRUST THE VOID ICON\n\nDONT TRUST THE VOID ICON\n\nDONT TRUST THE VOID ICON\n\nDONT TRUST THE VOID ICON\n\nIT'S TOO LATE FOR ME\n\nMR HEADROOM IS HERE`
     };
     
     // Function to create a text file window
@@ -727,30 +791,61 @@ MR HEADROOM IS HERE`
         
         return textWindow;
     }
+
+    // Set up icon click events
+    oracleIcon.addEventListener('dblclick', () => {
+        getRandomOutcome().action();
+    });
+
+    codexIcon.addEventListener('dblclick', () => {
+        getRandomOutcome().action();
+    });
+
+    anomalyIcon.addEventListener('dblclick', () => {
+        getRandomOutcome().action();
+    });
+
+    signalIcon.addEventListener('dblclick', () => {
+        getRandomOutcome().action();
+    });
+
+    cooltermIcon.addEventListener('dblclick', () => {
+        createTerminalWindow();
+    });
+
+    voidIcon.addEventListener('dblclick', () => {
+        getRandomOutcome().action();
+    });
     
     // Set up journal text file click events
     journal1Icon.addEventListener('dblclick', () => {
-        createTextFileWindow('Day 1.txt - Notepad', journalEntries.day1);
+        const fileName = journal1Icon.querySelector('span').textContent;
+        createTextFileWindow(`${fileName} - Notepad`, journalEntries.day1);
     });
     
     journal2Icon.addEventListener('dblclick', () => {
-        createTextFileWindow('Day 3.txt - Notepad', journalEntries.day3);
+        const fileName = journal2Icon.querySelector('span').textContent;
+        createTextFileWindow(`${fileName} - Notepad`, journalEntries.day3);
     });
     
     journal3Icon.addEventListener('dblclick', () => {
-        createTextFileWindow('Day 7.txt - Notepad', journalEntries.day7);
+        const fileName = journal3Icon.querySelector('span').textContent;
+        createTextFileWindow(`${fileName} - Notepad`, journalEntries.day7);
     });
     
     journal4Icon.addEventListener('dblclick', () => {
-        createTextFileWindow('Day 12.txt - Notepad', journalEntries.day12);
+        const fileName = journal4Icon.querySelector('span').textContent;
+        createTextFileWindow(`${fileName} - Notepad`, journalEntries.day12);
     });
     
     journal5Icon.addEventListener('dblclick', () => {
-        createTextFileWindow('Day 18.txt - Notepad', journalEntries.day18);
+        const fileName = journal5Icon.querySelector('span').textContent;
+        createTextFileWindow(`${fileName} - Notepad`, journalEntries.day18);
     });
     
     journal6Icon.addEventListener('dblclick', () => {
-        createTextFileWindow('HELP ME.txt - Notepad', journalEntries.helpme);
+        const fileName = journal6Icon.querySelector('span').textContent;
+        createTextFileWindow(`${fileName} - Notepad`, journalEntries.helpme);
         // Add a creepy effect when opening this file
         setTimeout(() => {
             const glitchOverlay = document.createElement('div');
@@ -780,4 +875,7 @@ MR HEADROOM IS HERE`
             }, 1500);
         }, 3000);
     });
+    
+    // Add boot animation CSS transition
+    bootAnimation.style.transition = 'opacity 1s ease-in-out';
 });
