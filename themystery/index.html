@@ -3,56 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
-    <style>
-        body {
-            background-color: #000000;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-        .loading {
-            text-align: center;
-        }
-        .loading-text {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .loading-dots {
-            font-size: 36px;
-            animation: dots 1.5s infinite;
-        }
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
-        }
-    </style>
+    <title>MrHeadroom99 OS</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="loading">
-        <div class="loading-text">INITIALIZING SYSTEM</div>
-        <div class="loading-dots" id="dots">...</div>
-    </div>
-
-    <script>
-        // Simulate loading and redirect to the main page
-        setTimeout(() => {
-            window.location.href = 'dark_os.html';
-        }, 2000);
+    <div class="computer-container">
+        <div class="monitor">
+            <div class="monitor-border">
+                <div class="monitor-inner">
+                    <div class="screen">
+                        <!-- Boot screen -->
+                        <div class="boot-screen">
+                            <div class="boot-logo">MrHeadroom99 OS</div>
+                            <div class="boot-progress">
+                                <div class="boot-progress-bar"></div>
+                            </div>
+                            <div class="boot-message">Starting system...</div>
+                        </div>
+                        
+                        <!-- Desktop -->
+                        <div class="desktop" style="display: none;">
+                            <div class="desktop-content">
+                                <div class="desktop-icons">
+                                    <!-- Icons will be added by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Taskbar -->
+                        <div class="taskbar" style="display: none;">
+                            <div class="start-button">
+                                <div class="start-button-text">Start</div>
+                            </div>
+                            <div class="taskbar-items">
+                                <!-- Taskbar items will be added by JavaScript -->
+                            </div>
+                            <div class="clock">12:00 AM</div>
+                        </div>
+                        
+                        <!-- Start Menu -->
+                        <div class="start-menu">
+                            <div class="start-menu-header">MrHeadroom99</div>
+                            <div class="start-menu-items">
+                                <!-- Start menu items will be added by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        // Animate the dots
-        const dots = document.getElementById('dots');
-        let count = 0;
-        setInterval(() => {
-            count = (count + 1) % 4;
-            dots.textContent = '.'.repeat(count || 3);
-        }, 500);
-    </script>
+        <!-- Computer base -->
+        <div class="computer-base">
+            <div class="base-top">
+                <div class="drive-slot"></div>
+                <div class="drive-slot"></div>
+            </div>
+            <div class="base-bottom">
+                <div class="power-button-area">
+                    <div class="power-button power-on"></div>
+                    <div class="power-button power-reset"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="mrheadroom99.js"></script>
 </body>
 </html>
