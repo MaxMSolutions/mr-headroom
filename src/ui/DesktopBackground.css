@@ -9,12 +9,6 @@
   height: 100%;
   overflow: hidden;
   background-color: #000;
-  animation: subtleBackgroundPulse 15s infinite alternate;
-}
-
-@keyframes subtleBackgroundPulse {
-  0%, 100% { background-color: #000; }
-  50% { background-color: #050210; }
 }
 
 /* Retrowave background container */
@@ -58,9 +52,9 @@
   url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,10 L30,10 L30,30 L50,30 L50,50 L70,50 L70,70 L90,70' stroke='rgba(0,195,255,0.1)' fill='none' stroke-width='1'/%3E%3Cpath d='M90,10 L70,10 L70,30 L50,30 L50,50 L30,50 L30,70 L10,70' stroke='rgba(255,0,255,0.1)' fill='none' stroke-width='1'/%3E%3C/svg%3E");
   background-blend-mode: normal;
   background-size: 100% 100%, 200px 200px;
-  z-index: 1; /* Keep at 1 so it stays above the background but below desktop content */
+  z-index: 1;
   /* Add subtle animation */
-  animation: skyPulse 20s infinite alternate;
+  /* animation: skyPulse 20s infinite alternate; */
   pointer-events: none; /* Allow clicks to pass through */
 }
 
@@ -151,12 +145,18 @@
     0 0 30px rgba(255, 0, 255, 0.4),
     0 0 15px rgba(0, 195, 255, 0.3);
   /* Add subtle pulse animation */
-  animation: sunPulse 8s infinite alternate;
+  animation: sunPulse 12s ease-in-out infinite;
 }
 
 @keyframes sunPulse {
-  0%, 100% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.03); filter: brightness(1.1); }
+  0%, 100% { 
+    transform: translateX(-50%) scale(1); 
+    filter: brightness(1) saturate(1);
+  }
+  50% { 
+    transform: translateX(-50%) scale(1.01); 
+    filter: brightness(1.05) saturate(1.1);
+  }
 }
 
 /* Sun stripes - updated with cyberpunk tech pattern */
@@ -174,7 +174,7 @@
   );
   z-index: 3;
   opacity: 0.6;
-  animation: stripesMove 15s linear infinite;
+  /* animation: stripesMove 15s linear infinite; */
 }
 
 @keyframes stripesMove {
@@ -209,7 +209,7 @@
     radial-gradient(1px 1px at 320px 40px, #00f0ff, rgba(0,0,0,0));
   background-repeat: repeat;
   background-size: 400px 400px;
-  animation: twinkle 4s ease-in-out infinite alternate;
+  /* animation: twinkle 4s ease-in-out infinite alternate; */
   opacity: 0.6;
   /* Add tech grid pattern for depth */
   background-blend-mode: screen;
@@ -228,7 +228,7 @@
     radial-gradient(1px 1px at 220px 280px, #00f0ff, rgba(0,0,0,0));
   background-repeat: repeat;
   background-size: 400px 400px;
-  animation: twinkle 5s ease-in-out infinite alternate;
+  /* animation: twinkle 5s ease-in-out infinite alternate; */
   animation-delay: 0.5s;
   opacity: 0.5;
 }
@@ -512,7 +512,7 @@
     linear-gradient(90deg, transparent 0%, transparent 70%, rgba(255, 0, 255, 0.03) 70%, transparent 70.5%, transparent 100%),
     linear-gradient(90deg, transparent 0%, transparent 90%, rgba(0, 195, 255, 0.05) 90%, transparent 90.5%, transparent 100%);
   background-size: 200% 100%;
-  animation: dataStreamFlow 15s linear infinite;
+  /* animation: dataStreamFlow 15s linear infinite; */
   pointer-events: none;
   z-index: 1; /* Lowered z-index to avoid overlaying desktop icons */
   opacity: 0.4;
@@ -539,7 +539,7 @@
   pointer-events: none;
   z-index: 1; /* Lowered z-index to avoid overlaying desktop icons */
   opacity: 0.7;
-  animation: nodePulse 10s infinite alternate;
+  /* animation: nodePulse 10s infinite alternate; */
 }
 
 @keyframes nodePulse {
