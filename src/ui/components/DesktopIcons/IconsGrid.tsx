@@ -40,18 +40,24 @@ const IconsGrid: React.FC<IconsGridProps> = ({
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't handle keyboard events if focus is on an input field or textarea
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.contentEditable === 'true')) {
+        return;
+      }
+
       if (!selectedIcon) return;
-      
+
       // Find current icon index and position
       const currentIndex = icons.findIndex(icon => icon.id === selectedIcon);
       if (currentIndex === -1) return;
-      
+
       const currentIcon = icons[currentIndex];
       const currentPos = currentIcon.gridPosition || { row: 1, col: 1 };
-      
+
       let nextRow = currentPos.row;
       let nextCol = currentPos.col;
-      
+
       // Arrow key navigation
       switch (e.key) {
         case 'ArrowUp':
