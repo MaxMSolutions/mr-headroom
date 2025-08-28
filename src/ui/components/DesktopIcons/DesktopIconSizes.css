@@ -1,0 +1,35 @@
+/* Additional size fixes for specific desktop icons */
+
+/* Make the icon images consistent in size */
+.icon-image.system-icon,
+.icon-image.terminal-icon {
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1); /* Ensure no transform is affecting the size */
+}
+
+/* Ensure the Nexus-9 cube is properly sized and centered */
+.system-cube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  transform: none !important; /* Override any transform that might affect positioning */
+}
+
+/* Make the terminal content fill the space */
+.terminal-icon::after {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}

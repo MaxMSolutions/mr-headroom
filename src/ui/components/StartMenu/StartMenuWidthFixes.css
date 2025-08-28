@@ -1,0 +1,78 @@
+/* Additional menu width fixes */
+.sidebar .menu-item {
+  padding: 3px 5px; /* Reduced padding for sidebar items */
+}
+
+/* Make sure the text in the sidebar doesn't overflow */
+.sidebar .menu-item span {
+  font-size: 10px; /* Slightly smaller text */
+  letter-spacing: 0.2px; /* Match the tech style */
+  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+}
+
+/* Fix for user name overflowing */
+.user-name, .user-status {
+  max-width: 100%; /* Full width in our new column layout */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ensure theme shortcuts display properly */
+.theme-shortcuts .menu-item {
+  max-width: 100%;
+  margin-bottom: 2px;
+}
+
+/* Fix for start menu header overflow */
+.start-menu-header {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Ensure the menu dividers don't overflow */
+.menu-divider {
+  width: calc(100% - 4px);
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/* Fix for start menu footer overflow */
+.start-menu-footer {
+  padding: 2px 6px; /* Slightly smaller padding */
+  font-size: 8px; /* Smaller font */
+}
+
+/* Ensure icons align properly */
+.menu-item-icon, .system-icon, .simulation-icon, .glitch-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fix for color swatches in theme menu */
+.color-swatch {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  box-shadow: 0 0 3px rgba(0, 195, 255, 0.3);
+  margin-right: 5px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.color-swatch.neon {
+  background: linear-gradient(135deg, #000000, #1a0933);
+}
+
+.color-swatch.amber {
+  background: linear-gradient(135deg, #000000, #ff9900);
+}
+
+.color-swatch.matrix {
+  background: linear-gradient(135deg, #000000, #00ff00);
+}
+
+.color-swatch.sunset {
+  background: linear-gradient(135deg, #000033, #ff6b35);
+}

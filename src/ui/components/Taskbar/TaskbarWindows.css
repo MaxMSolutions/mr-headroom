@@ -1,0 +1,82 @@
+/* Taskbar Windows Styling */
+.taskbar-app-button {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin: 0 4px;
+  padding: 0 8px;
+  border-radius: 2px;
+  color: #c5e0ff;
+  font-size: 0.85em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(40, 20, 80, 0.4), rgba(60, 30, 100, 0.6));
+  border: 1px solid rgba(0, 195, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: taskbarButtonAppear 0.3s ease-out;
+}
+
+@keyframes taskbarButtonAppear {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Neon glow effect on hover */
+.taskbar-app-button:hover {
+  background: linear-gradient(180deg, rgba(50, 25, 100, 0.5), rgba(70, 35, 120, 0.7));
+  border-color: rgba(0, 195, 255, 0.5);
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.3);
+}
+
+/* Active state */
+.taskbar-app-button.active {
+  background: linear-gradient(180deg, rgba(60, 30, 120, 0.6), rgba(80, 40, 140, 0.8));
+  border-color: rgba(0, 195, 255, 0.8);
+  box-shadow: 0 0 12px rgba(0, 195, 255, 0.4);
+  animation: activeButtonPulse 2s infinite alternate;
+}
+
+/* Minimized state */
+.taskbar-app-button.minimized {
+  opacity: 0.7;
+}
+
+/* Application icon */
+.taskbar-app-button .app-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  border-radius: 2px;
+  background: rgba(0, 195, 255, 0.15);
+  border: 1px solid rgba(0, 195, 255, 0.3);
+  font-size: 0.9em;
+  color: #00ffea;
+}
+
+/* App title */
+.taskbar-app-button .app-title {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Active button pulsing animation */
+@keyframes activeButtonPulse {
+  0% {
+    box-shadow: 0 0 8px rgba(0, 195, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 16px rgba(0, 195, 255, 0.6);
+  }
+}

@@ -1,0 +1,539 @@
+.labyrinth-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-height: 100vh;
+  background-color: #000;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  outline: none;
+  overflow: hidden;
+}
+
+.labyrinth-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.labyrinth-header h2 {
+  color: var(--accent-primary);
+  text-shadow: 0 0 5px var(--accent-primary);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.labyrinth-controls button {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-primary);
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.labyrinth-controls button:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  text-shadow: 0 0 5px var(--bg-primary);
+}
+
+.labyrinth-controls .logs-button {
+  background-color: rgba(255, 0, 255, 0.3);
+  border-color: var(--accent-secondary);
+}
+
+.labyrinth-controls .logs-button:hover {
+  background-color: var(--accent-secondary);
+}
+
+.labyrinth-content {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Status panel styling */
+.labyrinth-status {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-primary);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 0.9em;
+}
+
+.status-label {
+  color: var(--accent-secondary);
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.status-value {
+  color: var(--text-primary);
+}
+
+.level-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.symbol-info {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collected-symbols {
+  display: flex;
+  gap: 10px;
+}
+
+.collected-symbol {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.1);
+  color: #00ffff;
+  border: 1px solid #00ffff;
+  border-radius: 3px;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.no-symbols {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.message-box {
+  flex: 2;
+  text-align: right;
+  color: var(--accent-primary);
+  animation: glow 1.5s ease-in-out infinite alternate;
+  font-weight: bold;
+}
+
+/* Main game area - flex container for maze and controls */
+.game-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: 5px 0;
+}
+
+/* Maze styling */
+.labyrinth-maze {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin: 0;
+  font-size: 13px;
+  max-height: 45vh;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.maze-row {
+  display: flex;
+  white-space: pre;
+  height: 14px; /* Smaller height for better spacing */
+}
+
+.maze-cell {
+  display: inline-block;
+  width: 16px;  /* Slightly smaller for better fit */
+  height: 16px;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  transition: all 0.15s;
+}
+
+.maze-cell.player {
+  color: #33ff33;
+  text-shadow: 0 0 5px #33ff33;
+  animation: playerPulse 1.5s infinite alternate;
+  position: relative;
+}
+
+@keyframes playerPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+.maze-cell.exit {
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+  animation: exitGlow 2s infinite alternate;
+}
+
+@keyframes exitGlow {
+  0% { text-shadow: 0 0 5px #ff00ff; }
+  100% { text-shadow: 0 0 15px #ff00ff; }
+}
+
+.maze-cell.symbol {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  animation: symbolFloat 3s infinite alternate;
+}
+
+@keyframes symbolFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-2px); }
+}
+
+.maze-cell.wall {
+  color: #888888;
+  text-shadow: 0 0 3px #888888;
+}
+
+.maze-cell.path {
+  color: #333333;
+  text-shadow: none;
+}
+
+.maze-cell.visited-path {
+  color: #555555;
+  text-shadow: none;
+}
+
+/* Exit hint path styles */
+.maze-cell.exit-hint {
+  color: inherit;
+  position: relative;
+}
+
+.maze-cell.exit-hint::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 0, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* Make walls more visually distinct */
+.maze-row:first-child .maze-cell.wall,
+.maze-row:last-child .maze-cell.wall,
+.maze-row .maze-cell.wall:first-child,
+.maze-row .maze-cell.wall:last-child {
+  color: #aaaaaa;
+  text-shadow: 0 0 4px #aaaaaa;
+}
+
+/* Virtual controls for touch devices */
+.labyrinth-virtual-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.dpad-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.dpad {
+  display: grid;
+  grid-template-areas:
+    ".    up    ."
+    "left center right"
+    ".    down  .";
+  grid-template-columns: 40px 40px 40px;
+  grid-template-rows: 40px 40px 40px;
+  gap: 2px;
+}
+
+.dpad-button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--text-primary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.15s;
+}
+
+.dpad-button:hover,
+.dpad-button:active {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  transform: scale(0.95);
+}
+
+.dpad-up { grid-area: up; }
+.dpad-left { grid-area: left; }
+.dpad-center { 
+  grid-area: center; 
+  background-color: rgba(255, 0, 0, 0.3);
+  color: #ffffff;
+  font-weight: bold;
+}
+.dpad-right { grid-area: right; }
+.dpad-down { grid-area: down; }
+
+.control-legend {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px;
+  opacity: 0.7;
+  max-width: 120px;
+}
+
+/* Add focus styles for better accessibility */
+.dpad-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-secondary);
+}
+
+/* Instructions overlay */
+.labyrinth-instructions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.instructions-content {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 0 20px var(--accent-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.instruction-section {
+  margin-bottom: 10px;
+}
+
+.instruction-section h4 {
+  color: var(--accent-secondary);
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--accent-secondary);
+  padding-bottom: 3px;
+  font-size: 0.95em;
+}
+
+.instruction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+
+.instruction-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.key-instruction {
+  background-color: var(--bg-primary);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.legend-item {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.close-instructions {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  margin: 20px auto 0;
+  transition: all 0.2s;
+}
+
+.close-instructions:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent-primary);
+}
+
+/* Game info section with hints toggle */
+.labyrinth-game-info {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: -5px;
+}
+
+.hint-system {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--accent-secondary);
+}
+
+.hint-system label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--accent-secondary);
+}
+
+.hint-system input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: var(--accent-primary);
+}
+
+.labyrinth-instructions h3 {
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+.labyrinth-instructions p {
+  margin: 5px 0;
+}
+
+/* Victory and Game Over screens */
+.labyrinth-victory,
+.labyrinth-game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  text-align: center;
+}
+
+.labyrinth-victory h3 {
+  color: #33ff33;
+  text-shadow: 0 0 10px #33ff33;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.labyrinth-game-over h3 {
+  color: #ff3333;
+  text-shadow: 0 0 10px #ff3333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.labyrinth-victory button,
+.labyrinth-game-over button {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-primary);
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.labyrinth-victory button:hover,
+.labyrinth-game-over button:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  text-shadow: 0 0 5px var(--bg-primary);
+}
+
+/* Animations */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 2px var(--accent-primary);
+  }
+  to {
+    text-shadow: 0 0 8px var(--accent-primary);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scanline effect */
+.labyrinth-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
+}

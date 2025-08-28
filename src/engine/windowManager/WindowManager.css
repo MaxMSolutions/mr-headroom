@@ -1,0 +1,374 @@
+.window-manager {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--taskbar-height));
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10; /* Higher z-index to ensure windows appear above desktop icons */
+}
+
+.window {
+  position: absolute;
+  background: linear-gradient(180deg, rgba(10, 5, 20, 0.9), rgba(25, 10, 45, 0.95));
+  border: 1px solid rgba(0, 195, 255, 0.6);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.65), 0 0 8px rgba(0, 195, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  min-width: var(--window-min-width);
+  min-height: var(--window-min-height);
+  pointer-events: all;
+  overflow: hidden;
+  z-index: 20; /* Ensure windows appear above desktop icons */
+  border-radius: 2px;
+  transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+  /* Add cyberpunk grid pattern overlay similar to taskbar */
+  background-image: 
+    linear-gradient(180deg, rgba(20, 8, 30, 0.9), rgba(40, 15, 60, 0.95)),
+    linear-gradient(90deg, rgba(0, 195, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 195, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 4px 4px;
+}
+
+.window:hover:not(.active) {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 195, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.window.active {
+  border-color: #00f0ff;
+  z-index: 30; /* Higher z-index for active window to ensure it's on top */
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.75), 0 0 10px rgba(0, 195, 255, 0.6);
+  animation: windowPulse 3s infinite ease-in-out;
+}
+
+.window.active .window-titlebar:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #00f0ff;
+  z-index: 2;
+  box-shadow: 0 0 8px #00f0ff;
+}
+
+@keyframes windowPulse {
+  0%, 100% { 
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.75), 0 0 10px rgba(0, 195, 255, 0.6);
+    border-color: rgba(0, 195, 255, 0.6);
+  }
+  50% { 
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.75), 0 0 15px rgba(0, 195, 255, 0.8);
+    border-color: rgba(0, 195, 255, 0.8);
+  }
+}
+
+.window.active .window-button {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 3px rgba(var(--accent-primary-rgb), 0.3);
+}
+
+.window-titlebar {
+  height: var(--window-header-height);
+  background: linear-gradient(90deg, rgba(10, 5, 20, 0.9), rgba(30, 12, 45, 0.9));
+  color: #00f0ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  cursor: move;
+  user-select: none;
+  border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  box-shadow: inset 0 0 6px rgba(0, 195, 255, 0.3);
+  
+  /* Add futuristic circuit pattern similar to clock component */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 195, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 90% 80%, rgba(0, 195, 255, 0.1) 1px, transparent 1px);
+  
+  /* Add subtle scan line effect */
+  animation: titlebarScanline 10s linear infinite;
+}
+
+@keyframes titlebarScanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 22px; }
+}
+
+.window-title {
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 2px 0;
+  text-transform: uppercase;
+  color: #00f0ff;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  position: relative;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.window-button {
+  width: 14px;
+  height: 14px;
+  margin-left: 3px;
+  background-color: rgba(10, 5, 20, 0.9);
+  border: 1px solid rgba(0, 195, 255, 0.6);
+  color: #00f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  border-radius: 2px;
+  transition: all 0.15s ease;
+  box-shadow: inset 0 0 3px rgba(0, 195, 255, 0.2);
+  text-shadow: 0 0 3px rgba(0, 195, 255, 0.8);
+}
+
+.window-button:hover {
+  background-color: rgba(0, 195, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.5),
+              inset 0 0 5px rgba(0, 195, 255, 0.4);
+  border-color: rgba(0, 195, 255, 0.8);
+}
+
+.window-button.close:hover {
+  background-color: #ff3333;
+  border-color: #ff3333;
+  color: white;
+  box-shadow: 0 0 8px rgba(255, 51, 51, 0.8);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+.window-button.minimize {
+  font-size: 12px;
+  line-height: 0;
+  padding-bottom: 8px;
+}
+
+.window-button.minimize:hover {
+  background-color: rgba(0, 195, 255, 0.3);
+  border-color: rgba(0, 195, 255, 0.9);
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 1);
+}
+
+.window-button.maximize {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-button.maximize:hover {
+  background-color: rgba(0, 195, 255, 0.3);
+  border-color: rgba(0, 195, 255, 0.9);
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 1);
+}
+
+.window-content {
+  flex-grow: 1;
+  overflow: auto;
+  position: relative;
+  background-color: rgba(10, 5, 20, 0.95);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3), 
+              inset 0 0 10px rgba(0, 195, 255, 0.1);
+  border-top: 1px solid rgba(0, 195, 255, 0.15);
+  color: #f0f0f0;
+  font-family: 'VT323', 'Courier New', monospace;
+  /* Add subtle tech pattern overlay similar to Start Menu */
+  background-image: 
+    radial-gradient(circle at center, transparent, rgba(0, 195, 255, 0.05) 70%, transparent 90%),
+    linear-gradient(135deg, transparent 0%, rgba(255, 0, 255, 0.03) 25%, transparent 50%,
+                           rgba(0, 195, 255, 0.03) 75%, transparent 100%);
+  background-size: 100% 100%, 8px 8px;
+}
+
+/* Resize handles */
+.resize-handle {
+  position: absolute;
+  background-color: transparent;
+  z-index: 21; /* Higher than window but not higher than active window */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.window:hover .resize-handle {
+  opacity: 0.6;
+}
+
+.window.active:hover .resize-handle {
+  opacity: 1;
+}
+
+.resize-e {
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  cursor: e-resize;
+}
+
+.resize-s {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 6px;
+  cursor: s-resize;
+}
+
+.resize-se {
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  cursor: se-resize;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 195, 255, 0.5) 95%);
+  border-radius: 0 0 2px 0;
+  box-shadow: inset 0 0 3px rgba(0, 195, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.resize-se:hover {
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 195, 255, 0.8) 95%);
+  box-shadow: 0 0 5px rgba(0, 195, 255, 0.5);
+}
+
+/* Maximized state */
+.window.maximized {
+  border-width: 0;
+  border-bottom: 1px solid rgba(0, 195, 255, 0.6);
+  border-radius: 0;
+  box-shadow: 0 0 15px rgba(0, 195, 255, 0.2);
+}
+
+.window.maximized .window-titlebar {
+  border-radius: 0;
+  border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+}
+
+/* Focus effects */
+.window:focus-within {
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 195, 255, 0.5);
+}
+
+/* Minimizing/Maximizing animations */
+.window.minimizing {
+  animation: minimize 0.2s ease-in forwards;
+}
+
+.window.maximizing {
+  animation: maximize 0.2s ease-out forwards;
+}
+
+@keyframes minimize {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes maximize {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Window open animation */
+.window-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.window-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 200ms, transform 200ms;
+}
+
+/* Window close animation */
+.window-exit {
+  opacity: 1;
+}
+
+.window-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 200ms, transform 200ms;
+}
+
+/* Subtle neon glow effect for the active window in darker themes */
+@media (prefers-color-scheme: dark) {
+  .window.active {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 195, 255, 0.5);
+  }
+  
+  .window.active .window-titlebar {
+    box-shadow: 0 1px 8px rgba(0, 195, 255, 0.4);
+  }
+}
+
+/* Accessibility focus indicators */
+.window:focus-visible {
+  outline: 2px solid #00f0ff;
+  outline-offset: 1px;
+}
+
+.accessibility-mode .window:focus-within {
+  outline: 2px solid #00f0ff;
+  outline-offset: 1px;
+}
+
+/* Add glitch effect for windows similar to the taskbar glitch */
+.window.glitching {
+  animation: windowGlitch 0.3s ease-in-out;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 0, 255, 0.6);
+  border-color: #ff00ff;
+}
+
+.window.glitching .window-titlebar {
+  animation: titlebarGlitch 0.2s linear;
+  color: #ff00ff;
+}
+
+@keyframes windowGlitch {
+  0% { transform: translate(0); border-color: #00f0ff; }
+  20% { transform: translate(-2px, 1px); border-color: #ff00ff; }
+  40% { transform: translate(2px, -1px); border-color: #00ffcc; }
+  60% { transform: translate(-1px, -1px); filter: hue-rotate(90deg); }
+  80% { transform: translate(1px, 1px); border-color: #ffcc00; }
+  100% { transform: translate(0); border-color: #00f0ff; }
+}
+
+@keyframes titlebarGlitch {
+  0%, 100% { opacity: 1; color: #00f0ff; }
+  25% { opacity: 0.8; color: #ff00ff; text-shadow: 0 0 8px #ff00ff; }
+  50% { opacity: 0.9; color: #00ffcc; text-shadow: 0 0 8px #00ffcc; }
+  75% { opacity: 0.8; color: #ffcc00; text-shadow: 0 0 8px #ffcc00; }
+}

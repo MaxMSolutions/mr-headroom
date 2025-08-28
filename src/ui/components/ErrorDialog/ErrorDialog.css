@@ -1,0 +1,193 @@
+.error-dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--secondary-bg, #0a0a0a);
+  color: var(--primary-text, #33ff33);
+  font-family: var(--font-main, 'Courier New', monospace);
+  padding: 1rem;
+  border: 1px solid var(--primary-accent, #ff00ff);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), inset 0 0 5px rgba(255, 0, 255, 0.3);
+  animation: glitch 2s infinite alternate;
+}
+
+.error-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--primary-accent, #ff00ff);
+  padding-bottom: 0.5rem;
+}
+
+.error-icon {
+  font-size: 2rem;
+  color: var(--warning-color, #ff0033);
+  margin-right: 1rem;
+  text-shadow: 0 0 5px rgba(255, 0, 51, 0.8);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+}
+
+.glitching {
+  animation: severe-glitch 0.15s infinite;
+}
+
+.glitching .error-message {
+  animation: color-shift 0.15s infinite;
+}
+
+@keyframes severe-glitch {
+  0% { transform: translate(0); }
+  25% { transform: translate(-3px, 3px); filter: hue-rotate(90deg); }
+  50% { transform: translate(3px, -3px); }
+  75% { transform: translate(-3px, -3px); filter: hue-rotate(-90deg); }
+  100% { transform: translate(0); }
+}
+
+@keyframes color-shift {
+  0% { color: var(--warning-color, #ff0033); }
+  33% { color: #33ff33; }
+  66% { color: #ff00ff; }
+  100% { color: var(--warning-color, #ff0033); }
+}
+
+.error-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.error-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(51, 255, 51, 0.03) 2px,
+    rgba(51, 255, 51, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+.error-message {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--warning-color, #ff0033);
+  text-shadow: 0 0 3px rgba(255, 0, 51, 0.5);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.error-code {
+  padding: 0.7rem 1.2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--warning-color, #ff0033);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 0 5px rgba(255, 0, 51, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.error-code::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, rgba(255,0,51,0.1) 0%, rgba(255,0,51,0) 70%);
+  pointer-events: none;
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-code span {
+  font-weight: bold;
+  color: var(--warning-color, #ff0033);
+}
+
+.error-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--primary-accent, #ff00ff);
+  padding-top: 1rem;
+}
+
+.error-button {
+  background-color: var(--primary-bg, #000000);
+  color: var(--primary-text, #33ff33);
+  border: 1px solid var(--primary-accent, #ff00ff);
+  padding: 0.5rem 2rem;
+  font-family: var(--font-main, 'Courier New', monospace);
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+}
+
+.error-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 0, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.error-button:hover {
+  background-color: var(--primary-accent, #ff00ff);
+  color: var(--primary-bg, #000000);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+.error-button:hover::before {
+  left: 100%;
+}
+
+.error-button:active {
+  transform: scale(0.95);
+}

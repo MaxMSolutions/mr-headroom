@@ -1,0 +1,87 @@
+/* Commander Keen game icon styling - Cyberpunk style */
+.keen-icon {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #00cc33;
+  border-radius: 4px;
+  box-shadow: 
+    0 0 10px rgba(0, 204, 51, 0.6),
+    0 0 20px rgba(0, 204, 51, 0.3),
+    inset 0 0 8px rgba(0, 204, 51, 0.4);
+  background: transparent;
+}
+
+.keen-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px #00cc33) contrast(1.2) brightness(1.1);
+}
+
+.keen-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(
+      circle at center,
+      rgba(0, 204, 51, 0.4) 0%,
+      rgba(0, 204, 51, 0.1) 50%,
+      transparent 70%
+    ),
+    linear-gradient(135deg,
+      transparent 30%,
+      rgba(0, 204, 51, 0.1) 40%,
+      rgba(0, 255, 0, 0.1) 60%,
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      90deg, 
+      transparent, 
+      transparent 2px, 
+      rgba(0, 204, 51, 0.05) 2px, 
+      rgba(0, 204, 51, 0.05) 4px
+    );
+  background-size: 100% 100%, 100% 100%, 6px 6px;
+  animation: keenPulse 4s infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+@keyframes keenPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.3; }
+  75% { opacity: 0.5; }
+}
+
+/* Cyberpunk border glitch effect */
+@keyframes keenBorderGlitch {
+  0%, 100% { 
+    border-color: #00cc33; 
+    box-shadow: 0 0 10px rgba(0, 204, 51, 0.6), 0 0 20px rgba(0, 204, 51, 0.3);
+  }
+  25% { 
+    border-color: #33ff66; 
+    box-shadow: 0 0 10px rgba(51, 255, 102, 0.6), 0 0 20px rgba(51, 255, 102, 0.3);
+  }
+  50% { 
+    border-color: #00ffaa; 
+    box-shadow: 0 0 10px rgba(0, 255, 170, 0.6), 0 0 20px rgba(0, 255, 170, 0.3);
+  }
+  75% { 
+    border-color: #66ff00; 
+    box-shadow: 0 0 10px rgba(102, 255, 0, 0.6), 0 0 20px rgba(102, 255, 0, 0.3);
+  }
+}
+
+.desktop-icon:hover .keen-icon {
+  animation: keenBorderGlitch 2s infinite;
+}
+
+@keyframes keenIconGlow {
+  from { text-shadow: 0 0 5px rgba(0, 204, 51, 0.8), 0 0 10px rgba(0, 204, 51, 0.5); }
+  to { text-shadow: 0 0 10px rgba(0, 204, 51, 0.9), 0 0 20px rgba(0, 204, 51, 0.7); }
+}

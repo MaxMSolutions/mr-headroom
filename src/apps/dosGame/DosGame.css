@@ -1,0 +1,294 @@
+/* DosGame Window Styling */
+.dos-game-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #33ff33;
+  font-family: 'VT323', monospace;
+  background-color: #000;
+}
+
+.dos-game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #33ff33;
+  box-shadow: 0 0 10px rgba(51, 255, 51, 0.3);
+}
+
+.dos-game-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px #33ff33;
+}
+
+.dos-game-close-btn {
+  background: none;
+  border: none;
+  color: #33ff33;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  text-shadow: 0 0 5px #33ff33;
+  transition: all 0.2s ease;
+}
+
+.dos-game-close-btn:hover {
+  color: #ff3333;
+  text-shadow: 0 0 8px #ff3333;
+}
+
+.dos-game-content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Game container visibility states */
+.game-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Critical: Allow clicks to pass through */
+}
+
+.game-container.active {
+  z-index: 10;
+  opacity: 1;
+  pointer-events: none; /* Critical: Allow clicks to pass through to the iframe */
+}
+
+.game-container.hidden {
+  z-index: 1;
+  opacity: 0.8;
+  justify-content: center;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.dos-game-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  color: #33ff33;
+  font-family: 'VT323', monospace;
+}
+
+.dos-game-loading-text {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px #33ff33;
+  animation: glowPulse 2s infinite;
+}
+
+.dos-game-loading-progress {
+  width: 70%;
+  height: 20px;
+  background-color: #111;
+  border: 1px solid #33ff33;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(51, 255, 51, 0.3);
+}
+
+.dos-game-loading-bar {
+  height: 100%;
+  background-color: #33ff33;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(51, 255, 51, 0.8);
+}
+
+.dos-game-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: #0a0a0a;
+  border-top: 1px solid #33ff33;
+}
+
+.dos-game-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.dos-game-control-btn {
+  cursor: pointer;
+  padding: 4px 12px;
+  background-color: #111;
+  border: 1px solid #33ff33;
+  color: #33ff33;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.dos-game-fullscreen:hover {
+  background-color: #33ff33;
+  color: #000;
+  box-shadow: 0 0 10px rgba(51, 255, 51, 0.6);
+}
+
+.dos-game-reset {
+  border-color: #ff3333;
+  color: #ff3333;
+}
+
+.dos-game-reset:hover {
+  background-color: #ff3333;
+  color: #000;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+}
+
+.dos-game-error {
+  color: #ff3333;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px #ff3333;
+}
+
+.dos-game-info {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.dos-game-debug-info {
+  margin-top: 15px;
+  font-size: 0.7rem;
+  color: #666;
+  font-family: monospace;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.dos-game-retry-btn {
+  margin-top: 15px;
+  padding: 5px 15px;
+  background-color: #111;
+  border: 1px solid #ff3333;
+  color: #ff3333;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dos-game-retry-btn:hover {
+  background-color: #ff3333;
+  color: #000;
+}
+
+/* Ready to play screen */
+.dos-game-ready {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 5;
+}
+
+.dos-game-ready-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #33ff33;
+  animation: pulse 2s infinite;
+}
+
+.dos-game-ready-icon {
+  font-size: 4rem;
+  margin-bottom: 30px;
+  color: #33ff33;
+  text-shadow: 0 0 15px #33ff33;
+}
+
+.dos-game-play-btn {
+  padding: 10px 30px;
+  background-color: #111;
+  border: 2px solid #33ff33;
+  border-radius: 5px;
+  color: #33ff33;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px #33ff33;
+}
+
+.dos-game-play-btn:hover {
+  background-color: #33ff33;
+  color: #000;
+  box-shadow: 0 0 15px rgba(51, 255, 51, 0.8);
+}
+
+.dos-game-play-btn:active {
+  transform: scale(0.98);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Handle DOSBox container styling */
+.dosbox-container {
+  width: 100%;
+  height: 100%;
+}
+
+.dosbox-container canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* DOSBox overlay styling */
+.dosbox-overlay {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.dosbox-start {
+  color: #33ff33 !important;
+  font-family: 'VT323', monospace !important;
+  text-shadow: 0 0 5px #33ff33 !important;
+}
+
+.dosbox-start:hover {
+  background-color: #33ff33 !important;
+  color: #000 !important;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px #33ff33;
+  }
+  50% {
+    text-shadow: 0 0 15px #33ff33, 0 0 20px #33ff33;
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Log Viewer</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 20px;
+            background-color: #1e1e1e;
+            color: #ddd;
+        }
+        #log-container {
+            white-space: pre-wrap;
+            padding: 10px;
+            border: 1px solid #555;
+            background-color: #2d2d2d;
+            margin-top: 10px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #444;
+        }
+        .file-read {
+            color: #7cfc00;
+        }
+        .clue-discovered {
+            color: #ff8c00;
+        }
+        .timestamp {
+            color: #888;
+        }
+        .filter-controls {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #005a9e;
+        }
+        select {
+            padding: 6px;
+            background-color: #333;
+            color: #ddd;
+            border: 1px solid #555;
+        }
+        h2 {
+            color: #0078d4;
+        }
+    </style>
+</head>
+<body>
+    <h1>MRHEADROOM_DESCENT Mystery Log Viewer</h1>
+    
+    <div class="filter-controls">
+        <select id="log-filter">
+            <option value="all">All Events</option>
+            <option value="file_read">File Reads Only</option>
+            <option value="clue_discovered">Clue Discoveries Only</option>
+        </select>
+        <button id="clear-logs">Clear Logs</button>
+        <button id="export-logs">Export Logs</button>
+    </div>
+    
+    <h2>Event Logs:</h2>
+    <div id="log-container"></div>
+
+    <script>
+        // Mock SaveManager for testing
+        class SaveManager {
+            constructor() {
+                this.gameLogs = JSON.parse(localStorage.getItem('gameLogs') || '{"mystery":[]}');
+            }
+            
+            getGameLogs(category) {
+                return this.gameLogs[category] || [];
+            }
+            
+            addGameLog(category, event) {
+                if (!this.gameLogs[category]) {
+                    this.gameLogs[category] = [];
+                }
+                
+                this.gameLogs[category].push(event);
+                localStorage.setItem('gameLogs', JSON.stringify(this.gameLogs));
+            }
+            
+            clearGameLogs(category) {
+                if (category) {
+                    this.gameLogs[category] = [];
+                } else {
+                    this.gameLogs = {};
+                }
+                
+                localStorage.setItem('gameLogs', JSON.stringify(this.gameLogs));
+            }
+        }
+        
+        const saveManager = new SaveManager();
+        
+        function formatTimestamp(timestamp) {
+            if (typeof timestamp === 'number') {
+                return new Date(timestamp).toLocaleString();
+            }
+            return timestamp;
+        }
+        
+        function displayLogs(filter = 'all') {
+            const logs = saveManager.getGameLogs('mystery');
+            const logContainer = document.getElementById('log-container');
+            logContainer.innerHTML = '';
+            
+            if (logs.length === 0) {
+                logContainer.textContent = 'No logs found';
+                return;
+            }
+            
+            logs.forEach(log => {
+                if (filter !== 'all' && log.type !== filter) {
+                    return;
+                }
+                
+                const logEntry = document.createElement('div');
+                logEntry.classList.add('log-entry');
+                
+                if (log.type === 'file_read_event') {
+                    logEntry.classList.add('file-read');
+                    const fileEvent = log.data;
+                    logEntry.innerHTML = `<span class="timestamp">[${formatTimestamp(log.timestamp)}]</span> FILE READ: ${fileEvent.path} (${fileEvent.filename})`;
+                    
+                    if (fileEvent.metadata) {
+                        const metadataDiv = document.createElement('div');
+                        metadataDiv.style.marginLeft = '20px';
+                        metadataDiv.style.fontSize = '0.9em';
+                        metadataDiv.textContent = 'Metadata: ' + JSON.stringify(fileEvent.metadata, null, 2);
+                        logEntry.appendChild(metadataDiv);
+                    }
+                } else if (log.type === 'clue_discovered') {
+                    logEntry.classList.add('clue-discovered');
+                    logEntry.innerHTML = `<span class="timestamp">[${formatTimestamp(log.timestamp)}]</span> CLUE DISCOVERED: ${log.data.clueId} from ${log.data.source}`;
+                } else {
+                    logEntry.innerHTML = `<span class="timestamp">[${formatTimestamp(log.timestamp)}]</span> ${log.type}: ${JSON.stringify(log.data)}`;
+                }
+                
+                logContainer.appendChild(logEntry);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            displayLogs();
+            
+            document.getElementById('log-filter').addEventListener('change', (e) => {
+                displayLogs(e.target.value);
+            });
+            
+            document.getElementById('clear-logs').addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear all logs?')) {
+                    saveManager.clearGameLogs('mystery');
+                    displayLogs();
+                }
+            });
+            
+            document.getElementById('export-logs').addEventListener('click', () => {
+                const logs = saveManager.getGameLogs('mystery');
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(logs, null, 2));
+                const downloadAnchorNode = document.createElement('a');
+                downloadAnchorNode.setAttribute("href", dataStr);
+                downloadAnchorNode.setAttribute("download", "mystery_logs.json");
+                document.body.appendChild(downloadAnchorNode);
+                downloadAnchorNode.click();
+                downloadAnchorNode.remove();
+            });
+        });
+    </script>
+</body>
+</html>

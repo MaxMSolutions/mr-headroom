@@ -1,0 +1,570 @@
+.taskbar {
+  position: fixed !important; /* Force fixed positioning */
+  bottom: 0 !important; /* Force bottom positioning */
+  left: 0;
+  right: 0;
+  width: 100vw; /* Force full viewport width */
+  height: var(--taskbar-height); /* Use global variable */
+  /* 80s sci-fi themed background with neon glow */
+  background: linear-gradient(180deg, rgba(10, 5, 20, 0.85), rgba(30, 10, 50, 0.95));
+  /* Futuristic border with animated neon glow */
+  border-top: 1px solid rgba(255, 107, 53, 0);
+  display: flex;
+  align-items: center;
+  padding: 0 8px; /* Slightly increased padding */
+  z-index: 9999; /* Higher z-index to ensure it's above everything */
+  box-shadow: 
+    0 -4px 12px rgba(255, 107, 53, 0.5),
+    0 -2px 6px rgba(216, 55, 144, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin: 0; /* Remove all margins */
+  min-height: 38px; /* Ensure consistent height */
+  max-height: 38px; /* Enforce maximum height */
+  /* Cyberpunk grid pattern overlay */
+  background-image: 
+    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(106, 13, 173, 0.1) 20px, rgba(106, 13, 173, 0.1) 21px),
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255, 107, 53, 0.1) 20px, rgba(255, 107, 53, 0.1) 21px),
+    linear-gradient(180deg, rgba(20, 8, 30, 0.9), rgba(40, 15, 60, 0.95));
+  animation: taskbarAmbient 15s infinite ease-in-out, neonPulse 4s infinite alternate;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dynamic 80s sci-fi animation for the taskbar */
+@keyframes taskbarAmbient {
+  0%, 100% {
+    background-image: 
+      repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(106, 13, 173, 0.1) 20px, rgba(106, 13, 173, 0.1) 21px),
+      repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255, 107, 53, 0.1) 20px, rgba(255, 107, 53, 0.1) 21px),
+      linear-gradient(180deg, rgba(20, 8, 30, 0.9), rgba(40, 15, 60, 0.95));
+    box-shadow: 
+      0 -4px 12px rgba(255, 107, 53, 0.5),
+      0 -2px 6px rgba(216, 55, 144, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  33% {
+    background-image: 
+      repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(216, 55, 144, 0.1) 20px, rgba(216, 55, 144, 0.1) 21px),
+      repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(106, 13, 173, 0.1) 20px, rgba(106, 13, 173, 0.1) 21px),
+      linear-gradient(180deg, rgba(25, 10, 35, 0.9), rgba(45, 18, 65, 0.95));
+    box-shadow: 
+      0 -4px 12px rgba(216, 55, 144, 0.5),
+      0 -2px 6px rgba(106, 13, 173, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  66% {
+    background-image: 
+      repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255, 107, 53, 0.1) 20px, rgba(255, 107, 53, 0.1) 21px),
+      repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(216, 55, 144, 0.1) 20px, rgba(216, 55, 144, 0.1) 21px),
+      linear-gradient(180deg, rgba(18, 7, 28, 0.9), rgba(38, 12, 58, 0.95));
+    box-shadow: 
+      0 -4px 12px rgba(106, 13, 173, 0.5),
+      0 -2px 6px rgba(255, 107, 53, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Neon pulse animation for the sci-fi glow effect */
+@keyframes neonPulse {
+  0% {
+    border-top: 1px solid rgba(255, 107, 53, 0.4);
+  }
+  25% {
+    border-top: 1px solid rgba(216, 55, 144, 0.6);
+  }
+  50% {
+    border-top: 1px solid rgba(106, 13, 173, 0.8);
+  }
+  75% {
+    border-top: 1px solid rgba(216, 55, 144, 0.6);
+  }
+  100% {
+    border-top: 1px solid rgba(255, 107, 53, 0.4);
+  }
+}
+
+/* Taskbar neon line effect */
+.taskbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    rgba(255, 107, 53, 0),
+    rgba(255, 107, 53, 0.8),
+    rgba(216, 55, 144, 0.8),
+    rgba(106, 13, 173, 0.8),
+    rgba(216, 55, 144, 0.8),
+    rgba(255, 107, 53, 0.8),
+    rgba(255, 107, 53, 0)
+  );
+  z-index: 2;
+  animation: neonSweep 8s infinite linear;
+  box-shadow: 
+    0 0 5px rgba(255, 107, 53, 0.8),
+    0 0 10px rgba(216, 55, 144, 0.5),
+    0 0 15px rgba(106, 13, 173, 0.3);
+}
+
+@keyframes neonSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+
+/* CRT effect specific styling for 80s sci-fi aesthetic */
+.crt-effect .taskbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(120, 220, 255, 0.03),
+    rgba(120, 220, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100px;
+  }
+}
+
+/* Accessibility mode */
+.accessibility-mode .taskbar {
+  background: #222;
+  border-top-color: #fff;
+  box-shadow: 0 -1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Glitch effect for the taskbar when something goes wrong */
+@keyframes taskbarGlitch {
+  0% { transform: translateX(0); border-top-color: #ff6b35; }
+  10% { transform: translateX(-2px); border-top-color: #d83790; }
+  20% { transform: translateX(2px); border-top-color: #6a0dad; }
+  30% { transform: translateX(-1px); border-top-color: #d83790; }
+  40% { transform: translateX(1px); border-top-color: #ff6b35; filter: brightness(1.2); }
+  50% { transform: translateX(0); border-top-color: #6a0dad; }
+  100% { transform: translateX(0); border-top-color: #ff6b35; }
+}
+
+.taskbar.glitching {
+  animation: taskbarGlitch 0.3s ease-in-out;
+  box-shadow: 
+    0 -2px 10px rgba(216, 55, 144, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.taskbar-items {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Slightly increased gap */
+  height: calc(100% - 8px);
+  margin: 4px 0;
+  padding: 0 10px;
+  /* Futuristic tech panel look */
+  border-left: 1px solid rgba(106, 13, 173, 0.2);
+  border-right: 1px solid rgba(216, 55, 144, 0.2);
+  /* Sci-fi glow effect */
+  box-shadow: 
+    inset 0 0 15px rgba(0, 0, 0, 0.5),
+    inset 0 0 4px rgba(106, 13, 173, 0.3),
+    0 0 2px rgba(216, 55, 144, 0.3);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    rgba(30, 10, 50, 0.4),
+    rgba(20, 5, 30, 0.4)
+  );
+  border-radius: 2px;
+}
+
+/* Add futuristic data flow effect */
+.taskbar-items::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, 
+      transparent 50%, 
+      rgba(106, 13, 173, 0.03) 50%
+    );
+  background-size: 4px 100%;
+  pointer-events: none;
+  opacity: 0.3;
+  animation: dataflow 30s linear infinite;
+}
+
+@keyframes dataflow {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 0; }
+}
+
+/* Style for taskbar application buttons */
+.taskbar-app-button {
+  height: 28px; /* Increased height */
+  min-width: 130px; /* Slightly wider */
+  max-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  /* Futuristic button style with sci-fi colors */
+  border: 1px solid;
+  border-color: rgba(106, 13, 173, 0.4) rgba(216, 55, 144, 0.4) rgba(216, 55, 144, 0.4) rgba(106, 13, 173, 0.4);
+  background: linear-gradient(180deg, rgba(30, 15, 50, 0.8), rgba(20, 8, 35, 0.8));
+  color: #b4f0fd;
+  text-shadow: 0 0 4px rgba(120, 220, 255, 0.8);
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+  box-shadow: 
+    inset 0 0 1px rgba(180, 240, 253, 0.4),
+    0 0 3px rgba(106, 13, 173, 0.5);
+}
+
+/* Futuristic button corner highlights */
+.taskbar-app-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid rgba(180, 240, 253, 0.8);
+  border-left: 1px solid rgba(180, 240, 253, 0.8);
+  opacity: 0.6;
+}
+
+.taskbar-app-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  border-bottom: 1px solid rgba(180, 240, 253, 0.8);
+  border-right: 1px solid rgba(180, 240, 253, 0.8);
+  opacity: 0.6;
+}
+
+.taskbar-app-button:hover {
+  background: linear-gradient(180deg, rgba(40, 20, 65, 0.9), rgba(30, 12, 45, 0.9));
+  color: #d4f5ff;
+  text-shadow: 0 0 6px rgba(120, 220, 255, 1);
+  box-shadow: 
+    inset 0 0 2px rgba(180, 240, 253, 0.6),
+    0 0 5px rgba(106, 13, 173, 0.7);
+}
+
+.taskbar-app-button.active {
+  border-color: rgba(0, 195, 255, 0.5) rgba(216, 55, 144, 0.5) rgba(216, 55, 144, 0.5) rgba(0, 195, 255, 0.5);
+  background: linear-gradient(180deg, rgba(106, 13, 173, 0.8), rgba(75, 8, 120, 0.8));
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(120, 220, 255, 1);
+  box-shadow: 
+    inset 0 0 5px rgba(0, 195, 255, 0.5),
+    0 0 8px rgba(106, 13, 173, 0.8);
+  animation: activeButtonPulse 2s infinite alternate;
+}
+
+@keyframes activeButtonPulse {
+  0% {
+    box-shadow: 
+      inset 0 0 5px rgba(0, 195, 255, 0.5),
+      0 0 8px rgba(106, 13, 173, 0.8);
+  }
+  100% {
+    box-shadow: 
+      inset 0 0 8px rgba(0, 195, 255, 0.7),
+      0 0 12px rgba(216, 55, 144, 0.9);
+  }
+}
+
+.taskbar-app-button .app-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  position: relative;
+  filter: drop-shadow(0 0 2px rgba(0, 195, 255, 0.4));
+  transition: transform 0.2s ease, filter 0.2s ease;
+  opacity: 0.8;
+  /* Add a subtle holographic effect */
+  border-radius: 2px;
+  background-color: rgba(10, 5, 20, 0.2);
+  padding: 1px;
+}
+
+/* Enhance icon appearance on hover/active states */
+.taskbar-app-button:hover .app-icon {
+  filter: drop-shadow(0 0 3px rgba(120, 220, 255, 0.7));
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.taskbar-app-button.active .app-icon {
+  filter: drop-shadow(0 0 5px rgba(0, 195, 255, 0.9));
+  transform: scale(1.1);
+  opacity: 1;
+  animation: iconGlow 2s infinite alternate;
+}
+
+@keyframes iconGlow {
+  0% { filter: drop-shadow(0 0 3px rgba(0, 195, 255, 0.8)); }
+  100% { filter: drop-shadow(0 0 6px rgba(120, 220, 255, 1)); }
+}
+
+/* Add a sci-fi glow effect to active buttons */
+.taskbar-app-button.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 195, 255, 0.3),
+    rgba(106, 13, 173, 0.2) 40%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.6;
+    background: radial-gradient(
+      circle at center,
+      rgba(0, 195, 255, 0.3),
+      rgba(106, 13, 173, 0.2) 40%,
+      transparent 80%
+    );
+  }
+  100% {
+    opacity: 0.8;
+    background: radial-gradient(
+      circle at center,
+      rgba(120, 220, 255, 0.4),
+      rgba(216, 55, 144, 0.3) 40%,
+      transparent 80%
+    );
+  }
+}
+
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  padding: 0 2px;
+  /* Add a futuristic separation from the taskbar items */
+  margin-left: 6px;
+  position: relative;
+  background: linear-gradient(90deg, 
+    rgba(10, 5, 20, 0.3),
+    rgba(106, 13, 173, 0.1)
+  );
+  border-radius: 2px;
+  box-shadow: inset 0 0 8px rgba(106, 13, 173, 0.2);
+}
+
+/* Add sci-fi style separator */
+.taskbar-right::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(0deg, 
+    rgba(106, 13, 173, 0),
+    rgba(106, 13, 173, 0.8),
+    rgba(216, 55, 144, 0.8),
+    rgba(106, 13, 173, 0.8),
+    rgba(106, 13, 173, 0)
+  );
+  box-shadow: 
+    0 0 4px rgba(216, 55, 144, 0.6),
+    0 0 8px rgba(106, 13, 173, 0.4);
+}
+
+/* System tray styling */
+.system-tray {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 4px;
+  gap: 8px;
+}
+
+.system-tray-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.system-tray-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 2px rgba(216, 55, 144, 0.5));
+}
+
+/* Specific styling for tray icons with notification */
+.system-tray-icon.has-notification::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 6px;
+  height: 6px;
+  background: #ff6b35;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 4px rgba(255, 107, 53, 0.8);
+}
+
+/* Taskbar neon pulse effect */
+.taskbar-neon-pulse {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(0, 195, 255, 0),
+    rgba(0, 195, 255, 0.8),
+    rgba(255, 0, 255, 0.8),
+    rgba(0, 195, 255, 0.8),
+    rgba(0, 195, 255, 0)
+  );
+  animation: neonPulseMove 8s infinite linear;
+  box-shadow: 
+    0 0 10px rgba(0, 195, 255, 0.8),
+    0 0 20px rgba(0, 195, 255, 0.4);
+  z-index: 2;
+}
+
+@keyframes neonPulseMove {
+  0% { background-position: -200% 0; opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { background-position: 300% 0; opacity: 0.7; }
+}
+
+/* Cyberpunk data monitor */
+.cyberpunk-data-monitor {
+  display: flex;
+  align-items: center;
+  height: 28px; /* Increased height */
+  padding: 0 10px;
+  margin-left: 10px;
+  background: rgba(10, 5, 20, 0.7);
+  border: 1px solid rgba(0, 195, 255, 0.4);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 4px rgba(0, 195, 255, 0.3);
+}
+
+.cyberpunk-data-monitor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, 
+      transparent 50%, 
+      rgba(0, 195, 255, 0.05) 50%
+    );
+  background-size: 4px 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.data-monitor-text {
+  font-family: 'VT323', 'Courier New', monospace;
+  color: #00f0ff;
+  font-size: 0.95rem; /* Larger font size */
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  margin-right: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.data-monitor-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #00f0ff;
+  border-radius: 50%;
+  animation: indicatorBlink 2s infinite alternate;
+  box-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+/* Small variant for the taskbar right section */
+.cyberpunk-data-monitor.small {
+  height: 22px;
+  padding: 0 6px;
+  margin-left: 5px;
+  margin-right: 8px;
+  opacity: 0.7;
+  border-color: rgba(0, 195, 255, 0.2);
+}
+
+.cyberpunk-data-monitor.small .data-monitor-text {
+  font-size: 0.75rem;
+  color: rgba(0, 240, 255, 0.8);
+  text-shadow: 0 0 3px rgba(0, 195, 255, 0.5);
+}
+
+.cyberpunk-data-monitor.small .data-monitor-indicator {
+  width: 6px;
+  height: 6px;
+  box-shadow: 0 0 3px rgba(0, 195, 255, 0.5);
+}
+
+@keyframes indicatorBlink {
+  0% { opacity: 1; background-color: #00f0ff; }
+  40% { opacity: 0.7; background-color: #00f0ff; }
+  60% { opacity: 0.9; background-color: #00a8ff; }
+  100% { opacity: 1; background-color: #00f0ff; }
+}

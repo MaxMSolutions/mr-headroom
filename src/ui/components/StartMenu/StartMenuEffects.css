@@ -1,0 +1,134 @@
+/* CRT Effect for theme compatibility */
+.crt-effect .start-menu {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add scanlines when CRT effect is enabled */
+.crt-effect .start-menu::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 0, 0, 0.05) 1px, rgba(0, 0, 0, 0.05) 2px);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.7;
+}
+
+/* Dimensional reality fracture effect */
+.start-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at center, transparent, rgba(0, 195, 255, 0.1) 70%, transparent 90%),
+    linear-gradient(135deg, transparent 0%, rgba(255, 0, 255, 0.05) 25%, transparent 50%,
+                           rgba(0, 195, 255, 0.05) 75%, transparent 100%);
+  background-size: 100% 100%, 8px 8px;
+  box-shadow: 
+    inset 0 0 20px rgba(0, 195, 255, 0.2),
+    inset 0 0 10px rgba(255, 0, 255, 0.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Additional icon styles */
+.settings-icon, .files-icon, .notes-icon, .media-icon, .game-icon, .boot-icon, .terminal-icon, .warning-icon {
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover .settings-icon,
+.menu-item:hover .files-icon,
+.menu-item:hover .notes-icon,
+.menu-item:hover .media-icon,
+.menu-item:hover .game-icon,
+.menu-item:hover .boot-icon,
+.menu-item:hover .terminal-icon,
+.menu-item:hover .warning-icon,
+.menu-item:hover .system-icon,
+.menu-item:hover .simulation-icon,
+.menu-item:hover .glitch-icon,
+.menu-item:hover .nexus-icon {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.7);
+  border-color: rgba(0, 195, 255, 0.8);
+}
+
+/* Reality cube interactive effects */
+.system-cube, .logo-cube {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.system-cube:hover, .logo-cube:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.8);
+  transform: rotateY(180deg) scale(1.2);
+}
+
+/* Accessibility mode styles */
+.accessibility-mode .start-menu {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.accessibility-mode .glitched-text {
+  animation: none;
+  text-shadow: none;
+}
+
+.accessibility-mode .menu-item:hover,
+.accessibility-mode .menu-item-large:hover {
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 5px #ffffff;
+  text-shadow: none;
+}
+
+/* Add high contrast mode for accessibility */
+.accessibility-mode .menu-item-large,
+.accessibility-mode .menu-item {
+  transition: all 0.3s ease;
+}
+
+/* Better focus styles for keyboard navigation */
+.menu-item:focus-visible,
+.menu-item-large:focus-visible {
+  outline: 2px solid #ffffff;
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.9);
+}
+
+/* Authentic win98 scrollbar */
+.start-menu::-webkit-scrollbar {
+  width: 16px;
+  background: #c0c0c0;
+}
+
+.start-menu::-webkit-scrollbar-thumb {
+  background: #808080;
+  border: 1px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+}
+
+.start-menu::-webkit-scrollbar-button {
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  height: 16px;
+}
+
+/* Startup sound animation */
+@keyframes startupSound {
+  0% { box-shadow: 0 0 0 rgba(255, 107, 53, 0); }
+  10% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
+  100% { box-shadow: 0 0 0 rgba(255, 107, 53, 0); }
+}
+
+.start-menu.opening {
+  animation: startupSound 1s ease-out;
+}

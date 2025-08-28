@@ -1,0 +1,17 @@
+{
+  "name": "labyrinth.exe",
+  "type": "executable",
+  "icon": "🧩",
+  "appId": "labyrinth",
+  "createdDate": "1998-05-13T14:22:01",
+  "modifiedDate": "1998-05-14T09:30:45",
+  "size": 128452,
+  "metadata": {
+    "version": "1.0",
+    "author": "SysOps Team",
+    "description": "Text-based maze navigation game",
+    "hidden": false,
+    "tags": ["game", "puzzle", "exploration"]
+  },
+  "content": null
+}

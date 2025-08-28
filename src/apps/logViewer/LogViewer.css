@@ -1,0 +1,245 @@
+.log-viewer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+}
+
+.log-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.log-viewer-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.log-viewer-toolbar {
+  padding: 10px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.toolbar-row:last-child {
+  margin-bottom: 0;
+}
+
+.toolbar-row label {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.log-viewer-toolbar select,
+.log-viewer-toolbar input {
+  margin-left: 8px;
+  padding: 5px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  min-width: 120px;
+}
+
+.log-viewer-toolbar input[type="date"] {
+  font-family: var(--font-main);
+}
+
+.log-viewer-toolbar input[type="text"] {
+  min-width: 200px;
+}
+
+.view-mode-buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+.view-mode-buttons button {
+  padding: 5px 10px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.view-mode-buttons button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+
+.view-mode-buttons button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.view-mode-buttons button.active {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+}
+
+.export-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: var(--accent-secondary);
+  border: none;
+  color: var(--bg-primary);
+  cursor: pointer;
+}
+
+.log-viewer-results {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.log-viewer-logs {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-family: monospace;
+}
+
+.log-entry {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid var(--border-primary);
+  border-left: 4px solid var(--accent-primary);
+  background-color: var(--bg-secondary);
+  transition: background-color 0.2s;
+}
+
+.log-entry:hover {
+  background-color: rgba(51, 255, 51, 0.05);
+}
+
+.log-entry.error-log {
+  border-left-color: #ff3333;
+}
+
+.log-timestamp {
+  color: var(--accent-secondary);
+  margin-bottom: 5px;
+}
+
+.log-source {
+  font-weight: bold;
+  color: var(--accent-primary);
+  margin-bottom: 5px;
+}
+
+.log-type {
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.log-data pre {
+  margin: 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow-x: auto;
+  border-radius: 2px;
+}
+
+.no-logs {
+  text-align: center;
+  margin-top: 50px;
+  color: var(--text-secondary);
+}
+
+.log-stats {
+  display: flex;
+  padding: 10px;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
+}
+
+.stat-item {
+  margin-right: 20px;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  margin-right: 5px;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: var(--accent-primary);
+}
+
+/* Pattern Analysis View */
+.log-viewer-patterns {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.log-analysis h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--accent-secondary);
+  border-bottom: 1px solid var(--border-primary);
+  padding-bottom: 5px;
+}
+
+.event-counts {
+  margin-bottom: 20px;
+}
+
+.event-count-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.event-type {
+  min-width: 150px;
+}
+
+.event-count {
+  min-width: 50px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.event-bar {
+  height: 12px;
+  background-color: var(--accent-primary);
+  transition: width 0.5s ease-out;
+}
+
+.time-analysis {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.time-analysis th,
+.time-analysis td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.time-analysis th {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--accent-secondary);
+}

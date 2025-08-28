@@ -1,0 +1,185 @@
+.desktop-menu {
+  position: absolute;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  min-width: 200px;
+  max-height: calc(100vh - 50px); /* Prevent going off vertically */
+  overflow-y: auto; /* Add scrolling if needed */
+  z-index: 2000;
+  animation: menuFadeIn 0.15s ease-in-out;
+  backdrop-filter: blur(5px);
+  padding: 4px;
+}
+
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.menu-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Increased gap for better spacing */
+  border-radius: 4px; /* Slightly larger radius */
+  position: relative;
+  margin-bottom: 2px; /* Add spacing between menu items */
+  transition: all 0.15s ease; /* Smooth hover effect */
+  flex-wrap: nowrap; /* Prevent wrapping of content */
+  justify-content: flex-start; /* Align content to start */
+  min-height: 24px; /* Ensure minimum height for the menu item */
+}
+
+.menu-item:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 5px var(--accent-primary);
+  transform: translateX(2px); /* Slight movement on hover */
+}
+
+.menu-item-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-color: var(--accent-secondary);
+  opacity: 0.9;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.menu-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  font-size: 0.95rem; /* Slightly smaller font for better fit */
+  padding-right: 4px; /* Add a bit of padding on the right */
+}
+
+.menu-divider {
+  height: 1px;
+  margin: 8px 0; /* Increased margin */
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-secondary),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* Toggle switch styling */
+.toggle-switch {
+  min-width: 40px; /* Wider for better visibility */
+  height: 18px; /* Taller for better visibility */
+  border: 1px solid var(--accent-secondary);
+  border-radius: 10px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  margin-right: 12px; /* Increased margin for better spacing with text */
+  flex-shrink: 0; /* Prevent toggle from shrinking */
+  display: inline-block; /* Ensure proper display */
+}
+
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.toggle-switch.active {
+  background: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: var(--accent-primary); /* Make border more visible when active */
+}
+
+.toggle-switch.active::before {
+  left: 24px; /* Adjusted for the new width */
+  background: var(--accent-primary);
+  box-shadow: 0 0 5px var(--accent-primary);
+}
+
+/* Color swatches */
+.color-swatch {
+  width: 20px; /* Larger for better visibility */
+  height: 20px;
+  border-radius: 4px; /* More rounded */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-right: 5px; /* Consistent spacing with toggle switches */
+  transition: all 0.15s ease; /* Add transition effect */
+}
+
+.menu-item:hover .color-swatch {
+  transform: scale(1.1); /* Grow slightly on hover */
+}
+
+.color-swatch.neon {
+  background-color: #33ff33;
+  box-shadow: 0 0 5px #33ff33;
+}
+
+.color-swatch.neon:after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+}
+
+.color-swatch.amber {
+  background-color: #ffb000;
+  box-shadow: 0 0 5px #ffb000;
+}
+
+.color-swatch.matrix {
+  background-color: #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+.color-swatch.sunset {
+  background: linear-gradient(135deg, #ff6b35 0%, #d83790 100%);
+  box-shadow: 0 0 5px rgba(216, 55, 144, 0.8);
+}
+
+/* Specific icons */
+.new-icon, .terminal-icon, .settings-icon, .boot-icon {
+  /* Common icon styles */
+  width: 16px;
+  height: 16px;
+}
+
+.new-icon:after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: var(--accent-primary);
+}
+
+.boot-icon {
+  background-color: var(--accent-secondary);
+  position: relative;
+}
+
+.boot-icon:after {
+  content: '↻';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: var(--bg-primary);
+}

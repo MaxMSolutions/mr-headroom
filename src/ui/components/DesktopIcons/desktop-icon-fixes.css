@@ -1,0 +1,46 @@
+/* Add a data attribute for better selection from script */
+.desktop-icon {
+  position: relative;
+}
+.desktop-icon:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+}
+
+/* Style for the icon when being dragged */
+.desktop-icon.dragging {
+  opacity: 0.4; /* Make the source icon semi-transparent during drag */
+  z-index: 1000;
+  box-shadow: 0 0 15px rgba(0, 195, 255, 0.8);
+}
+
+/* Style for the drag ghost image */
+.drag-image {
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(0, 195, 255, 0.7));
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+/* Style for potential drop targets */
+.desktop-icons.drag-over {
+  background-color: rgba(0, 195, 255, 0.05);
+}
+
+/* Improve performance by using GPU acceleration */
+.desktop-icon {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Global style for when dragging is in progress */
+body.dragging-in-progress {
+  cursor: grabbing !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+body.dragging-in-progress * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}

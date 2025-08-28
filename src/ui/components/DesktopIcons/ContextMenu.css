@@ -1,0 +1,174 @@
+.context-menu {
+  position: fixed;
+  background: rgba(5, 20, 30, 0.95);
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 195, 255, 0.4), inset 0 0 5px rgba(0, 195, 255, 0.2);
+  padding: 5px;
+  min-width: 180px;
+  z-index: 9999;
+  font-family: var(--font-alt);
+  animation: menu-appear 0.15s ease-out forwards;
+}
+
+@keyframes menu-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.context-menu-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  color: #00f0ff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-alt);
+  margin: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  /* Fix for mobile */
+  touch-action: manipulation;
+}
+
+.context-menu-item:hover {
+  background: rgba(0, 195, 255, 0.2);
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.3) inset;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.7);
+}
+
+.context-menu-item:active {
+  background: rgba(0, 195, 255, 0.4);
+  box-shadow: 0 0 12px rgba(0, 195, 255, 0.5) inset;
+}
+
+.context-menu-item:focus {
+  box-shadow: 0 0 0 2px rgba(0, 195, 255, 0.6);
+  outline: none;
+}
+
+.context-menu-item.disabled {
+  color: #235e5e;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.context-menu-item.disabled:hover {
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.context-menu-separator {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 195, 255, 0.5), transparent);
+  margin: 5px 0;
+}
+
+.context-menu-icon {
+  margin-right: 8px;
+  width: 16px;
+  text-align: center;
+}
+
+/* Properties dialog styling */
+.properties-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(5, 15, 25, 0.95);
+  border: 2px solid rgba(0, 195, 255, 0.6);
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 195, 255, 0.3);
+  padding: 15px;
+  width: 350px;
+  z-index: 10000;
+  animation: dialog-appear 0.3s ease-out forwards;
+  color: #00f0ff;
+}
+
+@keyframes dialog-appear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.properties-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.properties-title {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.properties-close {
+  background: none;
+  border: none;
+  color: #00f0ff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.properties-row {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.properties-label {
+  width: 120px;
+  color: #00cccc;
+}
+
+.properties-value {
+  flex: 1;
+}
+
+.properties-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 195, 255, 0.4);
+}
+
+.properties-button {
+  background: rgba(0, 80, 120, 0.4);
+  border: 1px solid rgba(0, 195, 255, 0.6);
+  color: #00f0ff;
+  padding: 6px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-family: var(--font-alt);
+  transition: all 0.2s;
+}
+
+.properties-button:hover {
+  background: rgba(0, 120, 160, 0.6);
+  box-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
+}

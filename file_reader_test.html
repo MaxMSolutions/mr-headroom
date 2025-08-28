@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Reader Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 20px;
+            background-color: #1e1e1e;
+            color: #ddd;
+        }
+        #file-content {
+            white-space: pre-wrap;
+            padding: 10px;
+            border: 1px solid #555;
+            background-color: #2d2d2d;
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+        button:hover {
+            background-color: #005a9e;
+        }
+        #file-path {
+            padding: 6px;
+            width: 300px;
+            margin-right: 10px;
+            background-color: #333;
+            color: #ddd;
+            border: 1px solid #555;
+        }
+        #logs {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #555;
+            background-color: #2d2d2d;
+            max-height: 200px;
+            overflow-y: auto;
+            color: #7cfc00;
+        }
+        h2 {
+            color: #0078d4;
+        }
+    </style>
+</head>
+<body>
+    <h1>MRHEADROOM_DESCENT File Reader Test</h1>
+    <div>
+        <input type="text" id="file-path" placeholder="/home/hedrum/documents/journal_march3.txt" value="/home/hedrum/documents/journal_march3.txt">
+        <button id="read-file">Read File</button>
+    </div>
+    
+    <h2>File Content:</h2>
+    <div id="file-content">No file loaded yet</div>
+    
+    <h2>File Access Logs:</h2>
+    <div id="logs"></div>
+
+    <script>
+        // Mock FileSystem and MysteryEngine for testing
+        class FileSystem {
+            constructor() {
+                this.fileData = {};
+                this.logs = [];
+            }
+
+            async init() {
+                try {
+                    const response = await fetch('/src/data/filesystem/fileSystem.json');
+                    const data = await response.json();
+                    this.data = data;
+                    console.log('FileSystem initialized with data:', data);
+                    return true;
+                } catch (error) {
+                    console.error('Error loading file system:', error);
+                    return false;
+                }
+            }
+
+            readFile(path) {
+                // Find the file in the filesystem
+                const file = this.getItemByPath(path);
+                if (!file || file.type !== 'file') {
+                    return null;
+                }
+
+                // Log file access
+                this.logFileAccess(path, file);
+                
+                return file.content || '';
+            }
+
+            getItemByPath(path) {
+                const parts = path.split('/').filter(p => p);
+                let current = this.data.fileSystem;
+
+                for (let i = 0; i < parts.length; i++) {
+                    if (!current.children) {
+                        return null;
+                    }
+
+                    const found = current.children.find(item => item.name === parts[i]);
+                    if (!found) {
+                        return null;
+                    }
+
+                    current = found;
+                }
+
+                return current;
+            }
+
+            logFileAccess(path, file) {
+                const log = {
+                    type: 'file_read',
+                    path,
+                    filename: file.name,
+                    timestamp: new Date().toISOString(),
+                    metadata: {
+                        ...file.attributes,
+                        created: file.created,
+                        modified: file.modified,
+                        size: file.size
+                    }
+                };
+
+                this.logs.push(log);
+                console.log('File access logged:', log);
+                
+                // Update the logs display
+                const logsEl = document.getElementById('logs');
+                const logEntry = document.createElement('div');
+                logEntry.textContent = `[${new Date().toLocaleTimeString()}] Read file: ${path}`;
+                logsEl.appendChild(logEntry);
+                logsEl.scrollTop = logsEl.scrollHeight;
+            }
+        }
+
+        // Initialize our test
+        const fileSystem = new FileSystem();
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            const readFileBtn = document.getElementById('read-file');
+            const filePathInput = document.getElementById('file-path');
+            const fileContentEl = document.getElementById('file-content');
+
+            const initialized = await fileSystem.init();
+            if (!initialized) {
+                fileContentEl.textContent = 'Failed to initialize file system';
+                return;
+            }
+
+            readFileBtn.addEventListener('click', () => {
+                const filePath = filePathInput.value;
+                const content = fileSystem.readFile(filePath);
+                
+                if (content) {
+                    fileContentEl.textContent = content;
+                } else {
+                    fileContentEl.textContent = `File not found: ${filePath}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

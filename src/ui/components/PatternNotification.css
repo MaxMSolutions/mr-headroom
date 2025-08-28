@@ -1,0 +1,133 @@
+/**
+ * PatternNotification.css
+ * Styling for pattern activation notifications
+ */
+
+.pattern-notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.pattern-notification {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-left: 4px solid var(--accent-primary);
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: pattern-notification-slide-in 0.3s ease-out;
+  max-width: 350px;
+  pointer-events: all;
+}
+
+.pattern-notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  color: var(--accent-primary);
+}
+
+.pattern-notification-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pattern-notification-title {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.pattern-notification-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.pattern-notification-description {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.pattern-notification .pattern-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+@keyframes pattern-notification-slide-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation classes */
+.pattern-animation.pulse {
+  animation: notification-pulse 2s infinite;
+}
+
+.pattern-animation.connect {
+  animation: notification-connect 3s infinite;
+}
+
+.pattern-animation.alarm {
+  animation: notification-alarm 1s infinite;
+}
+
+@keyframes notification-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes notification-connect {
+  0% {
+    background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%);
+  }
+  50% {
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  }
+  100% {
+    background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%);
+  }
+}
+
+@keyframes notification-alarm {
+  0%, 100% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+  50% {
+    background-color: rgba(255, 0, 0, 0.2);
+  }
+}

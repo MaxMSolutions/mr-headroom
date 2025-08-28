@@ -1,0 +1,53 @@
+.desktop-icons {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(10, 100px); /* Fixed grid with 10 columns */
+  grid-template-rows: repeat(7, 120px); /* 7 rows to avoid taskbar overlap */
+  grid-gap: 10px;
+  max-width: 100%;
+  height: calc(100% - var(--taskbar-height)); /* Adjust height to account for taskbar */
+  position: relative;
+  z-index: 10; /* Ensure desktop icons are above background elements */
+  pointer-events: auto; /* Make sure icons can be clicked */
+}
+
+/* System-wide glitch effect when triggered */
+.system-glitch {
+  animation: systemGlitch 0.5s linear;
+  position: relative;
+}
+
+.system-glitch::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 0, 255, 0.1);
+  z-index: 999;
+  pointer-events: none;
+  animation: overlayFlicker 0.5s steps(3) forwards;
+}
+
+@keyframes systemGlitch {
+  0% { filter: none; }
+  10% { filter: hue-rotate(90deg) saturate(200%); }
+  20% { filter: invert(100%); }
+  30% { filter: hue-rotate(180deg) contrast(200%); }
+  40% { filter: hue-rotate(270deg) blur(2px); }
+  50% { filter: invert(50%) saturate(50%) sepia(100%); }
+  60% { filter: hue-rotate(120deg) blur(1px); }
+  70% { filter: contrast(200%) brightness(150%); }
+  80% { filter: invert(100%) hue-rotate(180deg); }
+  90% { filter: sepia(100%) saturate(200%); }
+  100% { filter: none; }
+}
+
+@keyframes overlayFlicker {
+  0% { opacity: 0.1; }
+  25% { opacity: 0.3; }
+  50% { opacity: 0.1; }
+  75% { opacity: 0.3; }
+  100% { opacity: 0; }
+}

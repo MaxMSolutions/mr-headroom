@@ -1,0 +1,246 @@
+.terminal-window {
+  width: 100%;
+  height: 100%;
+  background-color: var(--terminal-bg, #000000);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(51, 255, 51, 0.2), 0 0 15px rgba(51, 255, 51, 0.5);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--borders-highlights, #33ff33);
+  position: relative;
+}
+
+/* CRT scanline effect */
+.terminal-window::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent, rgba(51, 255, 51, 0.03), transparent);
+  background-size: 100% 3px;
+  pointer-events: none;
+  z-index: 1;
+  animation: scan 8s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+.terminal-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-background, #0a0a0a);
+  color: var(--primary-text, #33ff33);
+  padding: 3px 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--borders-highlights, #33ff33);
+  position: relative;
+  z-index: 2;
+}
+
+.terminal-title-bar::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  box-shadow: 0 0 8px 1px #33ff33;
+  z-index: 1;
+}
+
+.terminal-title-bar-text {
+  font-weight: bold;
+  margin-right: auto;
+  text-shadow: 0 0 5px var(--primary-text, #33ff33);
+  letter-spacing: 2px;
+  font-family: var(--font-main);
+}
+
+.terminal-title-bar-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.terminal-title-button {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--borders-highlights, #33ff33);
+  background-color: transparent;
+  color: var(--primary-text, #33ff33);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-shadow: 0 0 5px var(--primary-text, #33ff33);
+  position: relative;
+  box-shadow: 0 0 4px rgba(51, 255, 51, 0.4);
+}
+
+.terminal-title-button:hover {
+  background-color: var(--primary-text, #33ff33);
+  color: var(--primary-background, #000000);
+  box-shadow: 0 0 10px var(--primary-text, #33ff33);
+  transform: scale(1.05);
+}
+
+.terminal-title-button.minimize {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.terminal-title-button.maximize {
+  font-size: 10px;
+  line-height: 10px;
+}
+
+.terminal-title-button.close {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+/* Terminal status indicator */
+.terminal-indicator {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-left: 8px;
+  background-color: var(--primary-text, #33ff33);
+  box-shadow: 0 0 4px var(--primary-text, #33ff33);
+  animation: blink 1.5s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Glitch effect */
+.glitch-effect {
+  position: relative;
+}
+
+.glitch-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 255, 51, 0.1);
+  opacity: 0;
+  animation: glitch 0.2s steps(2) forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Terminal content styles */
+.terminal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 12px;
+  color: var(--primary-text, #33ff33);
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.5;
+  text-shadow: 0 0 2px var(--primary-text, #33ff33);
+  letter-spacing: 0.5px;
+  background-color: rgba(0, 0, 0, 0.97);
+}
+
+/* Terminal prompt styling */
+.terminal-prompt {
+  color: var(--primary-text, #33ff33);
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+/* Scrollbar styling for terminal */
+.terminal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.5);
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+  background: rgba(51, 255, 51, 0.5);
+  border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 255, 51, 0.7);
+}
+
+/* Style for the Terminal component embedded in the window */
+:global(.terminal) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  color: var(--primary-text, #33ff33);
+  font-family: var(--font-main);
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style for user input in the terminal */
+:global(.terminal-input) {
+  color: var(--primary-text, #33ff33);
+  background: transparent;
+  border: none;
+  font-family: var(--font-main);
+  font-size: 14px;
+  text-shadow: 0 0 2px var(--primary-text, #33ff33);
+  caret-color: var(--primary-text, #33ff33);
+}
+
+:global(.terminal-input:focus) {
+  outline: none;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(-5px, 5px);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translate(-5px, -5px);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translate(5px, 5px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: translate(5px, -5px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}

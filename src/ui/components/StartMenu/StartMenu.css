@@ -1,0 +1,1449 @@
+.start-menu {
+  position: absolute;
+  bottom: 38px; /* Match the taskbar height */
+  left: 4px;
+  width: 340px; /* Increased width to accommodate content */
+  background: linear-gradient(135deg, rgba(10, 5, 20, 0.95), rgba(30, 15, 45, 0.95));
+  /* Futuristic border with cyberpunk feel */
+  border: 1px solid;
+  border-color: rgba(0, 195, 255, 0.6);
+  /* Neon glow effect */
+  box-shadow: inset 0 0 8px rgba(0, 195, 255, 0.2),
+              0 0 15px rgba(0, 195, 255, 0.3),
+              0 0 30px rgba(255, 0, 255, 0.2);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  animation: startMenuOpen 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: hidden;
+  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  backdrop-filter: blur(8px);
+  
+  /* Add tech pattern overlay */
+  background-image: 
+    linear-gradient(90deg, rgba(0, 195, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 195, 255, 0.05) 1px, transparent 1px);
+  background-size: 8px 8px;
+  border-radius: 2px;
+  height: auto; /* Allow height to adjust based on content */
+  max-height: calc(100vh - 50px); /* Add max height to prevent it from being too tall */
+}
+
+@keyframes startMenuOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+    filter: brightness(1.3) saturate(0.7) blur(1px);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translateY(5px) scale(0.98);
+    filter: brightness(1.2) saturate(0.8) blur(0.5px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.01);
+    filter: brightness(1.15) saturate(1.1) blur(0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0px) scale(1.005);
+    filter: brightness(1.1) saturate(1.05) blur(0);
+  }
+  70% {
+    transform: translateY(1px) scale(0.99);
+    filter: brightness(1.05) saturate(1.05) blur(0);
+  }
+  90% {
+    transform: translateY(0px) scale(1.002);
+    filter: brightness(1.02) saturate(1.02) blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(1) saturate(1) blur(0);
+  }
+}
+
+.start-menu-header {
+  height: 40px;
+  background: linear-gradient(135deg, #1a0933, #31075e); /* Matching the start button */
+  border-bottom: 1px solid rgba(0, 195, 255, 0.6);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+/* Add neon line effect */
+.start-menu-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.8), transparent);
+  box-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+  animation: neonPulse 3s infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.start-menu-logo {
+  color: #00f0ff;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logo-cube {
+  margin-right: 6px;
+  font-size: 1.3rem;
+  color: #00f0ff; /* cyber blue */
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.9);
+  position: relative;
+  transform-style: preserve-3d;
+  animation: slowRotate 8s infinite linear;
+}
+
+@keyframes slowRotate {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #00f0ff;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  letter-spacing: 1.2px;
+  position: relative;
+  z-index: 1;
+  padding: 0 2px;
+}
+
+/* Add cyber glow effect */
+.logo-text::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  background: radial-gradient(ellipse at center, rgba(0, 195, 255, 0.3) 0%, rgba(0, 195, 255, 0) 70%);
+  top: -10px;
+  left: -20px;
+  right: -20px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.logo-version {
+  font-size: 12px;
+  margin-left: 3px;
+  color: #00f0ff;
+  opacity: 0.9;
+  position: relative;
+  top: -5px;
+  text-shadow: 0 0 3px rgba(0, 195, 255, 0.8);
+}
+
+.start-menu-logo {
+  display: flex;
+  align-items: baseline;
+}
+
+.start-menu-content {
+  display: flex;
+  flex: 1;
+  max-height: 450px; /* Prevent content from being too tall */
+  overflow-y: auto;  /* Add scrolling if needed */
+}
+
+.start-menu-column {
+  padding: 2px;
+}
+
+.main-column {
+  width: 210px; /* Increased width for main column */
+  border-right: 1px solid rgba(216, 55, 144, 0.5);
+  background: linear-gradient(180deg, rgba(30, 15, 45, 0.8), rgba(60, 25, 80, 0.8));
+  /* Add subtle grid texture like Windows 98 */
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 107, 53, 0.03) 2px, rgba(255, 107, 53, 0.03) 4px),
+    linear-gradient(180deg, rgba(30, 15, 45, 0.8), rgba(60, 25, 80, 0.8));
+  position: relative;
+}
+
+.sidebar {
+  width: 130px; /* Adjusted sidebar width */
+  background-color: rgba(40, 20, 60, 0.9);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 10px rgba(106, 13, 173, 0.2) inset;
+  /* Win98 embossed effect with sunset colors */
+  border-left: 1px solid rgba(106, 13, 173, 0.3);
+  background-image: 
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(216, 55, 144, 0.03) 2px, rgba(216, 55, 144, 0.03) 4px),
+    linear-gradient(180deg, rgba(40, 20, 60, 0.9), rgba(50, 25, 70, 0.9));
+}
+
+.user-profile {
+  padding: 8px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0, 195, 255, 0.3);
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.user-profile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(0, 195, 255, 0.05) 25%, 
+      transparent 25%,
+      transparent 50%,
+      rgba(0, 195, 255, 0.05) 50%, 
+      rgba(0, 195, 255, 0.05) 75%, 
+      transparent 75%, 
+      transparent
+    );
+  background-size: 8px 8px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #000033, #3a0066);
+  border: 1px solid rgba(0, 195, 255, 0.4);
+  border-radius: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 195, 255, 0.3);
+}
+
+.user-avatar::after {
+  content: '⌬';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #00f0ff;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.9);
+}
+
+.user-name {
+  color: #00f0ff;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+}
+
+.user-status {
+  color: rgba(255, 0, 255, 0.8);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+  animation: statusPulse 2s infinite alternate;
+}
+
+@keyframes statusPulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.menu-category {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item-large {
+  padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  height: 28px;
+  position: relative;
+  transition: all 0.2s ease;
+  margin: 1px 2px;
+  /* Text style */
+  color: #00f0ff;
+  text-shadow: 0 0 3px rgba(0, 195, 255, 0.6);
+  width: calc(100% - 6px); /* Ensure items stay within container */
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent text overflow */
+  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 12px; /* Ensure font size is appropriate */
+}
+
+.menu-item-large:hover {
+  background: linear-gradient(90deg, rgba(10, 5, 20, 0.7), rgba(30, 10, 50, 0.7));
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  box-shadow: 
+    inset 0 0 8px rgba(0, 195, 255, 0.2),
+    0 0 5px rgba(0, 195, 255, 0.3);
+  /* Cyber border */
+  border: 1px solid rgba(0, 195, 255, 0.6);
+}
+
+.menu-item-large:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 195, 255, 0), rgba(0, 195, 255, 0.8), rgba(0, 195, 255, 0));
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.5);
+}
+
+/* Add spans inside menu items for better text handling */
+.menu-item-large span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0; /* Allow text to shrink if necessary */
+}
+
+/* Add active state for menu items */
+.menu-item-large:active {
+  background: linear-gradient(90deg, rgba(0, 50, 80, 0.9), rgba(50, 0, 80, 0.9));
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(1px);
+  border-color: rgba(0, 195, 255, 0.8);
+}
+
+.menu-item-large .menu-item-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+  min-width: 20px; /* Add min-width to prevent icon shrinking */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  position: relative;
+  background: rgba(0, 195, 255, 0.1);
+  border: 1px solid rgba(0, 195, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon styles for menu items */
+.terminal-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.terminal-icon::before {
+  content: '>';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #00f0ff;
+}
+
+.files-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.files-icon::before {
+  content: '⊞';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #00f0ff;
+}
+
+.notes-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.notes-icon::before {
+  content: '✎';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #00f0ff;
+}
+
+.simulation-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.simulation-icon::before {
+  content: '◈';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #ff00ff;
+}
+
+.glitch-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+  animation: iconGlitch 4s infinite;
+}
+
+.glitch-icon::before {
+  content: '⚠';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #ff0000;
+}
+
+.system-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.warning-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.warning-icon::before {
+  content: '!';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #ff0000;
+}
+
+.boot-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.boot-icon::before {
+  content: '⟳';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #00f0ff;
+}
+
+.nexus-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.power-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.power-icon::before {
+  content: '⏻';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #ff0000;
+}
+
+@keyframes iconGlitch {
+  0%, 100% { transform: none; }
+  92% { transform: skew(-10deg, 0deg); }
+  94% { transform: skew(10deg, 0deg); }
+  96% { transform: skew(-5deg, 0deg); }
+  98% { transform: skew(5deg, 0deg); }
+}
+
+.theme-shortcuts {
+  padding: 5px 0;
+  width: 100%; /* Ensure full width */
+  margin-top: 4px;
+}
+
+/* Fix the display options specifically */
+.theme-shortcuts .menu-item {
+  padding: 3px 5px; /* Smaller padding for these items */
+  margin-bottom: 4px; /* Add space between theme items */
+}
+
+/* Add styling for menu dividers */
+.menu-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 195, 255, 0.3), transparent);
+  margin: 5px 2px;
+  width: calc(100% - 4px);
+}
+
+.menu-divider.reality-breach {
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.6), transparent);
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.4);
+}
+
+.menu-divider.with-glitch {
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.4), rgba(0, 255, 255, 0.4), transparent);
+  animation: dividerGlitch 4s infinite;
+}
+
+@keyframes dividerGlitch {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+  25%, 75% { background-position: 100% 0; }
+}
+
+.menu-item {
+  padding: 3px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  margin-bottom: 0;
+  margin: 1px 2px;
+  flex-wrap: nowrap;
+  min-height: 20px;
+  font-size: 11px;
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  width: calc(100% - 6px); /* Ensure items stay within container */
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent text overflow */
+}
+
+/* Toggle switch for settings */
+.toggle-switch {
+  width: 18px;
+  height: 12px;
+  background: rgba(30, 15, 45, 0.9);
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  position: relative;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-right: 5px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 6px;
+  height: 6px;
+  background: rgba(100, 100, 100, 0.9);
+  border-radius: 1px;
+  transition: all 0.2s ease;
+}
+
+.toggle-switch.active {
+  background: rgba(0, 195, 255, 0.3);
+  border-color: rgba(0, 195, 255, 0.8);
+  box-shadow: 
+    inset 0 0 4px rgba(0, 0, 0, 0.5),
+    0 0 5px rgba(0, 195, 255, 0.5);
+}
+
+.toggle-switch.active::before {
+  left: 8px;
+  background: #00f0ff;
+  box-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+}
+
+.menu-item:hover {
+  background: linear-gradient(90deg, rgba(106, 13, 173, 0.9), rgba(216, 55, 144, 0.9));
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  /* Win98 selection style - authentic dashed border */
+  border: 1px dashed rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    inset 0 0 6px rgba(255, 255, 255, 0.2),
+    0 0 4px rgba(216, 55, 144, 0.4);
+}
+
+.menu-item:active {
+  background: linear-gradient(90deg, rgba(255, 107, 53, 0.9), rgba(106, 13, 173, 0.9));
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(1px);
+}
+
+.menu-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem; /* Slightly smaller font */
+  max-width: calc(100% - 8px); /* Ensure text stays within its container */
+  display: block;
+}
+
+/* Toggle switch styling - Win98 checkbox style */
+.toggle-switch {
+  min-width: 12px;
+  width: 12px; /* Explicit width */
+  height: 12px;
+  /* Classic Windows 98 checkbox border */
+  border: 1px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  position: relative;
+  background: #ffffff;
+  margin-right: 6px; /* Reduced margin */
+  flex-shrink: 0;
+  /* Inset effect */
+  box-shadow: 
+    inset 1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.toggle-switch::before {
+  content: '';
+  display: none;
+}
+
+.toggle-switch.active {
+  background: #ffffff;
+  /* Subtle gradient when active */
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+}
+
+.toggle-switch.active::before {
+  content: '✓';
+  display: block;
+  position: absolute;
+  left: 1px;
+  top: -3px;
+  font-size: 11px;
+  color: #000000;
+  /* Sunset-colored checkmark */
+  background: linear-gradient(135deg, #ff6b35, #d83790);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+/* Color swatches - Win98 style color picker */
+.color-swatch {
+  width: 14px; /* Slightly smaller */
+  height: 14px; /* Slightly smaller */
+  /* Classic Windows 98 recessed color swatch */
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  display: inline-block;
+  margin-right: 6px; /* Smaller margin */
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  /* Subtle reflection effect */
+  box-shadow: 
+    inset 1px 1px 2px rgba(0, 0, 0, 0.3), 
+    inset -1px -1px 2px rgba(255, 255, 255, 0.3);
+  min-width: 14px; /* Ensure it doesn't shrink */
+}
+
+/* Add reflection effect to color swatches */
+.color-swatch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+  pointer-events: none;
+}
+
+.color-swatch.neon {
+  background: #00aaff;
+  background: linear-gradient(135deg, #33ffff, #00aaff, #0055ff);
+}
+
+.color-swatch.amber {
+  background: #ffb000;
+  background: linear-gradient(135deg, #ffcc00, #ffb000, #ff8800);
+}
+
+.color-swatch.matrix {
+  background: #00ff00;
+  background: linear-gradient(135deg, #88ff88, #00ff00, #00aa00);
+}
+
+.color-swatch.sunset {
+  background: linear-gradient(135deg, #ff6b35 0%, #d83790 100%);
+  /* More vibrant sunset with subtle scanning lines for CRT effect */
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0.1) 2px),
+    linear-gradient(135deg, #ff6b35 0%, #d83790 50%, #6a0dad 100%);
+  box-shadow: 
+    0 0 5px rgba(255, 107, 53, 0.7),
+    inset 0 0 15px rgba(255, 107, 53, 0.4);
+}
+
+.glitched-text {
+  position: relative;
+  color: #ff6b35;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  text-shadow: 0 0 3px rgba(255, 107, 53, 0.8);
+  /* Add background for visibility */
+  padding: 0 2px;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Add win98 alert border style */
+  border: 1px dashed rgba(255, 107, 53, 0.7);
+  /* Add pulsing effect */
+  animation: warningPulse 2s infinite;
+  z-index: 1;
+}
+
+@keyframes warningPulse {
+  0% { border-color: rgba(255, 107, 53, 0.7); }
+  50% { border-color: rgba(255, 107, 53, 0.3); }
+  100% { border-color: rgba(255, 107, 53, 0.7); }
+}
+
+.glitched-text::before, 
+.glitched-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.glitched-text::before {
+  /* RGB shift to the left */
+  left: -1px;
+  text-shadow: 1px 0 #d83790;
+  animation: noise-anim 1.5s infinite linear alternate-reverse;
+}
+
+.glitched-text::after {
+  /* RGB shift to the right */
+  left: 1px;
+  text-shadow: -1px 0 #6a0dad;
+  animation: noise-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim {
+  0% {
+    clip-path: inset(29% 0 25% 0);
+    text-shadow: 1px 0 #d83790, 0 0 5px rgba(255, 107, 53, 0.8);
+  }
+  5% {
+    clip-path: inset(9% 0 38% 0);
+  }
+  10% {
+    clip-path: inset(96% 0 1% 0);
+    text-shadow: 1px 0 #ff6b35, 0 0 8px rgba(216, 55, 144, 0.8);
+  }
+  15% {
+    clip-path: inset(75% 0 23% 0);
+  }
+  20% {
+    clip-path: inset(46% 0 50% 0);
+    text-shadow: 1px 0 #6a0dad, 0 0 6px rgba(255, 107, 53, 0.8);
+  }
+  /* ... etc ... */
+  100% {
+    clip-path: inset(31% 0 58% 0);
+    text-shadow: 1px 0 #d83790, 0 0 5px rgba(216, 55, 144, 0.8);
+  }
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip-path: inset(70% 0 12% 0);
+    text-shadow: -1px 0 #6a0dad, 0 0 6px rgba(255, 107, 53, 0.8);
+  }
+  5% {
+    clip-path: inset(54% 0 7% 0);
+  }
+  /* ... etc ... */
+  100% {
+    clip-path: inset(92% 0 6% 0);
+  }
+}
+
+.menu-item.shutdown {
+  margin-top: auto; /* Push to bottom */
+  margin: auto 2px 2px 2px;
+  border-top: 1px solid #808080;
+  padding-top: 5px;
+}
+
+.power-icon {
+  background-color: #ffffff;
+  border: 1px solid #808080;
+  position: relative;
+}
+
+.power-icon:after {
+  content: '';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 30%;
+  background-color: #000000;
+}
+
+.power-icon:before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+}
+
+.start-menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 8px;
+  border-top: 1px solid rgba(0, 195, 255, 0.4);
+  font-size: 10px;
+  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  background: linear-gradient(90deg, #1a0933, #31075e);
+  color: #00f0ff;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 3px rgba(0, 195, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  height: 20px;
+}
+
+.start-menu-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 195, 255, 0.2), 
+    transparent
+  );
+  animation: footerSweep 5s infinite linear;
+}
+
+@keyframes footerSweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* System info styling */
+.system-info {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+/* Memory info styling */
+.memory-info {
+  border-left: 1px solid rgba(0, 195, 255, 0.3);
+  padding-left: 8px;
+}
+
+.reality-status {
+  animation: statusBlink 4s infinite;
+  letter-spacing: 0.5px;
+  font-size: 8px;
+}
+
+@keyframes statusBlink {
+  0%, 100% {
+    color: #00f0ff;
+    text-shadow: 0 0 3px rgba(0, 195, 255, 0.6);
+  }
+  50% {
+    color: #ff00ff;
+    text-shadow: 0 0 3px rgba(255, 0, 255, 0.6);
+  }
+}
+
+/* Menu glitch effect */
+.start-menu.menu-glitch {
+  animation: menuGlitch 0.3s linear;
+}
+
+@keyframes menuGlitch {
+  0% { transform: translate(0) skew(0deg); filter: none; }
+  20% { transform: translate(-3px, 2px) skew(2deg); filter: hue-rotate(90deg); }
+  40% { transform: translate(3px, -2px) skew(-2deg); filter: invert(25%); }
+  60% { transform: translate(-2px, -1px) skew(1deg); filter: saturate(200%); }
+  80% { transform: translate(2px, 1px) skew(-1deg); filter: hue-rotate(180deg); }
+  93% { transform: translate(1px, 0) skew(0.5deg); filter: brightness(1.2); opacity: 0.7; }
+  96% { transform: translate(-1px, 0) skew(-0.5deg); filter: brightness(1); opacity: 1; }
+  100% { transform: translate(0) skew(0deg); filter: none; opacity: 1; }
+}
+
+/* Specific icons */
+.files-icon {
+  background-color: #ffffff;
+  position: relative;
+  border: 1px solid #808080;
+}
+
+.files-icon:after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: #ffcc00;
+}
+
+.settings-icon {
+  background-color: #ffffff;
+  position: relative;
+  border: 1px solid #808080;
+}
+
+.settings-icon:after {
+  content: '⚙';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 12px;
+  color: #000080;
+}
+
+.terminal-icon {
+  /* MS-DOS Prompt icon in win98 with sunset colors */
+  background-color: #000000;
+  border: 2px solid;
+  border-color: #d0d0d0 #505050 #505050 #d0d0d0;
+  position: relative;
+  box-shadow: inset 0 0 3px rgba(255, 107, 53, 0.7);
+  overflow: hidden;
+}
+
+.terminal-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b35, #d83790);
+}
+
+.terminal-icon::after {
+  content: '>';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff6b35;
+  font-weight: bold;
+  font-size: 10px;
+  text-shadow: 0 0 3px rgba(255, 107, 53, 0.9);
+  animation: cursorBlink 1.2s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.notes-icon {
+  background-color: #ffffff;
+  border: 1px solid #808080;
+  position: relative;
+}
+
+.notes-icon::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background-image: linear-gradient(transparent 0%, transparent 20%, #000000 20%, #000000 23%, transparent 23%, transparent 46%, #000000 46%, #000000 49%, transparent 49%, transparent 72%, #000000 72%, #000000 75%, transparent 75%);
+}
+
+.media-icon {
+  background-color: #ffffff;
+  border: 1px solid #808080;
+  position: relative;
+}
+
+.media-icon:after {
+  content: '►';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: #000080;
+}
+
+.game-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00f0ff;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+  overflow: hidden;
+}
+
+.game-icon:before {
+  content: '★';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  color: #00f0ff;
+  font-size: 12px;
+  transform: translate(-50%, -50%);
+  animation: starPulse 2s infinite alternate;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
+.boot-icon {
+  background-color: #ffffff;
+  border: 1px solid #808080;
+  position: relative;
+}
+
+.boot-icon:after {
+  content: '↻';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000080;
+  font-weight: bold;
+}
+
+.warning-icon {
+  /* System warning icon with sunset theme */
+  background: linear-gradient(135deg, #ff6b35, #d83790);
+  border: 2px solid;
+  border-color: #d0d0d0 #505050 #505050 #d0d0d0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 5px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(255, 107, 53, 0.5);
+}
+
+.warning-icon:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 2px, transparent 2px, transparent 4px);
+}
+
+.warning-icon:after {
+  content: '!';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  animation: warningPulse 2s infinite;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.menu-divider {
+  height: 1px;
+  margin: 4px 0;
+  background: linear-gradient(90deg, rgba(0, 195, 255, 0.5), rgba(255, 0, 255, 0.5));
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 195, 255, 0.4);
+}
+
+.menu-divider.reality-breach {
+  height: 2px;
+  background: linear-gradient(90deg, #00f0ff, #ff00ff, #00f0ff);
+  animation: breachPulse 3s infinite linear;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+@keyframes breachPulse {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* New icon styles for our theme */
+.simulation-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #000033, #3a0066);
+  position: relative;
+  border: 1px solid rgba(0, 195, 255, 0.5);
+}
+
+.simulation-icon::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(
+      circle at center,
+      rgba(0, 255, 255, 0.4) 0%,
+      transparent 70%
+    );
+  animation: pulsate 3s infinite alternate;
+}
+
+.simulation-icon::after {
+  content: '⌬';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: rgba(0, 240, 255, 0.9);
+  text-shadow: 0 0 5px rgba(0, 240, 255, 0.8);
+}
+
+@keyframes pulsate {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.simulation-text {
+  background: linear-gradient(90deg, #00f0ff, #ff00ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 3px rgba(0, 240, 255, 0.5);
+  letter-spacing: 0.5px;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -100px; }
+  100% { background-position: 100px; }
+}
+
+.glitch-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #ff0066, #330066);
+  position: relative;
+  border: 1px solid rgba(255, 0, 255, 0.5);
+  overflow: hidden;
+  animation: glitchAnim 5s infinite alternate;
+}
+
+.glitch-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 5px,
+      rgba(0, 0, 0, 0.5) 5px,
+      rgba(0, 0, 0, 0.5) 10px
+    );
+  mix-blend-mode: overlay;
+  animation: glitchStripes 2s linear infinite alternate;
+}
+
+.glitch-icon::after {
+  content: '!';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+}
+
+@keyframes glitchStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 10px 10px; }
+}
+
+@keyframes glitchAnim {
+  0% { filter: hue-rotate(0deg); }
+  25% { filter: hue-rotate(90deg); transform: scale(0.95); }
+  50% { filter: hue-rotate(180deg); transform: scale(1); }
+  75% { filter: hue-rotate(270deg); transform: scale(0.97); }
+  100% { filter: hue-rotate(360deg); transform: scale(1.05); }
+}
+
+.system-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #000022, #220044);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #00ffff;
+}
+
+.system-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(
+      circle at center,
+      rgba(0, 255, 255, 0.3) 0%,
+      transparent 70%
+    );
+  animation: systemPulse 4s infinite;
+}
+
+@keyframes systemPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+.system-icon .system-cube {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #00ffff;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+  animation: slowRotate 8s infinite linear;
+}
+
+.nexus-icon {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #000033, #330066);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #00ffff;
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+}
+
+.nexus-icon::after {
+  content: '⌬';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: rgba(0, 240, 255, 0.9);
+  text-shadow: 0 0 3px rgba(0, 240, 255, 0.8);
+  animation: systemPulse 4s infinite;
+}
+
+.nexus-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(
+      circle at center,
+      rgba(0, 255, 255, 0.5) 0%,
+      rgba(0, 255, 255, 0.2) 30%,
+      transparent 70%
+    ),
+    linear-gradient(45deg,
+      transparent 45%,
+      rgba(0, 255, 255, 0.1) 50%,
+      transparent 55%
+    );
+  background-size: 100% 100%, 5px 5px;
+  pointer-events: none;
+}
+
+.menu-divider::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 107, 53, 0.2), rgba(106, 13, 173, 0.2));
+}
+
+/* Start Menu Footer Styles */
+.start-menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 8px;
+  height: 20px;
+  background: linear-gradient(90deg, rgba(10, 5, 20, 0.8), rgba(30, 15, 45, 0.8));
+  border-top: 1px solid rgba(0, 195, 255, 0.3);
+  position: relative;
+  margin-top: 4px;
+}
+
+.start-menu-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 195, 255, 0.1), transparent);
+  animation: footerSweep 8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes footerSweep {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.system-info {
+  font-size: 10px;
+  color: #00f0ff;
+  text-shadow: 0 0 3px rgba(0, 195, 255, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.memory-info {
+  font-size: 10px;
+  color: #00f0ff;
+  text-shadow: 0 0 3px rgba(0, 195, 255, 0.8);
+}
+
+.reality-status {
+  color: rgba(255, 0, 255, 0.9);
+  animation: statusBlink 4s infinite;
+  letter-spacing: 0.5px;
+  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  font-size: 8px;
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.menu-divider.with-glitch {
+  /* Enhanced glitched divider with more retro effects */
+  background: linear-gradient(90deg, rgba(255, 107, 53, 0.9), rgba(216, 55, 144, 0.9), rgba(106, 13, 173, 0.9));
+  height: 2px;
+  margin: 6px 2px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 8px rgba(255, 107, 53, 0.8),
+    0 0 12px rgba(216, 55, 144, 0.5);
+}
+
+.menu-divider.with-glitch:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.9);
+  filter: blur(1px);
+  animation: dividerScan 3s linear infinite;
+}
+
+.menu-divider.with-glitch:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ffffff;
+  opacity: 0.6;
+  animation: dividerGlitch 3s infinite;
+}
+
+@keyframes dividerScan {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+@keyframes dividerGlitch {
+  0% { opacity: 1; }
+  95% { opacity: 1; }
+}
+
+@keyframes starPulse {
+  0%, 100% { opacity: 0.7; text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); }
+  50% { opacity: 1; text-shadow: 0 0 10px rgba(0, 240, 255, 1); }
+  96% { opacity: 0; }
+  97% { opacity: 1; }
+  98% { opacity: 0; }
+  100% { opacity: 1; }
+}

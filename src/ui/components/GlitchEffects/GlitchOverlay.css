@@ -1,0 +1,24 @@
+.glitch-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: randomOverlay 10s infinite;
+}
+
+@keyframes randomOverlay {
+  0%, 100% { opacity: 0.015; }
+  25% { opacity: 0.02; }
+  50% { opacity: 0.01; }
+  51% { opacity: 0.025; }
+  52% { opacity: 0.015; }
+  53% { opacity: 0.02; }
+  54% { opacity: 0.015; }
+  55%, 70% { opacity: 0.02; }
+  75% { opacity: 0.015; }
+}

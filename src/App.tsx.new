@@ -1,0 +1,157 @@
+import { useState, useEffect } from 'react';
+import BootSequence from './engine/boot/BootSequence';
+import Desktop from './ui/Desktop';
+import { ThemeProvider } from './ui/ThemeContext';
+import useAssetLoader from './engine/assetLoader';
+import FileSystem, { FileSystemData } from './engine/fileSystem';
+import { getGameState, addGameLog } from './engine/save/SaveManager';
+import EndingSequence from './ui/components/EndingSequence';
+import { EndingManager } from './engine/endings/EndingManager';
+
+// List of essential assets to preload
+const essentialAssets = [
+  { id: 'fileSystem', type: 'json' as const, url: '/src/data/filesystem/fileSystem.json' },
+  // Add other essential assets here (core images, sound effects, etc.)
+];
+
+const App = () => {
+  const [booting, setBooting] = useState(true);
+  const [bootProgress, setBootProgress] = useState(0);
+  const [bootMode, setBootMode] = useState<'normal' | 'verbose' | 'fast'>('normal');
+  const [assetsReady, setAssetsReady] = useState(false);
+  const [fileSystem, setFileSystem] = useState<FileSystem | null>(null);
+  const [endingManager] = useState(() => EndingManager.getInstance());
+  const [showEndingSequence, setShowEndingSequence] = useState(false);
+  
+  // Load essential assets
+  const { assets } = useAssetLoader(
+    essentialAssets,
+    {
+      preload: true,
+      onProgress: (progress) => {
+        // Asset loading contributes to 30% of boot progress
+        setBootProgress(Math.min(30, progress * 0.3));
+      },
+      onComplete: () => {
+        setAssetsReady(true);
+        // Initialize file system with loaded data
+        if (assets && assets.fileSystem) {
+          try {
+            const fileSystemData = assets.fileSystem as unknown as FileSystemData;
+            const fs = new FileSystem(fileSystemData);
+            setFileSystem(fs);
+          } catch (error) {
+            console.error('Failed to initialize file system with loaded data:', error);
+            loadFileSystemFromUrl();
+          }
+        } else {
+          loadFileSystemFromUrl();
+        }
+      }
+    }
+  );
+  
+  // Helper function to load file system from URL
+  const loadFileSystemFromUrl = async () => {
+    try {
+      const response = await fetch('/src/data/filesystem/fileSystem.json');
+      const data = await response.json();
+      const fs = new FileSystem(data);
+      setFileSystem(fs);
+    } catch (error) {
+      console.error('Failed to fetch file system data:', error);
+      addGameLog('system', {
+        type: 'error',
+        data: { message: 'Failed to load file system data' },
+        timestamp: Date.now()
+      });
+    }
+  };
+
+  // Handle boot sequence completion
+  const handleBootComplete = () => {
+    setBooting(false);
+    addGameLog('system', {
+      type: 'boot_complete',
+      data: { bootMode },
+      timestamp: Date.now()
+    });
+  };
+
+  // Check for ending triggers
+  useEffect(() => {
+    const checkEndingTriggers = () => {
+      const gameState = getGameState();
+      const trigger = gameState.gameFlags.endingTriggerEvent;
+      
+      if (trigger) {
+        // Map trigger to ending path
+        let path: 'alpha' | 'beta' | 'gamma' | null = null;
+        
+        if (trigger === 'execute_initiate_alpha') {
+          path = 'alpha';
+        } else if (trigger === 'execute_enter_mirror') {
+          path = 'beta';
+        } else if (trigger === 'execute_breakout') {
+          path = 'gamma';
+        }
+        
+        if (path && endingManager.startEnding(path)) {
+          setShowEndingSequence(true);
+        }
+      }
+    };
+    
+    // Check initially
+    checkEndingTriggers();
+    
+    // Set up interval to periodically check for ending triggers
+    const intervalId = setInterval(checkEndingTriggers, 5000);
+    
+    return () => clearInterval(intervalId);
+  }, [endingManager]);
+
+  // Handle ending sequence completion
+  const handleEndingComplete = () => {
+    setShowEndingSequence(false);
+    // You could do other things here like showing credits or a final message
+  };
+
+  // Settings from game state
+  const settings = getGameState().settings;
+  
+  // Boot progress effect
+  useEffect(() => {
+    if (bootProgress >= 30 && fileSystem) {
+      // Additional boot steps after assets are loaded
+      const bootDelay = bootMode === 'fast' ? 1000 : bootMode === 'verbose' ? 5000 : 3000;
+      
+      setTimeout(() => {
+        setBootProgress(70);
+        setTimeout(() => {
+          setBootProgress(100);
+          setTimeout(handleBootComplete, 500);
+        }, bootDelay / 2);
+      }, bootDelay);
+    }
+  }, [bootProgress, fileSystem, bootMode]);
+
+  return (
+    <ThemeProvider initialTheme={settings.theme || 'default'}>
+      {booting ? (
+        <BootSequence 
+          progress={bootProgress} 
+          mode={bootMode} 
+          onComplete={handleBootComplete} 
+        />
+      ) : (
+        <>
+          <Desktop fileSystem={fileSystem} />
+          {showEndingSequence && <EndingSequence onComplete={handleEndingComplete} />}
+        </>
+      )}
+    </ThemeProvider>
+  );
+};
+
+export default App;

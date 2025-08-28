@@ -1,0 +1,107 @@
+.glitch-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Desktop glitch effect - improved for smoothness and visual appeal */
+.desktop.glitch {
+  position: relative;
+}
+
+.desktop.glitch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  opacity: 0.5;
+  animation: glitch 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  z-index: 100;
+  mix-blend-mode: overlay;
+}
+
+/* Add a second layer for more complex effect */
+.desktop.glitch::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 255, 255, 0.1);
+  animation: glitch-alt 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
+  pointer-events: none;
+  z-index: 99;
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  10% {
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
+  }
+  20% {
+    transform: translate(-5px, 2px);
+    clip-path: polygon(0 15%, 100% 5%, 100% 95%, 0 85%);
+  }
+  30% {
+    transform: translate(-5px, -2px);
+  }
+  40% {
+    transform: translate(5px, 2px);
+    clip-path: polygon(0 10%, 100% 15%, 100% 85%, 0 90%);
+  }
+  50% {
+    transform: translate(3px, -5px);
+  }
+  60% {
+    transform: translate(-3px, 4px);
+  }
+  70% {
+    transform: translate(5px, -2px);
+    clip-path: polygon(0 5%, 100% 10%, 100% 90%, 0 95%);
+  }
+  80% {
+    transform: translate(-2px, 5px);
+  }
+  90% {
+    transform: translate(0, -2px);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-alt {
+  0% {
+    transform: translate(0);
+    opacity: 0.3;
+  }
+  20% {
+    transform: translate(8px, 0);
+    opacity: 0.2;
+  }
+  40% {
+    transform: translate(-5px, 2px);
+    opacity: 0.25;
+  }
+  60% {
+    transform: translate(3px, -2px);
+    opacity: 0.15;
+  }
+  80% {
+    transform: translate(-1px, 3px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}

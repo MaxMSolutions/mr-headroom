@@ -1,0 +1,117 @@
+/**
+ * RedHerringInfo.css
+ * Styling for red herring information display
+ */
+
+.red-herring-info {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 8px 0;
+  color: #ccc;
+  font-family: var(--font-main);
+  max-width: 400px;
+}
+
+.red-herring-info.compact {
+  padding: 8px;
+  max-width: 300px;
+}
+
+.red-herring-stats {
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  height: 6px;
+  width: 100%;
+  background-color: #444;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent-secondary, #ff5722);
+  transition: width 0.3s ease;
+}
+
+.stats-text {
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.red-herring-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.red-herring-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 87, 34, 0.1);
+  border-left: 3px solid var(--accent-secondary, #ff5722);
+}
+
+.red-herring-item.exposed {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left-color: var(--success-color, #4CAF50);
+}
+
+.red-herring-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.red-herring-content {
+  flex: 1;
+}
+
+.red-herring-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.red-herring-confidence,
+.red-herring-target {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.expose-button {
+  background-color: var(--button-bg, #333);
+  color: var(--button-text, #fff);
+  border: 1px solid var(--border-color, #555);
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.expose-button:hover {
+  background-color: var(--button-hover-bg, #444);
+}
+
+/* Animation for exposing a red herring */
+@keyframes expose-flash {
+  0% { background-color: rgba(76, 175, 80, 0.5); }
+  100% { background-color: rgba(76, 175, 80, 0.1); }
+}
+
+.red-herring-item.just-exposed {
+  animation: expose-flash 1s ease-out;
+}

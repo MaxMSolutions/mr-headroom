@@ -1,0 +1,92 @@
+.terminal {
+  background-color: var(--terminal-bg, #000);
+  color: var(--terminal-text, #00ff00);
+  font-family: 'Courier New', monospace;
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.terminal-history {
+  flex-grow: 1;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  padding-bottom: 8px;
+}
+
+.terminal-entry {
+  margin-bottom: 4px;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-prompt {
+  color: var(--terminal-prompt, #00ff00);
+  margin-right: 4px;
+}
+
+.terminal-input {
+  background-color: transparent;
+  border: none;
+  color: var(--terminal-text, #00ff00);
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  outline: none;
+  flex-grow: 1;
+  caret-color: var(--terminal-cursor, #00ff00);
+}
+
+.terminal-system {
+  color: var(--terminal-system, #0088ff);
+}
+
+.terminal-output {
+  color: var(--terminal-output, #00ff00);
+}
+
+.terminal-error {
+  color: var(--terminal-error, #ff0000);
+}
+
+.terminal-input {
+  color: var(--terminal-input, #00ffff);
+}
+
+/* Animation for cursor blinking */
+@keyframes cursor-blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Apply the blinking cursor only to the actual input element, not history entries */
+.terminal-input-line .terminal-input::after {
+  content: '█';
+  animation: cursor-blink 1.2s infinite;
+}
+
+/* Random flicker effect to enhance retro feel */
+.terminal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Accessibility mode - disable effects */
+body.accessibility-mode .terminal::before {
+  display: none;
+}

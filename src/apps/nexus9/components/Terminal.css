@@ -1,0 +1,116 @@
+.nexus9-terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  color: #33ff33;
+  font-family: var(--font-main);
+  padding: 8px;
+  overflow: hidden;
+}
+
+.terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-top: 1px solid #33ff33;
+}
+
+.terminal-prompt {
+  color: #ff00ff;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.terminal-input-field {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  color: #33ff33;
+  font-family: var(--font-main);
+  font-size: 14px;
+  outline: none;
+}
+
+.terminal-input-field:focus {
+  outline: none;
+}
+
+.terminal-info {
+  color: #33ff33;
+}
+
+.terminal-input {
+  color: #33ff33;
+  opacity: 0.8;
+}
+
+.terminal-error {
+  color: #ff0033;
+}
+
+.terminal-warning {
+  color: #ffaa00;
+}
+
+.terminal-success {
+  color: #00ffff;
+}
+
+.terminal-submit-button {
+  background-color: transparent;
+  color: #33ff33;
+  border: 1px solid #33ff33;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.terminal-submit-button:hover {
+  background-color: rgba(51, 255, 51, 0.2);
+}
+
+.terminal-submit-button:active {
+  background-color: rgba(51, 255, 51, 0.4);
+}
+
+/* Scrollbar styling */
+.terminal-output::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background: #33ff33;
+  border-radius: 4px;
+}
+
+/* Blinking cursor effect */
+.terminal-input-field::after {
+  content: '▏';
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
