@@ -1,0 +1,49 @@
+{
+  "routes": [
+    {
+      "route": "/audio/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000"
+      }
+    },
+    {
+      "route": "/msdos/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000"
+      }
+    },
+    {
+      "route": "/*.html",
+      "headers": {
+        "cache-control": "public, max-age=3600"
+      }
+    },
+    {
+      "route": "/js-dos-api.js",
+      "headers": {
+        "cache-control": "public, max-age=3600"
+      }
+    },
+    {
+      "route": "/assets/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000"
+      }
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/audio/*", "/msdos/*", "/js-dos-api.js", "/*.html", "/assets/*"]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  }
+}
