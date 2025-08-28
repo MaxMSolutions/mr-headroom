@@ -288,14 +288,19 @@ By following this guide, you can seamlessly add new applications to the MRHEADRO
 ### Visual Theme: Retro Cyberpunk OS
 The visual theme is a retro cyberpunk operating system with modern touches, drawing inspiration from classic OS interfaces with a dark, high-tech, neon-infused aesthetic.
 
+### Current Theme Implementation Status
+- **Reference Implementation**: StartMenu.css serves as the primary reference for the cyberpunk theme
+- **Theme Consistency**: All UI components should match the StartMenu's visual style and color usage patterns
+- **Implementation Approach**: Use the StartMenu as a template for other components (WindowManager, Taskbar, etc.)
+
 ### Color Palette
 - **Primary Background**: `#000000` (deep black)
 - **Secondary Background**: `#0a0a0a` (off-black)
-- **Primary Text**: `#33ff33` (terminal green)
+- **Primary Text**: `#33ff33` (terminal green) - *Note: Currently using `#00f0ff` (cyan) in StartMenu, should migrate to green for consistency*
 - **Secondary Text**: `#00cc00` (darker green)
 - **Primary Accent**: `#ff00ff` (magenta/purple)
-- **Secondary Accent**: `#00ffff` (cyan)
-- **Borders/Highlights**: `#33ff33` (terminal green)
+- **Secondary Accent**: `#00ffff` (cyan) - *Currently the dominant accent color in StartMenu*
+- **Borders/Highlights**: `#33ff33` (terminal green) - *Note: StartMenu uses cyan borders, should incorporate more green*
 - **Window Headers**: `#0a0a0a` with glowing text
 - **Warning/Error**: `#ff0033` (bright red)
 
@@ -304,9 +309,10 @@ Additional theme variations are available (sunset, amber, matrix, neon) but shou
 ### Typography
 - **Primary Font**: `var(--font-main)` - VT323 or similar monospace retro font
 - **Alternative Font**: `var(--font-alt)` - Press Start 2P for headers and emphasis
+- **Current Implementation**: StartMenu uses `'Orbitron'` (futuristic sans-serif) - consider migrating to VT323 for body text while keeping Orbitron for headers
 - **Text Effects**: Use subtle text shadows for neon glow effect on interactive elements
   - Example: `text-shadow: 0 0 5px var(--accent-secondary);`
-- **Case**: Use ALL CAPS for system messages, commands, and labels
+- **Case**: Use ALL CAPS for system messages, commands, and labels - *Note: StartMenu uses mixed case, should standardize to ALL CAPS*
 
 ### UI Elements
 - **Windows**: Dark backgrounds with neon borders and subtle glow effects
@@ -321,7 +327,7 @@ Additional theme variations are available (sunset, amber, matrix, neon) but shou
 ### Visual Effects
 - **CRT Effect**: Subtle scanlines and screen curve (toggle option required)
   - Implemented via pseudo-elements with linear/radial gradients
-  - Example: 
+  - Example:
     ```css
     .crt-effect::before {
       content: "";
@@ -337,6 +343,15 @@ Additional theme variations are available (sunset, amber, matrix, neon) but shou
   - Blinking cursors (animation: blink 1s step-end infinite)
   - Text typing effects for narrative moments
   - Scan lines that slowly move (animation: scan 8s linear infinite)
+
+### Theme Consistency Guidelines
+Based on StartMenu.css analysis, follow these patterns for consistent theming:
+
+1. **Background Patterns**: Use grid overlays with `linear-gradient` for cyberpunk texture
+2. **Glow Effects**: Apply `box-shadow` with neon colors for interactive elements
+3. **Color Hierarchy**: Primary cyan (#00f0ff) for text, magenta (#ff00ff) for accents
+4. **Animation Timing**: Use smooth transitions (0.2s ease) for hover states
+5. **Border Styling**: Thin borders (1px) with neon colors and subtle glow
 
 ### Accessibility Considerations
 - All visual effects must be disableable via Accessibility Mode
@@ -359,6 +374,7 @@ Additional theme variations are available (sunset, amber, matrix, neon) but shou
 - Keep selectors specific to avoid style conflicts
 - Document all animation keyframes for reuse
 - Store theme preferences in local storage
+- **Reference StartMenu.css**: Use StartMenu as the primary reference for color usage, glow effects, and animation patterns
 
 ## Human-in-the-loop checkpoints (explicit)
 - ✅ After scaffolding: reviewer verifies folder structure & README
@@ -426,6 +442,124 @@ Additional theme variations are available (sunset, amber, matrix, neon) but shou
    - Collect and implement feedback
    - Final adjustments based on user experience
 
+6. **Theme Consistency Implementation** *(NEW - Based on App CSS Analysis)*
+   - Update app CSS files to match StartMenu theme patterns
+   - Standardize color usage with CSS variables
+   - Implement consistent cyberpunk visual effects across all apps
+   - Add missing grid overlays and neon glow effects
+   - Ensure proper font usage (VT323/Orbitron) throughout
+
 If you are executing now, focus on the remaining tasks for Week 5, particularly enhancing the testing infrastructure and implementing end-to-end tests for the three ending paths. Also, begin working on accessibility enhancements and final polish.
 
-Return a changelog after each package of commits with the tests run and their pass/fail status.
+## Theme Consistency Implementation Guide
+
+### App CSS Standardization Requirements
+
+Based on analysis of current app implementations, the following updates are needed to ensure all apps match the StartMenu.css cyberpunk theme:
+
+#### 1. **Color Variable Usage**
+**Current Issue**: Many apps use hardcoded colors instead of CSS variables
+**Required Fix**: Replace hardcoded colors with CSS variables from global.css
+
+**Examples of Issues Found:**
+```css
+/* INCORRECT - Hardcoded colors */
+background-color: rgba(0, 255, 255, 0.2);
+color: #33ff33;
+border: 1px solid #00ffff;
+
+/* CORRECT - Using CSS variables */
+background-color: var(--accent-secondary);
+color: var(--text-primary);
+border: 1px solid var(--accent-secondary);
+```
+
+#### 2. **Background Pattern Implementation**
+**Current Issue**: Missing cyberpunk grid overlays and layered gradients
+**Required Fix**: Add StartMenu-style background patterns
+
+**Required Pattern:**
+```css
+.app-container {
+  background: linear-gradient(135deg, rgba(10, 5, 20, 0.95), rgba(30, 15, 45, 0.95));
+  background-image: 
+    linear-gradient(90deg, rgba(0, 195, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 195, 255, 0.05) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+```
+
+#### 3. **Neon Glow Effects**
+**Current Issue**: Limited use of box-shadow for glow effects
+**Required Fix**: Implement StartMenu-style glow effects
+
+**Required Effects:**
+```css
+.interactive-element:hover {
+  box-shadow: 
+    inset 0 0 8px rgba(0, 195, 255, 0.2),
+    0 0 5px rgba(0, 195, 255, 0.3);
+}
+
+.selected-element {
+  box-shadow: 0 0 10px rgba(0, 195, 255, 0.6);
+}
+```
+
+#### 4. **Font Standardization**
+**Current Issue**: Inconsistent font usage
+**Required Fix**: Use proper font variables
+
+**Required Fonts:**
+```css
+/* Body text */
+font-family: var(--font-main), 'Courier New', monospace;
+
+/* Headers and emphasis */
+font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+```
+
+#### 5. **Animation Patterns**
+**Current Issue**: Limited sophisticated animations
+**Required Fix**: Add StartMenu-style animations
+
+**Required Animations:**
+```css
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.element-with-pulse {
+  animation: neonPulse 3s infinite;
+}
+```
+
+### Apps Requiring Updates
+
+Based on analysis, these apps need theme consistency updates:
+
+1. **FileManager** - Replace hardcoded colors, add grid overlays
+2. **TextEditor** - Standardize color variables, enhance glow effects  
+3. **Settings** - Add background patterns, improve visual hierarchy
+4. **Terminal** - Ensure proper green text usage, add cyberpunk elements
+5. **ImageViewer** - Add grid overlays, enhance border effects
+6. **Starfield** - Improve glow effects, standardize colors
+7. **All Game Apps** - Ensure consistent theme implementation
+
+### Implementation Priority
+
+1. **High Priority**: FileManager, TextEditor, Settings (core system apps)
+2. **Medium Priority**: Terminal, ImageViewer (essential user apps)  
+3. **Low Priority**: Game apps (can maintain unique styling within theme bounds)
+
+### Testing Theme Consistency
+
+After updates, verify:
+- All apps use CSS variables instead of hardcoded colors
+- Background patterns match StartMenu style
+- Interactive elements have consistent glow effects
+- Fonts follow the VT323/Orbitron pattern
+- Animations enhance rather than distract
+
+This standardization will ensure a cohesive cyberpunk experience across the entire MRHEADROOM_DESCENT OS.
