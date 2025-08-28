@@ -1,5 +1,5 @@
 .start-menu {
-  position: absolute;
+  position: fixed; /* Changed from absolute to fixed for consistent positioning */
   bottom: 38px; /* Match the taskbar height */
   left: 4px;
   width: 340px; /* Increased width to accommodate content */

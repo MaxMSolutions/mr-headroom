@@ -1,0 +1,40 @@
+/**
+ * CRT Effect Z-Index Fixes
+ * This file contains fixes for z-index and positioning issues 
+ * that can occur when the CRT effect is enabled
+ */
+
+/* Ensure the Start Menu stays properly positioned with CRT effect enabled */
+.crt-effect .start-menu {
+  /* Use !important to override any other styles */
+  position: fixed !important;
+  z-index: 1100 !important;
+  bottom: 38px !important;
+}
+
+/* Ensure the Taskbar stays fixed at the bottom */
+.crt-effect .taskbar {
+  position: fixed !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+}
+
+/* Make sure scanlines don't interfere with UI interaction */
+.crt-effect::before,
+.crt-effect::after {
+  pointer-events: none !important;
+  z-index: 10 !important; /* Lower than UI elements but higher than content */
+}
+
+/* Ensure all critical UI components have proper z-index */
+.crt-effect .window {
+  z-index: 1000 !important;
+}
+
+.crt-effect .window.active {
+  z-index: 1010 !important;
+}
+
+.crt-effect .desktop-icons {
+  z-index: 100 !important;
+}
