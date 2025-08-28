@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ThemeName } from '../../ThemeContext';
 import './DesktopMenu.css';
 
@@ -17,6 +17,8 @@ interface DesktopMenuProps {
   onToggleAccessibilityMode: () => void;
   crtEffect: boolean;
   accessibilityMode: boolean;
+  onClose: () => void;
+  onOpenApp?: (appName: string) => void;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({ 
@@ -46,39 +48,105 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
   onToggleCrtEffect,
   onToggleAccessibilityMode,
   crtEffect,
-  accessibilityMode
+  accessibilityMode,
+  onClose,
+  onOpenApp
 }) => {
+  const menuRef = useRef<HTMLDivElement>(null);
+  
+  // Handle outside clicks
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+    
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
     <div 
+      ref={menuRef}
       className="desktop-menu"
       style={{ 
         top: `${Math.min(position.y, window.innerHeight - 320)}px`, 
         left: `${Math.min(position.x, window.innerWidth - 220)}px` 
       }}
     >
-      <MenuItem icon="new" label="New File" />
-      <MenuItem icon="terminal" label="Open Terminal" />
-      <MenuItem icon="settings" label="Settings" />
+      <MenuItem 
+        icon="new" 
+        label="New File" 
+        onClick={() => {
+          onOpenApp?.('TextEditor');
+          onClose();
+        }}
+      />
+      <MenuItem 
+        icon="terminal" 
+        label="Open Terminal" 
+        onClick={() => {
+          onOpenApp?.('Terminal');
+          onClose();
+        }}
+      />
+      <MenuItem 
+        icon="settings" 
+        label="Settings" 
+        onClick={() => {
+          onOpenApp?.('Settings');
+          onClose();
+        }}
+      />
       <div className="menu-divider"></div>
       <MenuItem 
         icon="color-sunset" 
         label="Sunset Theme" 
-        onClick={() => onThemeChange('sunset')} 
+        onClick={() => {
+          onThemeChange('sunset');
+          onClose();
+        }} 
       />
       <MenuItem 
         icon="color-neon" 
         label="Neon Theme" 
-        onClick={() => onThemeChange('neonCrt')} 
+        onClick={() => {
+          onThemeChange('neonCrt');
+          onClose();
+        }} 
       />
       <MenuItem 
         icon="color-amber" 
         label="Amber Theme" 
-        onClick={() => onThemeChange('amber')} 
+        onClick={() => {
+          onThemeChange('amber');
+          onClose();
+        }} 
       />
       <MenuItem 
         icon="color-matrix" 
         label="Matrix Theme" 
-        onClick={() => onThemeChange('matrix')} 
+        onClick={() => {
+          onThemeChange('matrix');
+          onClose();
+        }} 
       />
       <div className="menu-divider"></div>
       <MenuItem 
@@ -86,17 +154,30 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
         isActive={crtEffect}
         icon="" 
         label={crtEffect ? 'Disable CRT Effect' : 'Enable CRT Effect'} 
-        onClick={onToggleCrtEffect}
+        onClick={() => {
+          onToggleCrtEffect();
+          onClose();
+        }}
       />
       <MenuItem 
         isToggle={true}
         isActive={accessibilityMode}
         icon="" 
         label={accessibilityMode ? 'Disable Accessibility Mode' : 'Enable Accessibility Mode'} 
-        onClick={onToggleAccessibilityMode}
+        onClick={() => {
+          onToggleAccessibilityMode();
+          onClose();
+        }}
       />
       <div className="menu-divider"></div>
-      <MenuItem icon="boot" label="Replay Boot Sequence" />
+      <MenuItem 
+        icon="boot" 
+        label="Replay Boot Sequence" 
+        onClick={() => {
+          // Add Boot Sequence replay handler here
+          onClose();
+        }}
+      />
     </div>
   );
 };

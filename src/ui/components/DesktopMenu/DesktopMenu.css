@@ -1,51 +1,64 @@
+
 .desktop-menu {
   position: absolute;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--accent-primary);
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  background: rgba(5, 20, 30, 0.95);
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 195, 255, 0.4), inset 0 0 5px rgba(0, 195, 255, 0.2);
   min-width: 200px;
-  max-height: calc(100vh - 50px); /* Prevent going off vertically */
-  overflow-y: auto; /* Add scrolling if needed */
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
   z-index: 2000;
-  animation: menuFadeIn 0.15s ease-in-out;
-  backdrop-filter: blur(5px);
-  padding: 4px;
+  animation: menu-appear 0.15s ease-out forwards;
+  padding: 5px 5px 4px 5px;
+  font-family: var(--font-alt);
 }
 
-@keyframes menuFadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes menu-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
+
 
 .menu-item {
-  padding: 8px 12px;
+  padding: 8px 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px; /* Increased gap for better spacing */
-  border-radius: 4px; /* Slightly larger radius */
+  gap: 8px;
   position: relative;
-  margin-bottom: 2px; /* Add spacing between menu items */
-  transition: all 0.15s ease; /* Smooth hover effect */
-  flex-wrap: nowrap; /* Prevent wrapping of content */
-  justify-content: flex-start; /* Align content to start */
-  min-height: 24px; /* Ensure minimum height for the menu item */
+  margin: 0;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-alt);
+  color: #00f0ff;
+  font-size: 12px;
+  outline: none;
+  min-height: 24px;
+  touch-action: manipulation;
 }
 
 .menu-item:hover {
-  background-color: var(--accent-primary);
-  color: var(--bg-primary);
-  box-shadow: 0 0 5px var(--accent-primary);
-  transform: translateX(2px); /* Slight movement on hover */
+  background: rgba(0, 195, 255, 0.2);
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.3) inset;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.7);
 }
 
 .menu-item-icon {
   width: 16px;
   height: 16px;
   display: inline-block;
-  background-color: var(--accent-secondary);
-  opacity: 0.9;
-  border-radius: 2px;
+  color: #00f0ff;
+  text-align: center;
   flex-shrink: 0;
 }
 
@@ -54,34 +67,30 @@
   overflow: hidden;
   text-overflow: ellipsis;
   flex-grow: 1;
-  font-size: 0.95rem; /* Slightly smaller font for better fit */
-  padding-right: 4px; /* Add a bit of padding on the right */
+  font-size: 12px;
+  padding-right: 4px;
 }
+
 
 .menu-divider {
   height: 1px;
-  margin: 8px 0; /* Increased margin */
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--accent-secondary),
-    transparent
-  );
-  opacity: 0.6;
+  margin: 5px 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 195, 255, 0.5), transparent);
+  border: none;
 }
 
 /* Toggle switch styling */
 .toggle-switch {
-  min-width: 40px; /* Wider for better visibility */
-  height: 18px; /* Taller for better visibility */
-  border: 1px solid var(--accent-secondary);
+  min-width: 40px;
+  height: 18px;
+  border: 1px solid rgba(0, 195, 255, 0.5);
   border-radius: 10px;
   position: relative;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(5, 20, 30, 0.8);
   transition: all 0.2s ease;
-  margin-right: 12px; /* Increased margin for better spacing with text */
-  flex-shrink: 0; /* Prevent toggle from shrinking */
-  display: inline-block; /* Ensure proper display */
+  margin-right: 10px;
+  flex-shrink: 0;
+  display: inline-block;
 }
 
 .toggle-switch::before {
@@ -89,67 +98,61 @@
   position: absolute;
   left: 2px;
   top: 2px;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: var(--text-secondary);
+  background: rgba(0, 195, 255, 0.5);
   transition: all 0.2s ease;
 }
 
 .toggle-switch.active {
-  background: color-mix(in srgb, var(--accent-primary) 50%, transparent);
-  border-color: var(--accent-primary); /* Make border more visible when active */
+  background: rgba(0, 195, 255, 0.2);
+  border-color: rgba(0, 195, 255, 0.8);
 }
 
 .toggle-switch.active::before {
-  left: 24px; /* Adjusted for the new width */
-  background: var(--accent-primary);
-  box-shadow: 0 0 5px var(--accent-primary);
+  left: 24px;
+  background: rgba(0, 195, 255, 1);
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.8);
 }
 
 /* Color swatches */
 .color-swatch {
-  width: 20px; /* Larger for better visibility */
-  height: 20px;
-  border-radius: 4px; /* More rounded */
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 195, 255, 0.5);
   position: relative;
   overflow: hidden;
-  margin-right: 5px; /* Consistent spacing with toggle switches */
-  transition: all 0.15s ease; /* Add transition effect */
+  margin-right: 8px;
+  transition: all 0.2s;
+  flex-shrink: 0;
 }
 
 .menu-item:hover .color-swatch {
-  transform: scale(1.1); /* Grow slightly on hover */
+  transform: scale(1.1);
+  border-color: rgba(0, 195, 255, 0.9);
+  box-shadow: 0 0 5px rgba(0, 195, 255, 0.4);
 }
 
 .color-swatch.neon {
   background-color: #33ff33;
-  box-shadow: 0 0 5px #33ff33;
-}
-
-.color-swatch.neon:after {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
+  box-shadow: 0 0 5px rgba(51, 255, 51, 0.3);
 }
 
 .color-swatch.amber {
   background-color: #ffb000;
-  box-shadow: 0 0 5px #ffb000;
+  box-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
 }
 
 .color-swatch.matrix {
   background-color: #00ff00;
-  box-shadow: 0 0 5px #00ff00;
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
 }
 
 .color-swatch.sunset {
   background: linear-gradient(135deg, #ff6b35 0%, #d83790 100%);
-  box-shadow: 0 0 5px rgba(216, 55, 144, 0.8);
+  box-shadow: 0 0 5px rgba(216, 55, 144, 0.3);
 }
 
 /* Specific icons */
@@ -157,29 +160,32 @@
   /* Common icon styles */
   width: 16px;
   height: 16px;
+  color: #00f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .new-icon:after {
   content: '+';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-weight: bold;
-  color: var(--accent-primary);
+  color: #00f0ff;
 }
 
-.boot-icon {
-  background-color: var(--accent-secondary);
-  position: relative;
+.terminal-icon:after {
+  content: '>';
+  font-weight: bold;
+  color: #00f0ff;
+}
+
+.settings-icon:after {
+  content: '⚙';
+  font-size: 14px;
+  color: #00f0ff;
 }
 
 .boot-icon:after {
   content: '↻';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-weight: bold;
-  color: var(--bg-primary);
+  color: #00f0ff;
 }

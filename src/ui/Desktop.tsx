@@ -112,7 +112,7 @@ const Desktop: React.FC<DesktopProps> = ({ fileSystem }) => {
       if (window.windowManager) {
         // Handle case-sensitivity by capitalizing first letter
         // This helps convert "guide" to "Guide" to match registry keys
-        const normalizedAppName = appName.charAt(0).toUpperCase() + appName.slice(1).toLowerCase();
+        const normalizedAppName = appName.charAt(0).toUpperCase() + appName.slice(1);
         const appId = `${appName.toLowerCase()}-${Date.now()}`;
         
         // If the app was launched from an executable, use that info for the window title
@@ -480,6 +480,8 @@ const Desktop: React.FC<DesktopProps> = ({ fileSystem }) => {
           onToggleAccessibilityMode={toggleAccessibilityMode}
           crtEffect={crtEffect}
           accessibilityMode={accessibilityMode}
+          onClose={() => setShowDesktopMenu(false)}
+          onOpenApp={(appName) => window.openApp?.(appName)}
         />
       )}
       
