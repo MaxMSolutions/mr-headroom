@@ -7,6 +7,8 @@ interface ContextMenuProps {
   items: ContextMenuItem[];
   onMenuItemAction?: (action: string, iconId: string) => void;
   onClose: () => void;
+  className?: string;
+  maxHeight?: number;
 }
 
 export interface ContextMenuItem {
@@ -19,7 +21,7 @@ export interface ContextMenuItem {
   iconId?: string;   // ID of the icon this menu item relates to
 }
 
-const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, items, onMenuItemAction, onClose }) => {
+const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, items, onMenuItemAction, onClose, className = "context-menu", maxHeight }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x, y });
 
@@ -104,9 +106,13 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, items, onMenuItemAction
 
   return (
     <div 
-      className="context-menu" 
+      className={className} 
       ref={menuRef} 
-      style={{ left: position.x + 'px', top: position.y + 'px' }}
+      style={{ 
+        left: position.x + 'px', 
+        top: position.y + 'px',
+        ...(maxHeight && { maxHeight: maxHeight + 'px', overflowY: 'auto' })
+      }}
     >
       {items.map((item, index) => (
         item.separator ? (

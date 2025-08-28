@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './ContextMenu.css'; // Reusing same CSS file for consistency
+import '../ContextMenu.css'; // Reusing same CSS file for consistency
 
 interface PropertiesDialogProps {
   file: {

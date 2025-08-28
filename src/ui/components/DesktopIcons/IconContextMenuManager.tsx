@@ -1,5 +1,5 @@
 import React from 'react';
-import ContextMenu, { ContextMenuItem } from './ContextMenu';
+import ContextMenu, { ContextMenuItem } from '../ContextMenu';
 
 interface IconContextMenuManagerProps {
   contextMenuPosition: { x: number, y: number, iconId: string } | null;

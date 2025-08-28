@@ -1,14 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ThemeName } from '../../ThemeContext';
+import ContextMenu, { ContextMenuItem } from '../ContextMenu';
 import './DesktopMenu.css';
-
-interface MenuItemProps {
-  icon: string;
-  label: string;
-  onClick?: () => void;
-  isToggle?: boolean;
-  isActive?: boolean;
-}
 
 interface DesktopMenuProps {
   position: { x: number; y: number };
@@ -20,27 +13,6 @@ interface DesktopMenuProps {
   onClose: () => void;
   onOpenApp?: (appName: string) => void;
 }
-
-const MenuItem: React.FC<MenuItemProps> = ({ 
-  icon, 
-  label, 
-  onClick, 
-  isToggle = false,
-  isActive = false
-}) => {
-  return (
-    <div className="menu-item" onClick={onClick}>
-      {isToggle ? (
-        <div className={`toggle-switch ${isActive ? 'active' : ''}`}></div>
-      ) : icon.startsWith('color-') ? (
-        <div className={`color-swatch ${icon.replace('color-', '')}`}></div>
-      ) : (
-        <div className={`menu-item-icon ${icon}-icon`}></div>
-      )}
-      <span>{label}</span>
-    </div>
-  );
-};
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ 
   position, 
@@ -82,103 +54,104 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
     };
   }, [onClose]);
 
-  return (
-    <div 
-      ref={menuRef}
-      className="desktop-menu"
-      style={{ 
-        top: `${Math.min(position.y, window.innerHeight - 320)}px`, 
-        left: `${Math.min(position.x, window.innerWidth - 220)}px` 
-      }}
-    >
-      <MenuItem 
-        icon="new" 
-        label="New File" 
-        onClick={() => {
+  // Generate menu items
+  const getMenuItems = (): ContextMenuItem[] => {
+    return [
+      {
+        label: 'New File',
+        icon: '+',
+        onClick: () => {
           onOpenApp?.('TextEditor');
           onClose();
-        }}
-      />
-      <MenuItem 
-        icon="terminal" 
-        label="Open Terminal" 
-        onClick={() => {
+        }
+      },
+      {
+        label: 'Open Terminal',
+        icon: '>',
+        onClick: () => {
           onOpenApp?.('Terminal');
           onClose();
-        }}
-      />
-      <MenuItem 
-        icon="settings" 
-        label="Settings" 
-        onClick={() => {
+        }
+      },
+      {
+        label: 'Settings',
+        icon: '⚙',
+        onClick: () => {
           onOpenApp?.('Settings');
           onClose();
-        }}
-      />
-      <div className="menu-divider"></div>
-      <MenuItem 
-        icon="color-sunset" 
-        label="Sunset Theme" 
-        onClick={() => {
+        }
+      },
+      { separator: true, label: '' },
+      {
+        label: 'Sunset Theme',
+        icon: '🎨',
+        onClick: () => {
           onThemeChange('sunset');
           onClose();
-        }} 
-      />
-      <MenuItem 
-        icon="color-neon" 
-        label="Neon Theme" 
-        onClick={() => {
+        }
+      },
+      {
+        label: 'Neon Theme',
+        icon: '💡',
+        onClick: () => {
           onThemeChange('neonCrt');
           onClose();
-        }} 
-      />
-      <MenuItem 
-        icon="color-amber" 
-        label="Amber Theme" 
-        onClick={() => {
+        }
+      },
+      {
+        label: 'Amber Theme',
+        icon: '🟡',
+        onClick: () => {
           onThemeChange('amber');
           onClose();
-        }} 
-      />
-      <MenuItem 
-        icon="color-matrix" 
-        label="Matrix Theme" 
-        onClick={() => {
+        }
+      },
+      {
+        label: 'Matrix Theme',
+        icon: '🟢',
+        onClick: () => {
           onThemeChange('matrix');
           onClose();
-        }} 
-      />
-      <div className="menu-divider"></div>
-      <MenuItem 
-        isToggle={true}
-        isActive={crtEffect}
-        icon="" 
-        label={crtEffect ? 'Disable CRT Effect' : 'Enable CRT Effect'} 
-        onClick={() => {
+        }
+      },
+      { separator: true, label: '' },
+      {
+        label: crtEffect ? 'Disable CRT Effect' : 'Enable CRT Effect',
+        icon: crtEffect ? '📺' : '📺',
+        onClick: () => {
           onToggleCrtEffect();
           onClose();
-        }}
-      />
-      <MenuItem 
-        isToggle={true}
-        isActive={accessibilityMode}
-        icon="" 
-        label={accessibilityMode ? 'Disable Accessibility Mode' : 'Enable Accessibility Mode'} 
-        onClick={() => {
+        }
+      },
+      {
+        label: accessibilityMode ? 'Disable Accessibility Mode' : 'Enable Accessibility Mode',
+        icon: accessibilityMode ? '♿' : '♿',
+        onClick: () => {
           onToggleAccessibilityMode();
           onClose();
-        }}
-      />
-      <div className="menu-divider"></div>
-      <MenuItem 
-        icon="boot" 
-        label="Replay Boot Sequence" 
-        onClick={() => {
+        }
+      },
+      { separator: true, label: '' },
+      {
+        label: 'Replay Boot Sequence',
+        icon: '↻',
+        onClick: () => {
           // Add Boot Sequence replay handler here
           onClose();
-        }}
-      />
-    </div>
+        }
+      }
+    ];
+  };
+
+  return (
+    <ContextMenu
+      x={Math.min(position.x, window.innerWidth - 220)}
+      y={Math.min(position.y, window.innerHeight - 320)}
+      items={getMenuItems()}
+      onClose={onClose}
+      className="desktop-menu"
+      maxHeight={320}
+    />
   );
 };
 
