@@ -91,14 +91,6 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
         }
       },
       {
-        label: 'Neon Theme',
-        icon: '💡',
-        onClick: () => {
-          onThemeChange('neonCrt');
-          onClose();
-        }
-      },
-      {
         label: 'Amber Theme',
         icon: '🟡',
         onClick: () => {

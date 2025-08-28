@@ -86,12 +86,6 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({ id, onClose, fileSystem
             <label>Visual Theme</label>
             <div className="theme-selector">
               <button 
-                className={`theme-option neonCrt ${currentTheme === 'neonCrt' ? 'selected' : ''}`} 
-                onClick={() => setTheme('neonCrt')}
-              >
-                Neon CRT
-              </button>
-              <button 
                 className={`theme-option amber ${currentTheme === 'amber' ? 'selected' : ''}`} 
                 onClick={() => setTheme('amber')}
               >

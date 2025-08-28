@@ -262,9 +262,10 @@ const WindowManager: React.FC<WindowManagerProps> = ({
   // Add window
   const addWindow = useCallback((window: Partial<Window>) => {
     const highestZ = Math.max(...windows.map(w => w.zIndex), 0);
+    const windowId = window.id || `window-${Date.now()}`;
     
     const newWindow: Window = {
-      id: `window-${Date.now()}`,
+      id: windowId,
       title: window.title || 'Untitled',
       content: window.content || null,
       x: window.x || 50,
@@ -278,7 +279,7 @@ const WindowManager: React.FC<WindowManagerProps> = ({
       componentProps: {
         ...window.componentProps,
         fileSystem,
-        id: `window-${Date.now()}`
+        id: windowId
       },
       icon: window.icon || '⊞', // Default icon if none provided
     };

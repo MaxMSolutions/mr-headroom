@@ -165,10 +165,6 @@ const StartMenu: React.FC<StartMenuProps> = ({
               <div className="color-swatch sunset"></div>
               <span>Display (Sunset)</span>
             </div>
-            <div className="menu-item" onClick={() => onThemeChange('neonCrt')}>
-              <div className="color-swatch neon"></div>
-              <span>Display (Neon)</span>
-            </div>
             <div className="menu-item" onClick={() => onThemeChange('amber')}>
               <div className="color-swatch amber"></div>
               <span>Display (Amber)</span>

@@ -1,17 +1,17 @@
 /* Global CSS Variables */
 :root {
-  /* Primary Theme - Neon CRT */
+  /* Primary Theme - Amber */
   --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --text-primary: #33ff33;
-  --text-secondary: #00cc00;
-  --accent-primary: #ff00ff;
-  --accent-secondary: #00ffff;
-  --window-border: #33ff33;
-  --window-header: #0a0a0a;
-  --window-titlebar: #33ff33;
+  --bg-secondary: #1a1000;
+  --text-primary: #ffb000;
+  --text-secondary: #cc8800;
+  --accent-primary: #ff6600;
+  --accent-secondary: #ffcc00;
+  --window-border: #ffb000;
+  --window-header: #1a1000;
+  --window-titlebar: #ffb000;
   --terminal-bg: #000000;
-  --terminal-text: #33ff33;
+  --terminal-text: #ffb000;
   --crt-scanline: rgba(0, 0, 0, 0.2);
   
   /* Font Settings */

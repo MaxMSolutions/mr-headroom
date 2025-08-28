@@ -61,10 +61,6 @@
   overflow: hidden;
 }
 
-.color-swatch.neon {
-  background: linear-gradient(135deg, #000000, #1a0933);
-}
-
 .color-swatch.amber {
   background: linear-gradient(135deg, #000000, #ff9900);
 }

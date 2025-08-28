@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Define available themes
-export type ThemeName = 'neonCrt' | 'amber' | 'matrix' | 'sunset';
+export type ThemeName = 'amber' | 'matrix' | 'sunset';
 
 // Define theme properties
 interface ThemeContextType {
@@ -14,7 +14,7 @@ interface ThemeContextType {
 }
 
 const defaultThemeContext: ThemeContextType = {
-  currentTheme: 'neonCrt',
+  currentTheme: 'amber',
   setTheme: () => {},
   crtEffect: true,
   toggleCrtEffect: () => {},
@@ -29,7 +29,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>('neonCrt');
+  const [currentTheme, setCurrentTheme] = useState<ThemeName>('amber');
   const [crtEffect, setCrtEffect] = useState(true);
   const [accessibilityMode, setAccessibilityMode] = useState(false);
 
@@ -64,14 +64,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const root = document.documentElement;
     
     // Set theme specific variables
-    if (currentTheme === 'neonCrt') {
-      root.style.setProperty('--bg-primary', '#000000');
-      root.style.setProperty('--bg-secondary', '#0a0a0a');
-      root.style.setProperty('--text-primary', '#33ff33');
-      root.style.setProperty('--text-secondary', '#00cc00');
-      root.style.setProperty('--accent-primary', '#ff00ff');
-      root.style.setProperty('--accent-secondary', '#00ffff');
-    } else if (currentTheme === 'amber') {
+    if (currentTheme === 'amber') {
       root.style.setProperty('--bg-primary', '#000000');
       root.style.setProperty('--bg-secondary', '#1a1000');
       root.style.setProperty('--text-primary', '#ffb000');
@@ -85,6 +78,21 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       root.style.setProperty('--text-secondary', '#008800');
       root.style.setProperty('--accent-primary', '#88ff88');
       root.style.setProperty('--accent-secondary', '#00aa00');
+    } else if (currentTheme === 'sunset') {
+      root.style.setProperty('--bg-primary', '#000000');
+      root.style.setProperty('--bg-secondary', '#1a0a1a');
+      root.style.setProperty('--text-primary', '#ff6b6b');
+      root.style.setProperty('--text-secondary', '#cc5555');
+      root.style.setProperty('--accent-primary', '#ff4757');
+      root.style.setProperty('--accent-secondary', '#ff3838');
+    } else {
+      // Fallback to amber theme for any invalid theme
+      root.style.setProperty('--bg-primary', '#000000');
+      root.style.setProperty('--bg-secondary', '#1a1000');
+      root.style.setProperty('--text-primary', '#ffb000');
+      root.style.setProperty('--text-secondary', '#cc8800');
+      root.style.setProperty('--accent-primary', '#ff6600');
+      root.style.setProperty('--accent-secondary', '#ffcc00');
     }
     
     // Add/remove CRT effect class
@@ -104,11 +112,19 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   // Load preferences from local storage
   useEffect(() => {
-    const savedTheme = localStorage.getItem('mrheadroom-theme') as ThemeName;
+    const savedTheme = localStorage.getItem('mrheadroom-theme');
     const savedCrtEffect = localStorage.getItem('mrheadroom-crt-effect');
     const savedAccessibility = localStorage.getItem('mrheadroom-accessibility');
     
-    if (savedTheme) setCurrentTheme(savedTheme);
+    // Validate saved theme is still valid
+    const validThemes: ThemeName[] = ['amber', 'matrix', 'sunset'];
+    if (savedTheme && validThemes.includes(savedTheme as ThemeName)) {
+      setCurrentTheme(savedTheme as ThemeName);
+    } else if (savedTheme) {
+      // Clear invalid theme from localStorage
+      localStorage.removeItem('mrheadroom-theme');
+    }
+    
     if (savedCrtEffect) setCrtEffect(JSON.parse(savedCrtEffect));
     if (savedAccessibility) setAccessibilityMode(JSON.parse(savedAccessibility));
   }, []);

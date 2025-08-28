@@ -135,11 +135,6 @@
   box-shadow: 0 0 5px rgba(0, 195, 255, 0.4);
 }
 
-.color-swatch.neon {
-  background-color: #33ff33;
-  box-shadow: 0 0 5px rgba(51, 255, 51, 0.3);
-}
-
 .color-swatch.amber {
   background-color: #ffb000;
   box-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
