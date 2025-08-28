@@ -6,7 +6,7 @@
   height: calc(100% - var(--taskbar-height));
   pointer-events: none;
   overflow: hidden;
-  z-index: 10; /* Higher z-index to ensure windows appear above desktop icons */
+  z-index: 1001; /* Higher z-index to ensure windows appear above desktop icons */
 }
 
 .window {
