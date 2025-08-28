@@ -86,12 +86,14 @@
   overflow: hidden;
   text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
   box-shadow: inset 0 0 6px rgba(0, 195, 255, 0.3);
-  
+  flex-shrink: 0; /* Prevent titlebar from shrinking */
+  min-height: 25px; /* Ensure minimum usable height */
+
   /* Add futuristic circuit pattern similar to clock component */
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 20%, rgba(0, 195, 255, 0.1) 1px, transparent 1px),
     radial-gradient(circle at 90% 80%, rgba(0, 195, 255, 0.1) 1px, transparent 1px);
-  
+
   /* Add subtle scan line effect */
   animation: titlebarScanline 10s linear infinite;
 }
@@ -114,25 +116,29 @@
   color: #00f0ff;
   text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
   position: relative;
+  flex: 1; /* Allow title to take available space */
+  min-width: 0; /* Allow flex item to shrink below content size */
+  margin-right: 8px; /* Add spacing from controls */
 }
 
 .window-controls {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px; /* Reduced gap for better space utilization */
+  flex-shrink: 0; /* Prevent controls from shrinking */
 }
 
 .window-button {
-  width: 14px;
-  height: 14px;
-  margin-left: 3px;
+  width: 16px; /* Slightly larger for better usability */
+  height: 16px; /* Slightly larger for better usability */
+  margin-left: 2px; /* Reduced margin */
   background-color: rgba(10, 5, 20, 0.9);
   border: 1px solid rgba(0, 195, 255, 0.6);
   color: #00f0ff;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 10px;
+  font-size: 10px; /* Slightly smaller font to fit better */
   cursor: pointer;
   padding: 0;
   line-height: 1;
@@ -140,11 +146,12 @@
   transition: all 0.15s ease;
   box-shadow: inset 0 0 3px rgba(0, 195, 255, 0.2);
   text-shadow: 0 0 3px rgba(0, 195, 255, 0.8);
+  flex-shrink: 0; /* Prevent buttons from shrinking */
 }
 
 .window-button:hover {
   background-color: rgba(0, 195, 255, 0.2);
-  transform: scale(1.05);
+  transform: scale(1.1); /* Slightly larger scale for better feedback */
   box-shadow: 0 0 8px rgba(0, 195, 255, 0.5),
               inset 0 0 5px rgba(0, 195, 255, 0.4);
   border-color: rgba(0, 195, 255, 0.8);
@@ -195,6 +202,7 @@
   border-top: 1px solid rgba(0, 195, 255, 0.15);
   color: #f0f0f0;
   font-family: 'VT323', 'Courier New', monospace;
+  min-height: 0; /* Allow content area to shrink if needed */
   /* Add subtle tech pattern overlay similar to Start Menu */
   background-image: 
     radial-gradient(circle at center, transparent, rgba(0, 195, 255, 0.05) 70%, transparent 90%),
@@ -264,6 +272,31 @@
 .window.maximized .window-titlebar {
   border-radius: 0;
   border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+  height: var(--window-header-height); /* Ensure consistent height in maximized state */
+  min-height: 25px;
+}
+
+/* Ensure titlebar remains usable on small windows */
+.window[style*="width: 300px"] .window-title,
+.window[style*="height: 200px"] .window-title {
+  font-size: 10px; /* Slightly smaller font for very small windows */
+}
+
+.window[style*="width: 300px"] .window-button,
+.window[style*="height: 200px"] .window-button {
+  width: 14px;
+  height: 14px;
+  font-size: 9px;
+}
+
+/* Enhanced focus states for accessibility */
+.window:focus-within .window-titlebar {
+  border-bottom-color: rgba(0, 195, 255, 0.8);
+  box-shadow: inset 0 0 8px rgba(0, 195, 255, 0.5);
+}
+
+.window:focus-within .window-title {
+  text-shadow: 0 0 8px rgba(0, 195, 255, 1);
 }
 
 /* Focus effects */
