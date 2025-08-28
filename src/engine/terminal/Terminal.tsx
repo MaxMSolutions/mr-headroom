@@ -40,7 +40,7 @@ const Terminal: React.FC<TerminalProps> = ({
       const loaded = newFs.loadFromLocalStorage();
       if (!loaded) {
         // If not found, load default from URL
-        newFs.loadFromUrl('/src/data/filesystem/fileSystem.json')
+        newFs.loadFromUrl('/data/filesystem/fileSystem.json')
           .catch(err => {
             console.error('Failed to load file system:', err);
             addToHistory('error', 'Failed to load file system. Some commands may not work properly.');

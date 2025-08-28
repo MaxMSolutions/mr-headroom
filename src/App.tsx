@@ -9,7 +9,7 @@ import { MysteryEngine } from './engine/mystery/MysteryEngine';
 
 // List of essential assets to preload
 const essentialAssets = [
-  { id: 'fileSystem', type: 'json' as const, url: '/src/data/filesystem/fileSystem.json' },
+  { id: 'fileSystem', type: 'json' as const, url: '/data/filesystem/fileSystem.json' },
   // Add other essential assets here (core images, sound effects, etc.)
 ];
 
@@ -51,7 +51,7 @@ const App = () => {
   // Helper function to load file system from URL
   const loadFileSystemFromUrl = () => {
     const fs = new FileSystem();
-    fs.loadFromUrl('/src/data/filesystem/fileSystem.json')
+    fs.loadFromUrl('/data/filesystem/fileSystem.json')
       .then(() => {
         setFileSystem(fs);
       })

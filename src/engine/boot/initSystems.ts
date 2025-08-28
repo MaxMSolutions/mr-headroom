@@ -18,7 +18,7 @@ export const initializeAppSystems = async (): Promise<{
   // Initialize FileSystem
   const fs = new FileSystem();
   try {
-    await fs.loadFromUrl('/src/data/filesystem/fileSystem.json');
+    await fs.loadFromUrl('/data/filesystem/fileSystem.json');
     console.log('[AppSystemsInit] FileSystem initialized successfully');
   } catch (error) {
     console.error('[AppSystemsInit] Failed to initialize FileSystem:', error);

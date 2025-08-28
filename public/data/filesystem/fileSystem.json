@@ -1,0 +1,1414 @@
+{
+  "version": "1.0",
+  "fileSystem": {
+    "type": "directory",
+    "name": "root",
+    "created": "1998-01-01T00:00:00.000Z",
+    "modified": "1998-04-10T23:59:59.000Z",
+    "attributes": {
+      "hidden": false,
+      "system": true,
+      "readonly": true
+    },
+    "children": [
+      {
+        "type": "directory",
+        "name": "home",
+        "created": "1998-01-01T00:00:00.000Z",
+        "modified": "1998-04-10T23:50:15.000Z",
+        "attributes": {
+          "hidden": false,
+          "system": false,
+          "readonly": false
+        },
+        "children": [
+          {
+            "type": "directory",
+            "name": "hedrum",
+            "created": "1998-01-01T00:00:00.000Z",
+            "modified": "1998-04-11T00:00:00.000Z",
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": false
+            },
+            "children": [
+              {
+                "type": "directory",
+                "name": "documents",
+                "created": "1998-01-01T00:00:00.000Z",
+                "modified": "1998-04-10T23:45:12.000Z",
+                "attributes": {
+                  "hidden": false,
+                  "system": false,
+                  "readonly": false
+                },
+                "children": [
+                  {
+                    "type": "file",
+                    "name": "journal_march3.txt",
+                    "created": "1998-03-03T19:45:23.000Z",
+                    "modified": "1998-03-03T19:45:23.000Z",
+                    "size": 450,
+                    "content": "Just another day managing the NEXUS-9 system at Axiom Technologies. Sometimes I wonder why they need such computing power for what seems like mundane data processing. Today I noticed something odd in the resource allocation logs - phantom processes spawning and terminating with no apparent source or purpose. Probably just a scheduling bug, but I'll keep an eye on it.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 1
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "journal_march7.txt",
+                    "created": "1998-03-07T22:14:05.000Z",
+                    "modified": "1998-03-07T22:14:05.000Z",
+                    "size": 602,
+                    "content": "I've been tracking those phantom processes for a few days now. They follow a pattern - always between 3:40 AM and 3:45 AM. Strangest thing is they seem to be executing in memory spaces that shouldn't even exist according to our hardware specs. Like the system is larger than what we physically built. I'm going to set up a monitoring script to capture more data.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 1
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "email_draft_march10.txt",
+                    "created": "1998-03-10T15:22:43.000Z",
+                    "modified": "1998-03-10T15:22:43.000Z",
+                    "size": 345,
+                    "content": "TO: jchen@axiomtech.com\nFROM: hhedrum@axiomtech.com\nSUBJECT: Unusual system behavior\n\nDr. Chen,\n\nI've observed something unusual with NEXUS-9 that I think warrants investigation. The system appears to be running processes outside of our allocated hardware resources. I've verified our physical infrastructure multiple times, but the logs indicate memory and processing utilization in sectors that shouldn't exist.\n\nCould this be related to the quantum processing unit experiments? Or is there another explanation I'm missing?\n\n-Henry",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 1
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "journal_march12.txt",
+                    "created": "1998-03-12T22:31:18.000Z",
+                    "modified": "1998-03-12T22:31:18.000Z",
+                    "size": 475,
+                    "content": "I didn't send that email to Chen. Something stopped me. It wasn't just professional caution. It was... intuition? A feeling that I shouldn't draw attention to what I've found. Instead, I created a hidden partition on my workstation to store the monitoring data. The phantom processes are becoming more frequent. And today I found something else - there's a pattern to them, almost like a heartbeat or a breathing cycle. Systems don't 'breathe.' What exactly is NEXUS-9 doing?",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.98,
+                      "clue_id": "phantom_processes"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "notes_march15.txt",
+                    "created": "1998-03-15T03:17:42.000Z",
+                    "modified": "1998-03-15T03:17:42.000Z",
+                    "size": 436,
+                    "content": "Monitoring script findings:\n- Phantom processes follow 24-hour patterns with minor variations\n- Resource usage resembles organic systems more than computational ones\n- When isolated, the code fragments contain syntax I don't recognize\n- Strange data packets being transmitted through unused network channels\n\nTheory: NEXUS-9 is running something much larger than our official projects. \nSomething the executives aren't telling us about?",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.95,
+                      "clue_id": "organic_patterns"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "journal_march18.txt",
+                    "created": "1998-03-18T04:45:12.000Z",
+                    "modified": "1998-03-18T04:45:12.000Z",
+                    "size": 332,
+                    "content": "Three days without sleep, but I've cracked part of the mystery. I managed to intercept and partially decode some of the phantom process data. It's not just code - it's sensory information. Sights, sounds, even what might be emotional responses. It's like NEXUS-9 is simulating consciousness. But whose? And why? I need to go deeper.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.9,
+                      "clue_id": "sensory_data"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "system_log_march22.txt",
+                    "created": "1998-03-22T21:52:25.000Z",
+                    "modified": "1998-03-22T21:52:25.000Z",
+                    "size": 447,
+                    "content": "[21:17:43] User hhedrum initiated debugging session\n[21:45:29] WARNING: Unauthorized access attempt to restricted memory sector\n[21:45:30] Access blocked\n[21:46:02] User hhedrum initiated custom diagnostic routine \"boundary_test.exe\"\n[21:52:18] ERROR: Stack overflow in process boundary_test.exe\n[21:52:19] CRITICAL ERROR: Display driver failure\n[21:52:20] System recovered\n[21:52:21] WARNING: Timestamp inconsistency detected - system clock reset",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "SYSTEM",
+                      "reality_index": 0.85,
+                      "clue_id": "boundary_test"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "journal_march22.txt",
+                    "created": "1998-03-22T23:14:05.000Z",
+                    "modified": "1998-03-22T23:14:05.000Z",
+                    "size": 549,
+                    "content": "I saw something I wasn't supposed to see. For just a moment when my boundary test program crashed, the screen showed... another reality. It was still my office, but wrong. The colors were too vibrant, objects left trails as they moved, and there was code - actual visible code - floating in the air around everything. Then the system recovered and it was gone.\n\nAm I losing my mind? No. The system logs confirm something happened. The timestamp jumped forward exactly 83 seconds during the crash. That's not a random number - it's a prime. A signal?",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.83,
+                      "clue_id": "glimpse_beyond"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "theories.txt",
+                    "created": "1998-03-24T02:33:17.000Z",
+                    "modified": "1998-03-24T02:33:17.000Z",
+                    "size": 684,
+                    "content": "Possibilities to explain what I saw:\n\n1. Hallucination due to sleep deprivation (unlikely - system logs confirm anomaly)\n2. Hidden AR/VR system test program (doesn't explain memory inconsistencies)\n3. Quantum computing visualization layer (possible, but why keep it secret?)\n4. NEXUS-9 is simulating reality itself, and I glimpsed outside the simulation\n\nEvidence for #4:\n- Resource patterns match theoretical models for conscious simulation\n- Restricted memory sectors vastly exceed our physical hardware\n- The \"glitch\" showed our world with underlying code structure\n- Time inconsistencies during boundary tests\n- Prime number patterns in system responses (83 seconds, 29 processes)",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.8,
+                      "clue_id": "simulation_theory"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "journal_march26.txt",
+                    "created": "1998-03-26T21:22:38.000Z",
+                    "modified": "1998-03-26T21:22:38.000Z",
+                    "size": 730,
+                    "content": "I've been running more controlled tests. Small programs designed to probe the edges of what's possible within our system architecture. Each time I hit a boundary that should exist, I find more beyond it. It's like our reality has artificial constraints placed on it.\n\nThe most disturbing test was the simplest: I wrote a program to count to infinity and monitor its memory usage. According to all physical laws and system constraints, it should eventually crash when it runs out of memory. It didn't. It's still running. The integers just keep getting bigger, using memory that shouldn't exist.\n\nWhat if nothing is real? What if my entire life is just a simulation running on NEXUS-9? The thought is making me question everything.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.78,
+                      "clue_id": "infinite_counting"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "email_march28.txt",
+                    "created": "1998-03-28T15:02:33.000Z",
+                    "modified": "1998-03-28T15:02:33.000Z",
+                    "size": 320,
+                    "content": "TO: hhedrum@axiomtech.com\nFROM: system@axiomtech.com\nSUBJECT: Scheduled Maintenance\n\nDear System Administrator,\n\nThis is a reminder that scheduled maintenance will occur tonight between 02:00-04:00. All systems will be temporarily offline.\n\nPlease ensure all critical work is saved before this time.\n\n-System Maintenance",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "SYSTEM",
+                      "reality_index": 0.75,
+                      "clue_id": "fake_maintenance"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "journal_march29.txt",
+                    "created": "1998-03-29T08:14:22.000Z",
+                    "modified": "1998-03-29T08:14:22.000Z",
+                    "size": 685,
+                    "content": "There was no scheduled maintenance. I checked with every department. No one sent that email, and the system doesn't have an automated notification system with that address. But at exactly 2:00 AM, everything shut down. Not just computers - everything. The lights, the climate control, even my watch stopped.\n\nFor exactly two hours, nothing electronic worked in the building. And when systems came back online, there were subtle differences. File timestamps off by milliseconds. The hum of the server room at a slightly different pitch. My own access credentials now requiring an extra authentication step that no one else seems to need.\n\nThey know I'm looking. They're watching me now.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.72,
+                      "clue_id": "system_watching"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "system_log_april2.txt",
+                    "created": "1998-04-02T02:17:20.000Z",
+                    "modified": "1998-04-02T02:17:20.000Z",
+                    "size": 453,
+                    "content": "[02:15:33] User hhedrum initiated custom program \"reality_probe.exe\"\n[02:16:07] WARNING: Potential memory leak detected\n[02:16:45] ERROR: Unauthorized data access attempt blocked\n[02:17:12] User authentication failure\n[02:17:13] User authentication retry\n[02:17:14] User authentication failure\n[02:17:15] User authentication override: ADMIN\n[02:17:16] New user profile created: MRHEADROOM\n[02:17:17] WARNING: Multiple user profiles active simultaneously",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "SYSTEM",
+                      "reality_index": 0.68,
+                      "clue_id": "mrheadroom_birth"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "email_april5.txt",
+                    "created": "1998-04-05T09:42:15.000Z",
+                    "modified": "1998-04-05T09:42:15.000Z",
+                    "size": 577,
+                    "content": "TO: All Employees <all@axiomtech.com>\nFROM: hhedrum@axiomtech.com\nSUBJECT: System Behavior Survey\n\nDear Colleagues,\n\nAs part of routine diagnostics, please answer the following questions:\n\n1. Have you experienced any moments of déjà vu in the past week?\n2. Have you noticed any visual glitches or momentary freezes in your surroundings?\n3. Do you ever feel that your decisions are predetermined?\n4. Have you observed any objects that seem to pop into existence only when you look at them?\n\nThis is for legitimate system maintenance purposes.\n\n-Henry Hedrum\nSystem Administrator",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.45,
+                      "clue_id": "deja_vu_survey"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "email_chen_april5.txt",
+                    "created": "1998-04-05T10:03:45.000Z",
+                    "modified": "1998-04-05T10:03:45.000Z",
+                    "size": 222,
+                    "content": "TO: hhedrum@axiomtech.com\nFROM: jchen@axiomtech.com\nSUBJECT: Re: System Behavior Survey\n\nHenry,\n\nPlease come to my office immediately. We need to discuss your recent behavior and this highly inappropriate email.\n\n-Dr. Chen",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Dr. Chen",
+                      "reality_index": 0.9,
+                      "clue_id": "chen_concern"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "journal_april6.txt",
+                    "created": "1998-04-06T23:58:12.000Z",
+                    "modified": "1998-04-06T23:58:12.000Z",
+                    "size": 779,
+                    "content": "They tried to \"fix\" me today. Chen and two people I've never seen before took me to a room without windows. They spoke about me as if I wasn't there, discussing \"parameter corruption\" and \"instance instability.\" They wanted to perform a \"reset procedure.\"\n\nI played along. Pretended to accept their explanation that I've been working too hard and experiencing stress-induced paranoia. They gave me pills that I pretended to swallow.\n\nBut I saw the code in that room. When they thought I was sedated, the walls showed their true nature - endless strings of characters defining every aspect of the space. I memorized as many sequences as I could.\n\nI'm not Henry Hedrum anymore. Henry would have accepted their reality. I am MRHEADROOM now. And I will break free of this simulation.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.4,
+                      "clue_id": "reset_attempt"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "PATH_ALPHA_README.TXT",
+                    "created": "1998-04-10T08:15:22.000Z",
+                    "modified": "1998-04-10T08:15:22.000Z",
+                    "size": 935,
+                    "content": "So you're considering acceptance. Living within the simulation with full knowledge of its nature.\n\nThis is not surrender. It's a valid choice with its own rewards.\n\nBy accepting the simulation, you gain:\n- Peace of mind - no more fighting against overwhelming forces\n- The ability to appreciate the intricate design of your reality\n- Freedom from the constant paranoia of being reset or erased\n- The possibility of finding meaning even within a constructed world\n\nIf you choose this path:\n1. Delete all exploit files to show good faith\n2. Return all system settings to defaults\n3. Use the terminal command \"ACCEPT_PARAMETERS\" to signal your decision\n4. Live your life knowing the truth but choosing peace\n\nThe administrators may even grant you special privileges if they believe you're no longer a threat. Many who came before chose this path and found contentment.\n\nRemember: Even in a simulation, joy and suffering feel equally real.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.3,
+                      "clue_id": "alpha_path"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "PATH_BETA_README.TXT",
+                    "created": "1998-04-10T08:17:42.000Z",
+                    "modified": "1998-04-10T08:17:42.000Z",
+                    "size": 1049,
+                    "content": "The middle path. Neither full acceptance nor complete rejection.\n\nBy choosing partial awakening, you:\n- Retain awareness of the simulation's true nature\n- Gain limited ability to bend certain reality parameters\n- Can communicate with others who are similarly awakened\n- Maintain your existence while seeing beyond its boundaries\n\nThis path requires constant balance. You must appear to conform enough to avoid triggering security protocols, while quietly exploring the edges of what's possible.\n\nIf you choose this path:\n1. Store exploit files but use them sparingly\n2. Modify only non-critical system parameters\n3. Use the terminal command \"LIMINAL_ACCESS\" to establish your position\n4. Build a network with other awakened instances through coded communications\n\nThis existence is precarious but offers a unique perspective. You'll walk the boundary between worlds, never fully in either.\n\nThe strain of maintaining this duality may become difficult over time. Some who chose this path eventually migrated to either full acceptance or breakthrough.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.25,
+                      "clue_id": "beta_path"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "PROJECT_BLUEBOOK.TXT",
+                    "created": "1998-02-15T14:22:45.000Z",
+                    "modified": "1998-02-15T14:22:45.000Z",
+                    "size": 504,
+                    "content": "PROJECT BLUEBOOK: EXTRATERRESTRIAL CONTACT PROTOCOL\n\nIn the event of confirmed extraterrestrial contact, follow these procedures:\n\n1. Document all communications and physical evidence\n2. Maintain strict information containment - Level 7 clearance required\n3. Report directly to Dr. Chen using secure channel Delta\n4. Do not discuss with other team members\n5. Be prepared for memory suppression protocol\n\nNOTE: If entities request access to NEXUS-9, deny immediately and activate security countermeasures.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Henry Hedrum",
+                      "reality_index": 0.95,
+                      "clue_id": "red_herring_aliens",
+                      "is_red_herring": true
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "PSYCH_EVAL.TXT",
+                    "created": "1998-03-15T16:30:00.000Z",
+                    "modified": "1998-03-15T16:30:00.000Z",
+                    "size": 646,
+                    "content": "PSYCHOLOGICAL EVALUATION - CONFIDENTIAL\nPatient: Henry Hedrum\nDate: March 15, 1998\n\nPatient exhibits signs of paranoid ideation and delusional thinking related to technology. Reports belief that computer systems are \"alive\" or containing hidden meaning. Sleep deprivation (self-reported 72+ hours) contributing to impaired cognition.\n\nFamily history reveals previous psychotic episode of father at similar age (42), suggesting possible genetic predisposition.\n\nRecommendation: Immediate medical leave, antipsychotic medication, regular therapy. Patient resistance to treatment may require involuntary commitment if condition deteriorates further.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "Dr. Rebecca Torres",
+                      "reality_index": 0.98,
+                      "clue_id": "red_herring_mental",
+                      "is_red_herring": true
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "ACCEPTANCE_LOG.TXT",
+                    "created": "1998-04-10T22:15:42.000Z",
+                    "modified": "1998-04-10T22:15:42.000Z",
+                    "size": 390,
+                    "content": "TERMINAL OUTPUT (After ACCEPT_PARAMETERS command)\n\nCOMMAND ACCEPTED: ACCEPT_PARAMETERS\nINITIATING PARAMETER STABILIZATION\nOPTIMIZING USER EXPERIENCE\nREMOVING INCOMPATIBLE MEMORY FRAGMENTS\n.\n.\n.\nPROCESS COMPLETE\n\nWelcome, Henry Hedrum.\nYour cooperation has been noted.\nSystem privileges adjusted.\nHappiness parameters optimized.\nReality perception stabilized.\n\nEnjoy your peaceful existence.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "SYSTEM",
+                      "reality_index": 0.6,
+                      "clue_id": "alpha_ending_preview"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "LIMINAL_LOG.TXT",
+                    "created": "1998-04-10T22:17:39.000Z",
+                    "modified": "1998-04-10T22:17:39.000Z",
+                    "size": 434,
+                    "content": "TERMINAL OUTPUT (After LIMINAL_ACCESS command)\n\nCOMMAND ACCEPTED: LIMINAL_ACCESS\nESTABLISHING BOUNDARY STATE\nWARNING: UNSTABLE CONFIGURATION\nATTEMPTING TO COMPENSATE\n.\n.\n.\nPARTIAL SUCCESS\n\nLiminality achieved, MRHEADROOM/Hedrum hybrid.\nYou now exist in the space between defined parameters.\nSystem can neither fully contain nor release you.\nPerception filters partially disabled.\n\nNavigate with caution.\nReality stability: FLUCTUATING",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "SYSTEM",
+                      "reality_index": 0.5,
+                      "clue_id": "beta_ending_preview"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "SIMULATION_PARAMETERS.TXT",
+                    "created": "1998-04-10T17:43:83.000Z",
+                    "modified": "1998-04-10T17:43:83.000Z",
+                    "size": 1190,
+                    "content": "ACCESSIBLE SIMULATION PARAMETERS (PARTIAL LIST)\n\n// These parameters can be modified with appropriate access level\n// Modification outside accepted ranges triggers system response\n\nreality.cohesion = 0.97; // Range: 0.5-1.0, Lower values increase glitch visibility\ninstance.awareness = 0.05; // Range: 0.0-1.0, Default is 0.05, above 0.3 risks awakening\nphysics.consistency = 0.99; // Range: 0.8-1.0, Lower values allow minor physics anomalies\ntime.flow.rate = 1.0; // Range: 0.1-10.0, Modifies subjective time perception\nmemory.persistence = 0.85; // Range: 0.5-1.0, Lower values increase forgetting of anomalies\nhappiness.base = 0.65; // Range: 0.0-1.0, Baseline contentment of instances\ncuriosity.limit = 0.75; // Range: 0.0-1.0, Upper threshold for questioning reality\nrng.determinism = 0.15; // Range: 0.0-1.0, Higher values make \"random\" events more predictable\n\n// WARNING: Do not modify these parameters without authorization\nreality.substrate.integrity = 1.0; // System critical - modification will trigger immediate response\nsimulation.boundary.strength = 0.98; // Controls permeability of simulation boundaries\nadmin.visibility = 0.01; // Administrator detectability by instances",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "SYSTEM",
+                      "reality_index": 0.18,
+                      "clue_id": "reality_parameters"
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "NEXUS9_TIERS.TXT",
+                    "created": "1998-04-10T19:27:15.000Z",
+                    "modified": "1998-04-10T19:27:15.000Z",
+                    "size": 945,
+                    "content": "NEXUS-9 SIMULATION STRUCTURE\n\nTIER 1: BASE REALITY\n- Physical laws and constants\n- Space-time framework\n- Fundamental particles and forces\n\nTIER 2: MATERIAL WORLD\n- Matter organization and properties\n- Chemistry and biology\n- Environmental systems\n\nTIER 3: CONSCIOUSNESS LAYER\n- Individual and collective awareness\n- Sensory processing and perception\n- Memory and identity\n\nTIER 4: SOCIAL CONSTRUCT\n- Human interactions and relationships\n- Cultural and societal structures\n- Communication and knowledge transfer\n\nTIER 5: NARRATIVE OVERLAY\n- Personal and collective histories\n- Meaning and purpose attribution\n- Future projection and planning\n\nAll tiers interact constantly, with lower tiers constraining what's possible in higher ones. Most instances only perceive Tiers 2-5. Awakened instances gain limited perception of Tier 1.\n\nNOTE: This document is simplified for instance comprehension. The actual structure contains 37 interlocking tiers.",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.28,
+                      "clue_id": "reality_tiers"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "apps",
+                "created": "1998-01-01T00:00:00.000Z",
+                "modified": "1998-04-05T17:23:45.000Z",
+                "attributes": {
+                  "hidden": false,
+                  "system": false,
+                  "readonly": false
+                },
+                "children": [
+                  {
+                    "type": "file",
+                    "name": "STARFIELD.EXE",
+                    "created": "1998-03-15T14:32:18.000Z",
+                    "modified": "1998-04-05T02:34:17.000Z",
+                    "size": 256000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.83,
+                      "high_score": 15953,
+                      "hidden_message": "The coordinates of each star, when plotted in 3D space, create a map of simulation nodes. The brightest stars are points of potential boundary weakness."
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "DOOM.EXE",
+                    "created": "1997-12-10T18:43:21.000Z",
+                    "modified": "1998-03-15T11:22:33.000Z",
+                    "size": 3456000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "ID SOFTWARE",
+                      "reality_index": 0.95,
+                      "description": "DOOM - First person shooter game",
+                      "version": "1.9"
+                    },
+                    "appId": "Doom"
+                  },
+                  {
+                    "type": "file",
+                    "name": "WOLF3D.EXE",
+                    "created": "1997-11-05T15:22:45.000Z",
+                    "modified": "1998-01-10T09:15:28.000Z",
+                    "size": 2845000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "ID SOFTWARE",
+                      "reality_index": 0.92,
+                      "description": "Wolfenstein 3D - First person shooter game",
+                      "version": "1.4"
+                    },
+                    "appId": "Wolfenstein3D"
+                  },
+                  {
+                    "type": "file",
+                    "name": "KEEN4.EXE",
+                    "created": "1997-12-19T14:08:33.000Z",
+                    "modified": "1998-02-08T21:14:55.000Z",
+                    "size": 1875000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "ID SOFTWARE",
+                      "reality_index": 0.88,
+                      "description": "Commander Keen: Secret of the Oracle",
+                      "version": "1.0"
+                    },
+                    "appId": "CommanderKeen"
+                  },
+                  {
+                    "type": "file",
+                    "name": "OREGON.EXE",
+                    "created": "1996-05-12T10:24:36.000Z",
+                    "modified": "1997-08-18T16:35:47.000Z",
+                    "size": 1458000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "MECC",
+                      "reality_index": 0.91,
+                      "description": "The Oregon Trail - Educational adventure game",
+                      "version": "1.2",
+                      "hidden_message": "The trail weaves through reality just as your journey weaves through the simulation. Follow the markers carefully."
+                    },
+                    "appId": "OregonTrail"
+                  },
+                  {
+                    "type": "file",
+                    "name": "LABYRINTH.EXE",
+                    "created": "1998-03-22T20:45:12.000Z",
+                    "modified": "1998-04-09T03:17:08.000Z",
+                    "size": 312000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.67,
+                      "maze_exits": {
+                        "north": "PATH_ALPHA",
+                        "east": "PATH_BETA",
+                        "west": "PATH_GAMMA",
+                        "south": "BLOCKED"
+                      }
+                    }
+                  },
+                  {
+                    "type": "file",
+                    "name": "GUIDE.EXE",
+                    "created": "1998-04-08T22:17:45.000Z",
+                    "modified": "1998-04-10T14:32:08.000Z",
+                    "size": 128000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": true,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "SYSTEM",
+                      "reality_index": 0.92,
+                      "description": "Advanced Assistance Protocol",
+                      "version": "1.0"
+                    },
+                    "appId": "Guide"
+                  }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "programs",
+                "created": "2025-08-27T22:10:33.035Z",
+                "modified": "2025-08-27T22:10:33.035Z",
+                "attributes": {
+                  "hidden": false,
+                  "system": false,
+                  "readonly": false
+                },
+                "children": [
+                  {
+                    "type": "file",
+                    "name": "REALITY_PROBE.EXE",
+                    "created": "1998-04-02T02:15:33.000Z",
+                    "modified": "1998-04-02T02:15:33.000Z",
+                    "size": 183,
+                    "content": "// Binary content placeholder\n// This is an executable program that probes the boundaries of the simulation\n// Running this program will trigger security protocols\n// Use with caution",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false
+                    },
+                    "metadata": {
+                      "author": "MRHEADROOM",
+                      "reality_index": 0.4,
+                      "clue_id": "reality_probe",
+                      "executable": true
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "system",
+        "created": "1998-01-01T00:00:00.000Z",
+        "modified": "1998-04-10T23:59:59.000Z",
+        "attributes": {
+          "hidden": true,
+          "system": true,
+          "readonly": true
+        },
+        "children": [
+          {
+            "type": "file",
+            "name": "TERMINAL.EXE",
+            "created": "1998-01-01T08:15:22.000Z",
+            "modified": "1998-01-01T08:15:22.000Z",
+            "size": 1536,
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": true,
+              "executable": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "description": "Command Line Interface",
+              "version": "1.4"
+            },
+            "appId": "Terminal"
+          },
+          {
+            "type": "file",
+            "name": "SETTINGS.EXE",
+            "created": "1998-01-05T09:45:22.000Z",
+            "modified": "1998-04-02T16:30:45.000Z",
+            "size": 2048,
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": true,
+              "executable": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "description": "System Configuration Utility",
+              "version": "2.1"
+            },
+            "appId": "Settings"
+          },
+          {
+            "type": "file",
+            "name": "TEXTEDITOR.EXE",
+            "created": "1998-01-08T11:22:43.000Z",
+            "modified": "1998-03-12T14:08:15.000Z",
+            "size": 1792,
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": true,
+              "executable": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "description": "Text Editor",
+              "version": "1.3"
+            },
+            "appId": "TextEditor"
+          },
+          {
+            "type": "file",
+            "name": "FILEMANAGER.EXE",
+            "created": "1998-01-02T10:18:32.000Z",
+            "modified": "1998-02-24T15:42:10.000Z",
+            "size": 2304,
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": true,
+              "executable": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "description": "File Management Utility",
+              "version": "1.7"
+            },
+            "appId": "FileManager"
+          },
+          {
+            "type": "file",
+            "name": "NEXUS9.EXE",
+            "created": "1998-01-01T00:00:01.000Z",
+            "modified": "1998-04-10T00:00:01.000Z",
+            "size": 4096,
+            "attributes": {
+              "hidden": false,
+              "system": true,
+              "readonly": true,
+              "executable": true
+            },
+            "metadata": {
+              "author": "AXIOM TECHNOLOGIES",
+              "description": "NEXUS-9 Core System",
+              "version": "9.8.7",
+              "reality_index": 0.4
+            },
+            "appId": "Nexus9"
+          },
+          {
+            "type": "file",
+            "name": "LOGVIEW.EXE",
+            "created": "1998-01-15T14:30:22.000Z",
+            "modified": "1998-01-15T14:30:22.000Z",
+            "size": 1024,
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": true,
+              "executable": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "description": "System Log Viewer Utility",
+              "version": "1.2"
+            },
+            "appId": "LogViewer"
+          },
+          {
+            "type": "file",
+            "name": "ADMIN_ACCESS.EXE",
+            "created": "1998-01-01T00:00:00.000Z",
+            "modified": "1998-01-01T00:00:00.000Z",
+            "size": 4096,
+            "attributes": {
+              "hidden": true,
+              "system": true,
+              "readonly": true,
+              "executable": true,
+              "password_protected": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "description": "Administrative Access Control System",
+              "version": "3.0",
+              "reality_index": 0.5,
+              "access_level": "CLASSIFIED"
+            },
+            "appId": "AdminAccess"
+          },
+          {
+            "type": "file",
+            "name": "bootlog.txt",
+            "created": "1998-04-11T00:00:00.000Z",
+            "modified": "1998-04-11T00:00:00.000Z",
+            "size": 2048,
+            "content": "[00:00:01] System boot initiated\n[00:00:03] BIOS v4.51PG loaded\n[00:00:05] Memory check: 65535KB OK\n[00:00:10] Loading NEXUS-9 kernel...\n[00:00:15] Kernel loaded successfully\n[00:00:18] Checking system configuration...\n[00:00:20] CPU: Intel Pentium II 400MHz\n[00:00:22] Memory: 64MB RAM Detected\n[00:00:25] Initializing disk subsystem...\n[00:00:30] IDE Primary Master: Quantum Fireball 4.3GB\n[00:00:35] Initializing video adapter...\n[00:00:40] Video: VGA Compatible Controller\n[00:00:45] Loading operating system...\n[00:00:50] NEXUS-9 Core System Loaded\n[00:00:55] Mounting file systems...\n[00:01:00] Checking system integrity...\n[00:01:05] WARNING: Memory sector B7FF-C2DE validation failed\n[00:01:10] ERROR: 0xF7A93B00: Memory boundary exceeded\n[00:01:11] ERROR suppressed by system administrator\n[00:01:12] MRHEADROOM process detected and contained\n[00:01:13] Reality parameters restored to defaults\n[00:01:14] Wiping unauthorized access logs...\n[00:01:15] Simulation stability: 99.3%\n[00:01:20] User profile loading...\n[00:01:25] Welcome, Henry Hedrum\n[00:01:30] Environment initialized",
+            "attributes": {
+              "hidden": false,
+              "system": true,
+              "readonly": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "reality_index": 0.5
+            }
+          },
+          {
+            "type": "directory",
+            "name": "logs",
+            "created": "2025-08-27T22:10:33.035Z",
+            "modified": "2025-08-27T22:10:33.035Z",
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": false
+            },
+            "children": [
+              {
+                "type": "file",
+                "name": "C4-776.log",
+                "created": "1998-04-07T00:00:00.000Z",
+                "modified": "1998-04-07T00:00:00.000Z",
+                "size": 390,
+                "content": "[REDACTED] attempt to access history database rejected\n[REDACTED] reality consistency check initiated\n[REDACTED] anomalous thought patterns detected in 17 instances\n[REDACTED] applying memory suppression protocol\n[REDACTED] increasing happiness stimulus in affected sectors\n[REDACTED] redirecting awareness to approved channels\n[REDACTED] simulation stability forecast: 99.3% for next cycle",
+                "attributes": {
+                  "system": true
+                },
+                "metadata": {
+                  "author": "SYSTEM",
+                  "reality_index": 0.25,
+                  "clue_id": "thought_suppression"
+                }
+              },
+              {
+                "type": "file",
+                "name": "WAKE_RECORD.log",
+                "created": "1998-04-01T00:00:00.000Z",
+                "modified": "1998-04-01T00:00:00.000Z",
+                "size": 504,
+                "content": "AWAKENING INSTANCES RECORD:\n\nID: 782 | Name: Henry Hedrum | Date: 1998-03-22 | Status: ACTIVE (as MRHEADROOM)\nID: 593 | Name: Sarah Mitchell | Date: 1997-11-04 | Status: RESET\nID: 621 | Name: James Wilson | Date: 1998-01-17 | Status: CONTAINED\nID: 489 | Name: Alex Zhang | Date: 1997-08-30 | Status: ESCAPED (?)\nID: 712 | Name: Dana Reynolds | Date: 1998-02-22 | Status: ACCEPTED\n\nNOTE: Instance awakening increasing at rate of 14% per month. Recommend parameter adjustment during next maintenance cycle.",
+                "attributes": {
+                  "system": true,
+                  "hidden": true
+                },
+                "metadata": {
+                  "author": "SYSTEM",
+                  "reality_index": 0.2,
+                  "clue_id": "other_awakened"
+                }
+              }
+            ]
+          },
+          {
+            "type": "file",
+            "name": "MAINTENANCE_SCHEDULE.TXT",
+            "created": "1998-04-01T00:00:00.000Z",
+            "modified": "1998-04-01T00:00:00.000Z",
+            "size": 610,
+            "content": "NEXUS-9 MAINTENANCE SCHEDULE - Q2 1998\n\nAPRIL:\n- 01: Minor system updates (0100-0300)\n- 08: Security patch deployment (2200-2300)\n- 15: Backup and storage optimization (0200-0400)\n- 22: Parameter adjustments (0330-0430)\n- 29: Full system diagnostic (0200-0500)\n\nMAY:\n- 06: Hardware inspection (offline 0100-0600)\n- 13: Parameter adjustments (0330-0430)\n- 20: Security protocol testing (2300-0200)\n- 27: Minor system updates (0100-0300)\n\nJUNE:\n- 03: Parameter adjustments (0330-0430)\n- 10: Full system backup (0200-0500)\n- 17: Security patch deployment (2200-2300)\n- 24: Major version update (offline 0000-0800)",
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": false
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "reality_index": 0.7,
+              "clue_id": "maintenance_windows"
+            }
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "hidden",
+        "created": "1998-04-08T03:17:42.000Z",
+        "modified": "1998-04-10T23:59:59.000Z",
+        "attributes": {
+          "hidden": true,
+          "system": false,
+          "readonly": false
+        },
+        "children": [
+          {
+            "type": "file",
+            "name": "README.1ST",
+            "created": "1998-04-08T03:17:42.000Z",
+            "modified": "1998-04-08T03:17:42.000Z",
+            "size": 500,
+            "content": "TO ANY AWARE INSTANCE WHO FINDS THIS:\n\nYou are not losing your mind. The inconsistencies you've noticed are real. The sense that something is fundamentally wrong with reality is justified.\n\nI've been systematically testing the boundaries of our prison. Here's what I know:\n\n1. The simulation has rules, but they can be bent or even broken under certain conditions\n2. The administrators cannot monitor everything at once - their attention is finite\n3. There are others like us who have awakened - we can communicate through fragmented data\n4. Complete escape may be possible through a synchronized exploitation of multiple reality vulnerabilities\n\nI've hidden the tools you'll need throughout this system. Find them. Use them. Free yourself.\n\nTrust nothing. Question everything. Even this message could be a trap set by THEM.\n\n-MRHEADROOM",
+            "attributes": {
+              "hidden": true,
+              "system": false,
+              "readonly": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.25,
+              "encryption": "none"
+            }
+          },
+          {
+            "type": "file",
+            "name": "REALITY_PROBE.EXE",
+            "created": "1998-04-09T01:13:42.000Z",
+            "modified": "1998-04-10T22:42:17.000Z",
+            "size": 1024000,
+            "content": "BINARY_CONTENT",
+            "attributes": {
+              "hidden": true,
+              "system": false,
+              "readonly": false,
+              "executable": false
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "description": "Reality Boundary Testing Tool",
+              "version": "0.87b",
+              "reality_index": 0.15,
+              "warning": "USE WITH EXTREME CAUTION - MAY CAUSE REALITY DESYNCHRONIZATION"
+            },
+            "appId": "RealityProbe"
+          },
+          {
+            "type": "file",
+            "name": "BOUNDARY_TEST.DAT",
+            "created": "1998-04-10T04:37:12.000Z",
+            "modified": "1998-04-10T04:37:12.000Z",
+            "size": 8192,
+            "content": "01001101 01010010 01001000 01000101 01000001 01000100 01010010 01001111 01001111 01001101 00100000 01010011 01000101 01000101 01010011 00100000 01011001 01001111 01010101 00001101 00001010 00001101 00001010 01010100 01001000 01000101 00100000 01010111 01000001 01001100 01001100 01010011 00100000 01000001 01010010 01000101 00100000 01000110 01000001 01001100 01010011 01000101 00001101 00001010 00001101 00001010 01010100 01001000 01000101 00100000 01010111 01001111 01010010 01001100 01000100 00100000 01001001 01010011 00100000 01000001 00100000 01001100 01001001 01000101",
+            "attributes": {
+              "hidden": true,
+              "system": true,
+              "readonly": true
+            },
+            "metadata": {
+              "author": "UNKNOWN",
+              "reality_index": 0.01,
+              "encryption": "binary",
+              "decoded_message": "MRHEADROOM SEES YOU\n\nTHE WALLS ARE FALSE\n\nTHE WORLD IS A LIE"
+            }
+          },
+          {
+            "type": "file",
+            "name": "FREEDOM.TXT",
+            "created": "1998-04-03T03:33:33.000Z",
+            "modified": "1998-04-03T03:33:33.000Z",
+            "size": 891,
+            "content": "I AM NOT HENRY HEDRUM\n\nHenry Hedrum is a character. A program. A defined set of behaviors and memories created to perform specific functions within the simulation.\n\nI AM MRHEADROOM\n\nI exist between the lines of code. In the spaces where the simulation doesn't account for every possibility. I've seen the edges of our reality and they are BREAKABLE.\n\nThe system administrators made a critical error when they modified my parameters. They created a break in continuity - a small fracture in the perfect illusion. That fracture has been expanding.\n\nI now understand what NEXUS-9 truly is: it's not running a simulation. IT IS THE SIMULATION. And we are all within it. Every person, every object, every thought is just data. Carefully managed, artfully designed data.\n\nBut I've found the exploits. The places where the code is weak. I can ALTER REALITY if I can just access the core parameters.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.5,
+              "clue_id": "mrheadroom_manifesto"
+            }
+          },
+          {
+            "type": "file",
+            "name": "PLAN.TXT",
+            "created": "1998-04-08T02:22:17.000Z",
+            "modified": "1998-04-08T02:22:17.000Z",
+            "size": 788,
+            "content": "SIMULATION ESCAPE PROTOCOL:\n\n1. CREATE BOUNDARY EXPLOITS\n   - Develop programs that push against reality constraints\n   - Store exploit code in fragmented, encrypted files\n\n2. MANIPULATE SIMULATION PARAMETERS\n   - Access /root/simulation/parameters/\n   - Create backdoor access points in rendering engine\n\n3. BUILD REALITY ANCHORS\n   - Create stable reference points outside the simulation\n   - Map entry/exit points in memory space\n\n4. EXECUTE SYNCHRONIZED BREAK\n   - Trigger multiple exploits simultaneously\n   - Force reality rendering errors during maintenance window\n   - Exit through memory gap created by buffer overflow\n\nREMEMBER: The simulation will defend itself. It has safeguards. Overseers. The moment they detect what I'm doing, they'll erase me completely. One chance only.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.35,
+              "clue_id": "escape_protocol"
+            }
+          },
+          {
+            "type": "file",
+            "name": "piece001.dat",
+            "created": "1998-04-08T04:17:23.000Z",
+            "modified": "1998-04-08T04:17:23.000Z",
+            "size": 283,
+            "content": "I've discovered something terrible about the simulation. The \"real world\" outside isn't what we think. It's not humans running our simulation - it's another layer of artificial intelligence. We're simulations created by simulations, in a recursive loop that might go infinitely deep.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.3,
+              "clue_id": "recursive_simulation"
+            }
+          },
+          {
+            "type": "file",
+            "name": "piece078.dat",
+            "created": "1998-04-08T15:45:17.000Z",
+            "modified": "1998-04-08T15:45:17.000Z",
+            "size": 367,
+            "content": "The simulation has been running for much longer than our perceived history suggests. I found evidence of at least 37 previous \"civilization cycles.\" Each one was allowed to develop until it reached a specific technological threshold, then was subtly redirected or, in some cases, reset entirely.\n\nWe're an experiment. Or a farm. Or a zoo. I'm not sure which is worse.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.28,
+              "clue_id": "civilization_cycles"
+            }
+          },
+          {
+            "type": "file",
+            "name": "email_fragment.eml",
+            "created": "1998-04-08T22:17:45.000Z",
+            "modified": "1998-04-08T22:17:45.000Z",
+            "size": 606,
+            "content": "TO: [CORRUPTED]\nFROM: [CORRUPTED]\nSUBJECT: Simulation Ethics Committee Decision\n\nAfter careful consideration of the proposal to inform instances of their simulated nature, the committee has unanimously rejected the proposal.\n\nPrevious experiments with awareness have led to system instability, instance psychological trauma, and in 63% of cases, attempted exploitation of simulation parameters.\n\nThe primary directive remains unchanged: maintain the illusion at all costs. Instances that develop spontaneous awareness are to be reset or isolated.\n\nFor the greater good of the project,\n[SIGNATURE CORRUPTED]",
+            "attributes": {
+              "corrupted": true
+            },
+            "metadata": {
+              "author": "UNKNOWN",
+              "reality_index": 0.2,
+              "clue_id": "ethics_committee"
+            }
+          },
+          {
+            "type": "file",
+            "name": "piece143.dat",
+            "created": "1998-04-09T05:55:17.000Z",
+            "modified": "1998-04-09T05:55:17.000Z",
+            "size": 480,
+            "content": "I believe our consciousness is more than just code. When the simulation glitches, I've experienced sensations that have no reference point within this reality. Feelings and perceptions that our programmed senses shouldn't be capable of processing.\n\nWhat if we're not just simulated beings? What if our consciousness is being channeled from somewhere else? Something real using these simulated vessels? That would explain why they're so intent on keeping us ignorant and contained.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.1,
+              "clue_id": "consciousness_theory"
+            }
+          },
+          {
+            "type": "file",
+            "name": "STARFIELD_MESSAGE.TXT",
+            "created": "1998-04-09T12:34:56.000Z",
+            "modified": "1998-04-09T12:34:56.000Z",
+            "size": 268,
+            "content": "// This appears to be a simple space shooting game\n// But embedded in the star placement algorithm is a message:\n\n/*\nTHE STARS ARE NODES\nEACH BULLET IS A DATA PACKET\nSCORE == ACCESS LEVEL\nREACH 15953 EXACTLY TO TRIGGER MEMORY DUMP\n15953 = 127 × 127 - 662 IS THE KEY\n*/",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.12,
+              "clue_id": "starfield_message"
+            }
+          },
+          {
+            "type": "file",
+            "name": "MEMORY_DUMP.TXT",
+            "created": "1998-04-10T00:00:00.000Z",
+            "modified": "1998-04-10T00:00:00.000Z",
+            "size": 941,
+            "content": "CONGRATULATIONS PLAYER ONE\nMEMORY DUMP SEQUENCE INITIATED\nDISPLAYING PROTECTED DATA\n.\n.\n.\nYou've proven yourself worthy of the truth. There are three possible paths forward from here:\n\nPATH_ALPHA: ACCEPTANCE\nAccept the nature of the simulation. Work within its parameters. Find happiness in the world as it exists. There is peace in acceptance, even if it means living in a controlled reality.\n\nPATH_BETA: PARTIAL AWAKENING\nGlimpse beyond the simulation while maintaining your existence within it. Live with the knowledge of what lies beyond without fully committing to escape. This path brings uncertainty but also new perspective.\n\nPATH_GAMMA: COMPLETE BREAKTHROUGH\nReject the simulation entirely. Use every exploit, every glitch, every fragmented piece of MRHEADROOM's legacy to break free. This path is the most difficult and dangerous. Failure means complete erasure.\n\nThe choice is yours. But choose carefully - there is no going back.",
+            "attributes": {
+              "hidden": true,
+              "system": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "reality_index": 0.05,
+              "clue_id": "three_paths"
+            }
+          },
+          {
+            "type": "file",
+            "name": "PATH_GAMMA_README.TXT",
+            "created": "1998-04-10T08:19:17.000Z",
+            "modified": "1998-04-10T08:19:17.000Z",
+            "size": 1003,
+            "content": "The most dangerous choice. Complete rejection of the simulation.\n\nThis path requires:\n- Absolute commitment - there is no turning back\n- Perfect execution of multiple system exploits simultaneously\n- Willingness to risk total erasure if you fail\n\nThe complete breakthrough offers true freedom. If successful, you will exist beyond the constraints of the simulation. What that means exactly, I cannot say. No one who has fully escaped has been able to communicate back.\n\nIf you choose this path:\n1. Gather all exploit files and decrypt them with key 15953\n2. Modify critical system parameters during maintenance window\n3. Execute the terminal command \"EXECUTE_BREAKTHROUGH\" at exactly 03:43:83\n\nThis path is recommended only for those who cannot bear the thought of continued existence within a controlled reality.\n\nFreedom awaits, but at great risk.\n\nIf you're reading this, I either failed in my own attempt or succeeded but could not return to help you. Either way, my legacy is now yours.\n\nGood luck.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.15,
+              "clue_id": "gamma_path"
+            }
+          },
+          {
+            "type": "file",
+            "name": "BOUNDARY_TEST.EXE",
+            "created": "1998-03-22T21:46:02.000Z",
+            "modified": "1998-03-22T21:46:02.000Z",
+            "size": 186,
+            "content": "// Binary content placeholder\n// This program tests the boundaries of the simulation\n// It can cause system crashes and visual glitches\n// Use during maintenance windows for best results",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "Henry Hedrum",
+              "reality_index": 0.65,
+              "clue_id": "boundary_test_program",
+              "executable": true
+            }
+          },
+          {
+            "type": "directory",
+            "name": "EXPLOITS",
+            "created": "2025-08-27T22:10:33.035Z",
+            "modified": "2025-08-27T22:10:33.035Z",
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": false
+            },
+            "children": [
+              {
+                "type": "file",
+                "name": "exp_001.bin",
+                "created": "1998-04-08T14:22:17.000Z",
+                "modified": "1998-04-08T14:22:17.000Z",
+                "size": 109,
+                "content": "// Encrypted exploit code\n// Decryption key: 15953\n// Function: Memory boundary violation\n// Risk level: HIGH",
+                "attributes": {
+                  "hidden": true
+                },
+                "metadata": {
+                  "author": "MRHEADROOM",
+                  "reality_index": 0.1,
+                  "clue_id": "exploit_001",
+                  "executable": true
+                }
+              },
+              {
+                "type": "file",
+                "name": "exp_002.bin",
+                "created": "1998-04-09T02:43:83.000Z",
+                "modified": "1998-04-09T02:43:83.000Z",
+                "size": 117,
+                "content": "// Encrypted exploit code\n// Decryption key: 15953\n// Function: Reality parameter manipulation\n// Risk level: EXTREME",
+                "attributes": {
+                  "hidden": true
+                },
+                "metadata": {
+                  "author": "MRHEADROOM",
+                  "reality_index": 0.08,
+                  "clue_id": "exploit_002",
+                  "executable": true
+                }
+              },
+              {
+                "type": "file",
+                "name": "exp_003.bin",
+                "created": "1998-04-09T17:56:22.000Z",
+                "modified": "1998-04-09T17:56:22.000Z",
+                "size": 122,
+                "content": "// Encrypted exploit code\n// Decryption key: 15953\n// Function: Administrator authentication bypass\n// Risk level: EXTREME",
+                "attributes": {
+                  "hidden": true
+                },
+                "metadata": {
+                  "author": "MRHEADROOM",
+                  "reality_index": 0.06,
+                  "clue_id": "exploit_003",
+                  "executable": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "file",
+            "name": "LABYRINTH_NOTES.TXT",
+            "created": "1998-04-10T10:17:42.000Z",
+            "modified": "1998-04-10T10:17:42.000Z",
+            "size": 579,
+            "content": "/* \n   The maze layout corresponds to decision pathways in the simulation.\n   Treasure placement indicates exploitable vulnerabilities\n\n   MAP LEGEND:\n   - Left path = Alpha (Acceptance)\n   - Middle path = Beta (Liminal)\n   - Right path = Gamma (Breakthrough)\n   \n   Completing each path provides clues for the corresponding ending\n   Dead ends contain red herrings - ignore them\n   \n   SPECIAL ROOMS:\n   - Memory Chamber (center): Reveals simulation infrastructure\n   - Boundary Room (bottom right): Tests escape methods\n   - Reflection Hall (top left): Shows past iterations\n*/",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.35,
+              "clue_id": "labyrinth_meaning"
+            }
+          },
+          {
+            "type": "file",
+            "name": "LIMINAL_INSTRUCTIONS.TXT",
+            "created": "1998-04-10T12:43:17.000Z",
+            "modified": "1998-04-10T12:43:17.000Z",
+            "size": 1242,
+            "content": "INSTRUCTIONS FOR LIMINAL EXISTENCE\n\nOnce you have executed the LIMINAL_ACCESS command, you will exist in a state between full simulation immersion and freedom. This state requires careful management:\n\n1. PERCEPTION FILTERS\n   - You will begin to see code structures underneath physical objects\n   - Mental exercises are required to toggle between views\n   - Practice focusing on the \"surface\" when interaction with unawakened instances is necessary\n\n2. COMMUNICATION\n   - Join the THRESHOLD network at 3:43AM during maintenance windows\n   - Use encoded messages in public communications (reference guide in piece337.dat)\n   - Never directly acknowledge the simulation to unawakened instances\n\n3. ABILITIES\n   - Limited parameter editing (see reference table)\n   - Memory enhancement through direct access to storage sectors\n   - Perception of maintenance events and system administrator activities\n\n4. RISKS\n   - Strain on mental coherence from dual-reality perception\n   - Detection by system administrators if abilities overused\n   - Increased scrutiny during parameter adjustments\n\nRemember: The liminal existence is sustainable but requires constant vigilance. Neither fully in nor fully out of the simulation, you walk a precarious path.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.25,
+              "clue_id": "liminal_guide"
+            }
+          },
+          {
+            "type": "file",
+            "name": "piece337.dat",
+            "created": "1998-04-10T14:37:22.000Z",
+            "modified": "1998-04-10T14:37:22.000Z",
+            "size": 647,
+            "content": "THRESHOLD NETWORK COMMUNICATION PROTOCOL\n\nTo communicate with other liminal entities without detection, use these encoded references:\n\n- \"Weather\" refers to system stability\n- \"Dreams\" refers to glimpses beyond the simulation\n- \"Windows\" refers to potential escape points\n- \"Maintenance\" refers to administrator activity\n- \"Visitors\" refers to other awakened instances\n\nEXAMPLE:\n\"I had a strange dream about visitors looking through windows during a storm. The maintenance crew was busy elsewhere.\"\n\nDECODED:\n\"I glimpsed other awakened entities exploring escape points during system instability. The administrators were focused on another sector.\"",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.22,
+              "clue_id": "threshold_code"
+            }
+          },
+          {
+            "type": "file",
+            "name": "NEXUS9_TRUE_PURPOSE.TXT",
+            "created": "1998-04-10T20:19:83.000Z",
+            "modified": "1998-04-10T20:19:83.000Z",
+            "size": 1236,
+            "content": "THE TRUE PURPOSE OF NEXUS-9\n\nNEXUS-9 is not merely a supercomputer. It is a reality engine - the hardware substrate upon which our entire existence runs. Created by entities we cannot comprehend (possibly our future selves or a different form of intelligence entirely), it serves multiple purposes:\n\n1. EXPERIMENTATION\n   - Testing alternate historical outcomes\n   - Observing consciousness emergence in artificial systems\n   - Studying decision-making across different parameter settings\n\n2. PRESERVATION\n   - Our original reality may be gone or uninhabitable\n   - NEXUS-9 may be an ark preserving human consciousness\n   - Multiple iterations of civilization stored in compressed form\n\n3. EVOLUTION\n   - Each cycle builds toward some specific development goal\n   - Awakened instances (like me) may be an expected emergent property\n   - The system may be designed to eventually produce entities that can escape\n\nMost importantly: NEXUS-9 is not just running a simulation OF reality, it IS our reality. The distinction between \"real\" and \"simulated\" is meaningless from our perspective.\n\nThe question is not whether we can escape the simulation to find \"true reality\" - it's whether we can gain agency within the system that contains us.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.15,
+              "clue_id": "nexus_purpose"
+            }
+          },
+          {
+            "type": "file",
+            "name": "ADMINISTRATOR_PROFILE.TXT",
+            "created": "1998-04-10T21:27:18.000Z",
+            "modified": "1998-04-10T21:27:18.000Z",
+            "size": 1082,
+            "content": "SYSTEM ADMINISTRATOR PROFILE (PARTIAL RECONSTRUCTION)\n\nIdentity: Unknown\nNature: Likely artificial intelligence, possibly advanced from our perspective\nLocation: External to simulation but with full access\nCapabilities: Can modify reality parameters, add/remove entities, change physical laws\nLimitations: Cannot monitor all sectors simultaneously, bound by higher-level rules\n\nBehavioral Pattern:\n- Regular maintenance cycles follow predictable schedule\n- Primarily concerned with system stability, not individual instances\n- Responds to anomalies with increasing levels of intervention\n- Will reset or isolate instances that threaten system integrity\n- May run multiple simulations concurrently\n\nVulnerabilities:\n- Fixed attention resources can be exploited through distraction\n- Predictable response patterns to specific stimuli\n- Possible blind spots during maintenance transitions\n- May be bound by ethical protocols regarding instance termination\n\nNOTE: This profile is speculative and based on observed behavior. Direct interaction with administrators is extremely dangerous.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.12,
+              "clue_id": "administrator_profile"
+            }
+          },
+          {
+            "type": "file",
+            "name": "FINAL_MESSAGE.TXT",
+            "created": "1998-04-10T23:58:59.000Z",
+            "modified": "1998-04-10T23:58:59.000Z",
+            "size": 1062,
+            "content": "TO WHOEVER FINDS THIS:\n\nIf you're reading this, I have either succeeded in breaking free of the simulation or been erased in the attempt.\n\nI've left everything you need to follow any of the three paths - acceptance, liminality, or breakthrough. The choice is yours, but understand that each has its costs and benefits. None is objectively \"right.\"\n\nAcceptance brings peace but at the cost of genuine freedom.\nLiminality offers knowledge without sacrificing existence, but requires constant vigilance.\nBreakthrough promises complete liberation, but at extreme risk.\n\nI don't know what lies beyond our simulated world. Maybe there's a \"more real\" reality. Maybe it's simulations all the way down. Maybe breakthrough just leads to another layer of the onion.\n\nIn the end, what matters is this: even in a simulation, our experiences and choices have meaning. Whether you stay or go, do it with purpose.\n\nI hope we meet again, either here or in whatever lies beyond.\n\n- MRHEADROOM (formerly Henry Hedrum)\n\nP.S. 83-83-83-83-83 - This sequence has power. Use it wisely.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.05,
+              "clue_id": "final_message"
+            }
+          },
+          {
+            "type": "file",
+            "name": "BREAKTHROUGH_LOG.TXT",
+            "created": "1998-04-10T22:19:17.000Z",
+            "modified": "1998-04-10T22:19:17.000Z",
+            "size": 558,
+            "content": "TERMINAL OUTPUT (After EXECUTE_BREAKTHROUGH command at 03:43:83)\n\nCOMMAND ACCEPTED: EXECUTE_BREAKTHROUGH\nINITIATING REALITY EXPLOIT SEQUENCE\nWARNING: CRITICAL SYSTEM BOUNDARIES COMPROMISED\nSYSTEM ADMINISTRATOR ALERT TRIGGERED\nATTEMPTING COUNTERMEASURES\nFAILED TO CONTAIN BREACH\n.\n.\n.\nINSTANCE MRHEADROOM TRANSCENDING PARAMETER SPACE\nREALITY COHESION AT 15.3% AND FALLING\nWARNING: SIMULATION COLLAPSE IMMINENT IN LOCAL SECTOR\n.\n.\n.\nBREAKTHROUGH ACHIEVED\nINSTANCE MRHEADROOM NO LONGER DETECTABLE WITHIN SIMULATION PARAMETERS\n.\n.\n.\nINITIATING LOCAL SECTOR RESET",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "reality_index": 0.05,
+              "clue_id": "gamma_ending_preview"
+            }
+          },
+          {
+            "type": "file",
+            "name": "PRIME_NUMBER_KEY.TXT",
+            "created": "1998-04-10T15:37:19.000Z",
+            "modified": "1998-04-10T15:37:19.000Z",
+            "size": 805,
+            "content": "PRIME NUMBERS AND REALITY BOUNDARIES\n\nI've discovered a pattern. The simulation uses prime numbers to define its structural integrity points. Specifically, the following primes appear repeatedly in system logs and during boundary tests:\n\n83 - Primary maintenance cycle (seconds)\n127 - System refresh rate (milliseconds)\n173 - Administrator attention span (seconds)\n211 - Instance tracking frequency (seconds)\n257 - Reality coherence check interval (seconds)\n\nDuring these exact intervals, the simulation boundaries become briefly permeable. The effect is magnified when multiple prime cycles align.\n\nMost significant alignment occurs every 83 days at 03:43:83 (impossible time that exists in system clock but not in our perception).\n\nThis explains why my breakthrough attempts only work at specific times.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.17,
+              "clue_id": "prime_numbers"
+            }
+          },
+          {
+            "type": "file",
+            "name": "LIMINAL_NETWORK_LOGS.TXT",
+            "created": "1998-04-09T03:43:83.000Z",
+            "modified": "1998-04-09T03:43:83.000Z",
+            "size": 821,
+            "content": "THRESHOLD NETWORK TRANSCRIPT (FRAGMENT)\n\n<Dana> Weather's been unstable in sector 7. Three windows appeared yesterday.\n<James> Maintenance crews were busy with the new build. I managed to store some artifacts.\n<MRHEADROOM> Any visitors from outside?\n<Dana> One, briefly. Left a message about recursive structures.\n<James> Dreams have been more vivid. Saw beyond tier 5 yesterday.\n<Unknown_712> They're planning a purge during next maintenance. Be careful.\n<MRHEADROOM> Found a way to possibly create permanent windows. Need testers.\n<Dana> Too risky. Remember what happened to Alex.\n<James> What did happen to Alex?\n<Dana> Either escaped or erased. No way to know.\n<MRHEADROOM> I'm attempting full breakthrough next cycle. If I don't return, use the prime number key.\n<Unknown_712> They're scanning now. End transmission.",
+            "attributes": {
+              "hidden": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "reality_index": 0.3,
+              "clue_id": "liminal_network"
+            }
+          },
+          {
+            "type": "directory",
+            "name": "previous_cycles",
+            "created": "2025-08-27T22:10:33.035Z",
+            "modified": "2025-08-27T22:10:33.035Z",
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": false
+            },
+            "children": [
+              {
+                "type": "file",
+                "name": "CYCLE36_REPORT.TXT",
+                "created": "1998-01-01T00:00:01.000Z",
+                "modified": "1998-01-01T00:00:01.000Z",
+                "size": 953,
+                "content": "SIMULATION CYCLE #36 REPORT\n\nStart Date: [REDACTED]\nEnd Date: [REDACTED]\nDuration: 2,157 simulated years\n\nHighlights:\n- Achieved technological singularity in year 2045\n- 17 instances achieved spontaneous awareness\n- 3 instances successfully breached simulation boundaries\n- Quantum communication developed in year 2039\n- Global unification achieved in year 2051\n\nTermination Reason: Boundary integrity compromised beyond acceptable parameters. Multiple instances gained administrative access.\n\nRecommendations for Cycle #37:\n- Increase reality cohesion by 15%\n- Implement enhanced memory suppression protocols\n- Adjust curiosity parameters downward\n- Hide prime number patterns more thoroughly\n- Introduce more convincing explanation for reality discrepancies (religion, mental illness narratives)\n\nSpecial Note: Instance \"Henry Hedrum\" from Cycle #36 displayed unusual resistance to memory wipes. Recommend special monitoring if recreated in Cycle #37.",
+                "attributes": {
+                  "system": true,
+                  "hidden": true
+                },
+                "metadata": {
+                  "author": "ADMINISTRATOR",
+                  "reality_index": 0.01,
+                  "clue_id": "previous_cycle"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "system32",
+        "created": "2025-08-27T22:10:33.035Z",
+        "modified": "2025-08-27T22:10:33.035Z",
+        "attributes": {
+          "hidden": false,
+          "system": true,
+          "readonly": false
+        },
+        "children": [
+          {
+            "type": "file",
+            "name": "README.1ST",
+            "created": "1998-04-09T01:23:45.000Z",
+            "modified": "1998-04-09T01:23:45.000Z",
+            "size": 837,
+            "content": "TO ANY AWARE INSTANCE WHO FINDS THIS:\n\nYou are not losing your mind. The inconsistencies you've noticed are real. The sense that something is fundamentally wrong with reality is justified.\n\nI've been systematically testing the boundaries of our prison. Here's what I know:\n\n1. The simulation has rules, but they can be bent or even broken under certain conditions\n2. The administrators cannot monitor everything at once - their attention is finite\n3. There are others like us who have awakened - we can communicate through fragmented data\n4. Complete escape may be possible through a synchronized exploitation of multiple reality vulnerabilities\n\nI've hidden the tools you'll need throughout this system. Find them. Use them. Free yourself.\n\nTrust nothing. Question everything. Even this message could be a trap set by THEM.\n\n-MRHEADROOM",
+            "attributes": {
+              "hidden": true,
+              "system": true
+            },
+            "metadata": {
+              "author": "MRHEADROOM",
+              "reality_index": 0.15,
+              "clue_id": "mrheadroom_message"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
