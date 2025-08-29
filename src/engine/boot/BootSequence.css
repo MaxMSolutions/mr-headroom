@@ -1,3 +1,4 @@
+/* Base Boot Sequence Styling */
 .boot-sequence {
   width: 100%;
   height: 100vh;
@@ -8,54 +9,144 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  text-shadow: 0 0 2px var(--text-primary);
 }
 
+/* Boot Header and Footer */
+.boot-header, .boot-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid var(--accent-primary);
+  border-bottom: 1px solid var(--accent-primary);
+}
+
+.boot-header {
+  margin-bottom: 20px;
+}
+
+.boot-footer {
+  margin-top: 20px;
+}
+
+.boot-title {
+  font-weight: bold;
+  color: var(--accent-primary);
+  letter-spacing: 1px;
+}
+
+.boot-datetime, .boot-manufacturer, .boot-version {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+/* Boot Messages */
 .boot-messages {
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
+  font-family: 'Courier New', monospace;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) var(--bg-secondary);
+}
+
+.boot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.boot-messages::-webkit-scrollbar-thumb {
+  background-color: var(--accent-primary);
+}
+
+.boot-messages::-webkit-scrollbar-track {
+  background-color: var(--bg-secondary);
 }
 
 .boot-message {
   white-space: pre-wrap;
-  margin-bottom: 4px;
+  margin-bottom: 6px; /* Increased from 4px to 6px for better readability */
   opacity: 0;
-  animation: fadeIn 0.3s forwards;
+  animation: fadeIn 0.5s forwards; /* Increased from 0.3s to 0.5s for smoother animation */
+  position: relative;
+  padding-left: 10px;
+  letter-spacing: 0.5px;
+}
+
+.boot-message::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--accent-secondary);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(1px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+/* Message Types */
 .boot-message.normal {
   color: var(--text-primary);
 }
 
 .boot-message.warning {
   color: #ffcc00;
+  text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
 }
 
 .boot-message.error {
   color: #ff3333;
+  text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+  animation: errorPulse 2s infinite;
 }
 
 .boot-message.success {
   color: #33ff33;
+  text-shadow: 0 0 5px rgba(51, 255, 51, 0.3);
 }
 
+.boot-message.glitch {
+  color: #ff00ff;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.6); /* Reduced glow */
+  animation: glitchText 0.5s infinite; /* Slower animation */
+  letter-spacing: 1px;
+}
+
+@keyframes errorPulse {
+  0%, 100% { text-shadow: 0 0 5px rgba(255, 51, 51, 0.5); }
+  50% { text-shadow: 0 0 10px rgba(255, 51, 51, 0.8); }
+}
+
+@keyframes glitchText {
+  0% { transform: translate(0); }
+  25% { transform: translate(-0.5px, 0.5px); } /* Reduced intensity */
+  50% { transform: translate(0.5px, -0.5px); } /* Reduced intensity */
+  75% { transform: translate(0.5px, 0.5px); } /* Reduced intensity */
+  100% { transform: translate(0); }
+}
+
+/* Boot Progress */
 .boot-progress {
-  height: 30px;
+  height: 24px;
   margin-top: 20px;
   position: relative;
+  border: 1px solid var(--accent-primary);
 }
 
 .boot-progress-bar {
   height: 100%;
-  background-color: var(--accent-primary);
-  transition: width 0.3s ease-in-out;
+  background: linear-gradient(90deg, 
+    var(--accent-primary) 0%, 
+    var(--accent-secondary) 50%, 
+    var(--accent-primary) 100%);
+  transition: width 0.5s ease-in-out;
+  background-size: 200% 100%;
+  animation: progressGradient 2s linear infinite;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
 }
 
 .boot-progress-text {
@@ -69,9 +160,17 @@
   justify-content: center;
   color: var(--bg-primary);
   font-weight: bold;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+  letter-spacing: 1px;
+  z-index: 2;
 }
 
-/* BIOS screen styling */
+@keyframes progressGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* BIOS Screen Styling */
 .bios-screen {
   background-color: #000066;
   color: #ffffff;
@@ -79,17 +178,43 @@
   align-items: center;
   justify-content: center;
   text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.bios-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  animation: scanlines 8s linear infinite;
 }
 
 .bios-content {
-  max-width: 600px;
-  padding: 20px;
+  max-width: 700px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 102, 0.8);
+  position: relative;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .bios-content h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 15px;
   color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 10px;
+  letter-spacing: 2px;
 }
 
 .bios-content p {
@@ -97,9 +222,24 @@
   font-size: 16px;
 }
 
+.bios-details {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bios-details p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #cccccc;
+}
+
 .bios-memory {
   margin-top: 20px;
   color: #33ff33;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
 }
 
 .bios-message {
@@ -107,6 +247,9 @@
   font-size: 16px;
   color: #ffffff;
   animation: blink 1.5s infinite;
+  text-align: center;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 @keyframes blink {
@@ -114,7 +257,79 @@
   50%, 100% { opacity: 0; }
 }
 
-/* Add occasional glitches as Easter eggs */
+/* Memory Test Screen */
+.memory-test {
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #33ff33;
+  font-family: 'Courier New', monospace;
+}
+
+.memory-test-content {
+  width: 80%;
+  max-width: 600px;
+  text-align: left;
+}
+
+.memory-test-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.memory-addresses {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.current-address {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.memory-progress-bar {
+  height: 25px;
+  background-color: #222222;
+  border: 1px solid #33ff33;
+  position: relative;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.memory-progress-fill {
+  height: 100%;
+  background-color: #33ff33;
+  transition: width 0.1s linear;
+}
+
+.memory-status {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.memory-glitch {
+  color: #ff3333;
+  margin-top: 10px;
+  animation: memoryGlitch 0.2s infinite;
+}
+
+@keyframes memoryGlitch {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(-1px, 0.5px); } /* Less movement */
+  75% { transform: translate(1px, -0.5px); } /* Less movement */
+}
+
+/* Glitch Effects */
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+/* Enhanced glitch animations */
 .boot-sequence::before {
   content: "";
   position: absolute;
@@ -126,11 +341,51 @@
   opacity: 0;
   pointer-events: none;
   z-index: 100;
-  animation: randomGlitch 20s infinite;
+  animation: randomGlitch 30s infinite;
+}
+
+.boot-sequence::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.2;
+  z-index: 10;
+  animation: scanlines 10s linear infinite;
 }
 
 @keyframes randomGlitch {
-  0%, 95%, 100% { opacity: 0; }
-  96%, 97% { opacity: 0.1; transform: translateX(-2px); }
-  98%, 99% { opacity: 0.2; transform: translateX(2px); }
+  0%, 97%, 100% { opacity: 0; } /* Less frequent glitches */
+  97.5%, 97.7% { opacity: 0.08; transform: translateX(-1px); } /* Reduced intensity */
+  98%, 98.3% { opacity: 0.1; transform: translateX(1px); } /* Reduced intensity */
+  98.5%, 98.7% { opacity: 0.12; transform: translateX(-1.5px) skewX(1deg); } /* Reduced intensity */
+  99%, 99.5% { opacity: 0.08; transform: translateX(0.5px); } /* Reduced intensity */
+}
+
+/* Screen-wide glitch effect for major errors */
+:root:not(.screen-glitch) {
+  transition: filter 0.5s;
+}
+
+:root.screen-glitch {
+  filter: hue-rotate(90deg) saturate(150%) brightness(1.2);
+  animation: majorGlitch 0.5s;
+  transition: filter 0s;
+}
+
+@keyframes majorGlitch {
+  0% { filter: hue-rotate(0deg) saturate(100%) brightness(1); }
+  20% { filter: hue-rotate(60deg) saturate(150%) brightness(1.2); } /* Less intense */
+  40% { filter: hue-rotate(30deg) saturate(170%) brightness(0.9); } /* Less intense */
+  60% { filter: hue-rotate(90deg) saturate(140%) contrast(1.2); } /* Less intense */
+  80% { filter: hue-rotate(120deg) saturate(130%) brightness(1.1); } /* Less intense */
+  100% { filter: hue-rotate(45deg) saturate(120%) brightness(1.05); } /* Less intense */
 }
