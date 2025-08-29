@@ -350,12 +350,12 @@
 }
 
 /* Icon styles for menu items */
-.terminal-icon {
+.start-menu-content .terminal-icon {
   background-color: rgba(0, 0, 0, 0.6);
   position: relative;
 }
 
-.terminal-icon::before {
+.start-menu-content.terminal-icon::before {
   content: '>';
   position: absolute;
   top: 50%;
@@ -365,12 +365,12 @@
   color: #00f0ff;
 }
 
-.files-icon {
+.start-menu-content .files-icon {
   background-color: rgba(0, 0, 0, 0.6);
   position: relative;
 }
 
-.files-icon::before {
+.start-menu-content .files-icon::before {
   content: '⊞';
   position: absolute;
   top: 50%;
@@ -380,12 +380,12 @@
   color: #00f0ff;
 }
 
-.notes-icon {
+.start-menu-content .notes-icon {
   background-color: rgba(0, 0, 0, 0.6);
   position: relative;
 }
 
-.notes-icon::before {
+.start-menu-content .notes-icon::before {
   content: '✎';
   position: absolute;
   top: 50%;
@@ -395,12 +395,12 @@
   color: #00f0ff;
 }
 
-.simulation-icon {
+.start-menu-content .simulation-icon {
   background-color: rgba(0, 0, 0, 0.6);
   position: relative;
 }
 
-.simulation-icon::before {
+.start-menu-content .simulation-icon::before {
   content: '◈';
   position: absolute;
   top: 50%;
@@ -410,13 +410,13 @@
   color: #ff00ff;
 }
 
-.glitch-icon {
+.start-menu-content .glitch-icon {
   background-color: rgba(0, 0, 0, 0.6);
   position: relative;
   animation: iconGlitch 4s infinite;
 }
 
-.glitch-icon::before {
+.start-menu-content.glitch-icon::before {
   content: '⚠';
   position: absolute;
   top: 50%;
@@ -922,13 +922,13 @@
 }
 
 /* Specific icons */
-.files-icon {
+.start-menu-content.files-icon {
   background-color: #ffffff;
   position: relative;
   border: 1px solid #808080;
 }
 
-.files-icon:after {
+.start-menu-content.files-icon:after {
   content: '';
   position: absolute;
   top: 25%;
@@ -938,13 +938,13 @@
   background-color: #ffcc00;
 }
 
-.settings-icon {
+.start-menu-content.settings-icon {
   background-color: #ffffff;
   position: relative;
   border: 1px solid #808080;
 }
 
-.settings-icon:after {
+.start-menu-content .settings-icon:after {
   content: '⚙';
   position: absolute;
   top: 50%;
@@ -955,7 +955,7 @@
   color: #000080;
 }
 
-.terminal-icon {
+.start-menu-content .terminal-icon {
   /* MS-DOS Prompt icon in win98 with sunset colors */
   background-color: #000000;
   border: 2px solid;
@@ -965,7 +965,7 @@
   overflow: hidden;
 }
 
-.terminal-icon::before {
+.start-menu-content .terminal-icon::before {
   content: '';
   position: absolute;
   top: 0;
@@ -975,7 +975,7 @@
   background: linear-gradient(90deg, #ff6b35, #d83790);
 }
 
-.terminal-icon::after {
+.start-menu-content .terminal-icon::after {
   content: '>';
   position: absolute;
   top: 45%;
@@ -993,13 +993,13 @@
   50%, 100% { opacity: 0; }
 }
 
-.notes-icon {
+.start-menu-content .notes-icon {
   background-color: #ffffff;
   border: 1px solid #808080;
   position: relative;
 }
 
-.notes-icon::after {
+.start-menu-content .notes-icon::after {
   content: '';
   position: absolute;
   top: 20%;

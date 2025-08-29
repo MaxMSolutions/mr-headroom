@@ -9,6 +9,8 @@ import './DesktopIcons.css';
 import './DesktopIconSizes.css'; // Import the size fixes
 import './settings-icon.css'; // Import settings icon style
 import './calculator-icon.css'; // Import calculator icon style
+import './text-editor-icon.css'; // Import text editor icon style
+import './terminal-icon.css'; // Import terminal icon style
 import './doom-icon.css'; // Import doom game icon style
 import './wolf3d-icon.css'; // Import Wolfenstein 3D game icon style
 import './keen-icon.css'; // Import Commander Keen game icon style

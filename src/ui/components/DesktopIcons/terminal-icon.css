@@ -1,0 +1,122 @@
+/* Terminal Icon styles */
+.terminal-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; /* Standardized icon size */
+  height: 52px; /* Standardized icon size */
+  min-width: 52px; /* Prevent shrinking */
+  min-height: 52px; /* Prevent shrinking */
+  background: linear-gradient(135deg, #001a1a, #000000);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Terminal header section */
+.terminal-icon:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: rgba(0, 255, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+/* Terminal prompt symbol */
+.terminal-icon .prompt {
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: rgba(213, 61, 237, 0.9);
+}
+
+/* Command line text */
+.terminal-icon .command-line {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  right: 15%;
+  height: 1px;
+  background: rgba(0, 255, 0, 0.7);
+  box-shadow: 0 0 2px rgba(0, 255, 0, 0.3);
+}
+
+/* Cursor */
+.terminal-icon .cursor {
+  position: absolute;
+  left: 35%; /* Position cursor after command line */
+  width: 5px;
+  height: 8px;
+  background: rgba(0, 255, 0, 0.8);
+  box-shadow: 0 0 2px rgba(0, 255, 0, 0.5);
+  animation: terminalBlink 1s infinite;
+}
+
+/* Output lines */
+.terminal-icon .output-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(0, 255, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0, 255, 0, 0.2);
+  /* Ensure no animation is applied */
+  animation: none !important;
+}
+
+/* First output line (4th child in the terminal icon) */
+.terminal-icon .output-line:first-of-type {
+  top: 50%;
+  left: 15%;
+  right: 20%;
+}
+
+/* Second output line (5th child in the terminal icon) */
+.terminal-icon .output-line:last-of-type {
+  top: 65%;
+  left: 15%;
+  right: 30%;
+}
+
+@keyframes terminalBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Explicitly ensure ONLY the cursor blinks, nothing else */
+.terminal-icon .prompt,
+.terminal-icon .command-line,
+.terminal-icon .output-line {
+  animation: none !important;
+}
+
+/* Terminal label for consistency with other icons */
+.terminal-icon:after {
+  content: 'CMD';
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 8px;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: rgba(0, 255, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+/* Hover effects */
+.desktop-icon:hover .terminal-icon {
+  background: linear-gradient(135deg, #002a1a, #000505);
+}
+
+.desktop-icon:hover .terminal-icon .command-line,
+.desktop-icon:hover .terminal-icon .output-line,
+.desktop-icon:hover .terminal-icon .cursor {
+  background-color: rgba(0, 255, 0, 0.9);
+  box-shadow: 0 0 3px rgba(0, 255, 0, 0.7);
+}

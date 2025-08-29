@@ -151,7 +151,7 @@
 }
 
 /* Specific icons */
-.new-icon, .terminal-icon, .settings-icon, .boot-icon {
+.new-icon, .settings-icon, .boot-icon {
   /* Common icon styles */
   width: 16px;
   height: 16px;
@@ -163,12 +163,6 @@
 
 .new-icon:after {
   content: '+';
-  font-weight: bold;
-  color: #00f0ff;
-}
-
-.terminal-icon:after {
-  content: '>';
   font-weight: bold;
   color: #00f0ff;
 }

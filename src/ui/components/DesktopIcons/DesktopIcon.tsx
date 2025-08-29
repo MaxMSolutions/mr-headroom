@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './DesktopIcon.css';
+import './text-editor-icon.css'; // Import text editor icon styles
 
 interface DesktopIconProps {
-  iconType: 'folder' | 'terminal' | 'executable' | 'notes' | 'corrupted' | 'glitched' | 'system' | 'locked' | 'game' | string;
+  iconType: 'folder' | 'terminal' | 'executable' | 'texteditor' | 'notes' | 'corrupted' | 'glitched' | 'system' | 'locked' | 'game' | string;
   label: string;
   isHidden?: boolean;
   isGlitched?: boolean;
@@ -205,6 +206,23 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
     >
       <div className={`icon-image ${iconType}-icon`}>
         {iconType === 'system' && <div className="system-cube">⌬</div>}
+        {iconType === 'texteditor' && (
+          <div className="texteditor-icon">
+            <div className="text-line"></div>
+            <div className="text-line"></div>
+            <div className="text-line"></div>
+            <div className="text-cursor"></div>
+          </div>
+        )}
+        {iconType === 'terminal' && (
+          <div className="terminal-icon">
+            <div className="prompt">{'>'}</div>
+            <div className="command-line"></div>
+            <div className="cursor"></div>
+            <div className="output-line"></div>
+            <div className="output-line"></div>
+          </div>
+        )}
         {iconType === 'doom' && <img src="/msdos/icons/doom-icon.png" alt="DOOM" className="doom-icon-image" draggable="false" />}
         {iconType === 'wolf3d' && <img src="/msdos/icons/wolf3d.png" alt="Wolfenstein 3D" className="wolf3d-icon-image" draggable="false" />}
         {iconType === 'keen' && <img src="/msdos/icons/keen4.png" alt="Commander Keen" className="keen-icon-image" draggable="false" />}

@@ -65,7 +65,7 @@ export function useIconsData() {
       attributes: ['System', 'Hidden'] // Removed 'Executable' attribute
     },
     { 
-      type: 'notes', 
+      type: 'texteditor', 
       label: 'Text Editor', 
       id: 'notepad', 
       isGlitched: false, 
