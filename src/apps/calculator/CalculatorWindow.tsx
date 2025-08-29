@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import './CalculatorWindow.css';
-import { CalculatorWindowProps, CalculatorState, CalculatorOperation } from './types';
+import { CalculatorWindowProps, CalculatorState, CalculatorOperation, CalculatorMode, CalculatorTheme, HistoryItem } from './types';
 
 const CalculatorWindow: React.FC<CalculatorWindowProps> = ({
   id,
@@ -12,10 +12,21 @@ const CalculatorWindow: React.FC<CalculatorWindowProps> = ({
     operation: null,
     waitingForOperand: false,
     memory: 0,
-    isMemoryActive: false
+    isMemoryActive: false,
+    history: [],
+    showHistory: false,
+    currentExpression: '',
+    lastOperation: null
   });
 
+  const [calculatorMode, setCalculatorMode] = useState<CalculatorMode>('standard');
+  const [calculatorTheme, setCalculatorTheme] = useState<CalculatorTheme>('cyberpunk');
   const [isGlitching, setIsGlitching] = useState(false);
+  const [showKeypad, setShowKeypad] = useState(true);
+  
+  // Refs for animations and focus management
+  const displayRef = useRef<HTMLDivElement>(null);
+  const historyRef = useRef<HTMLDivElement>(null);
 
   // Calculator operations
   const performCalculation = useCallback((left: number, right: number, operation: string): number => {
@@ -538,17 +549,6 @@ const CalculatorWindow: React.FC<CalculatorWindowProps> = ({
             </button>
             <div className="keypad-spacer"></div>
           </div>
-        </div>
-
-        <div className="calculator-actions">
-          <button 
-            className="close-button" 
-            onClick={onClose}
-            aria-label="Close calculator"
-            title="Close calculator"
-          >
-            ⊗ CLOSE
-          </button>
         </div>
       </div>
     </div>

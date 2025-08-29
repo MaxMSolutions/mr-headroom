@@ -77,6 +77,9 @@
   padding: 20px;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
 }
 
 .calculator-header {
@@ -203,20 +206,25 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
+  flex-grow: 1;
+  margin-top: 10px;
+  justify-content: space-between;
 }
 
 .keypad-row {
   display: flex;
   gap: 8px;
   justify-content: space-between;
+  width: 100%;
 }
 
 .keypad-spacer {
-  flex: 1;
+  width: calc(20% - 6.4px);
 }
 
 .calc-button {
-  flex: 1;
+  width: calc(20% - 6.4px);
   padding: 14px 10px;
   border: 1px solid;
   border-color: rgba(0, 240, 255, 0.4);
@@ -234,7 +242,7 @@
   box-shadow: 
     0 0 5px rgba(0, 240, 255, 0.2),
     inset 0 0 2px rgba(0, 240, 255, 0.1);
-  min-height: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -416,79 +424,10 @@
 }
 
 .calc-button.zero {
-  flex: 2; /* Make zero button wider */
+  width: calc(40% - 4px); /* Make zero button wider - span 2 columns */
 }
 
-.calculator-actions {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.close-button {
-  padding: 10px 18px;
-  border: 1px solid;
-  border-color: rgba(0, 240, 255, 0.5);
-  background: 
-    linear-gradient(135deg, rgba(15, 10, 25, 0.9), rgba(25, 15, 35, 0.9)),
-    radial-gradient(circle at 30% 30%, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
-  color: var(--text-primary);
-  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
-  font-size: 11px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  text-shadow: 0 0 3px var(--accent-secondary);
-  box-shadow: 
-    0 0 6px rgba(0, 240, 255, 0.2),
-    inset 0 0 3px rgba(0, 240, 255, 0.1);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  position: relative;
-  overflow: hidden;
-}
-
-.close-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 71, 87, 0.3),
-    transparent
-  );
-  transition: left 0.5s;
-  pointer-events: none;
-}
-
-.close-button:hover {
-  background: 
-    linear-gradient(135deg, rgba(25, 15, 35, 0.95), rgba(35, 20, 45, 0.95)),
-    radial-gradient(circle at 30% 30%, rgba(255, 71, 87, 0.15) 0%, transparent 70%);
-  box-shadow: 
-    0 0 15px rgba(255, 71, 87, 0.4),
-    inset 0 0 8px rgba(255, 71, 87, 0.2),
-    0 0 20px rgba(255, 0, 255, 0.1);
-  transform: translateY(-1px) scale(1.02);
-  border-color: rgba(255, 71, 87, 0.7);
-  color: var(--accent-primary);
-}
-
-.close-button:hover::before {
-  left: 100%;
-}
-
-.close-button:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 
-    0 0 8px rgba(255, 71, 87, 0.3),
-    inset 0 0 12px rgba(255, 71, 87, 0.4);
-  transition: all 0.08s;
-}
+/* Calculator actions section removed */
 
 /* Enhanced glitch effect for calculations */
 .calculator-window.glitching {
