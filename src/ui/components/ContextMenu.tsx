@@ -72,14 +72,17 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, items, onMenuItemAction
   }, [onClose]);
 
   // Handle menu item click with explicit action
-  const handleItemClick = (item: ContextMenuItem) => {
+  const handleItemClick = (item: ContextMenuItem, event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     console.log(`Context menu: Item clicked - ${item.label}`);
-    
+
     if (item.disabled) {
       console.log(`Context menu: Item ${item.label} is disabled, ignoring click`);
       return;
     }
-    
+
     // Handle click with explicit action identifier
     if (item.action && item.iconId && onMenuItemAction) {
       console.log(`Context menu: Executing action ${item.action} for icon ${item.iconId}`);
@@ -94,7 +97,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, items, onMenuItemAction
         console.error('Error in context menu handler:', error);
       }
     }
-    
+
     // Close the menu after handling the click
     onClose();
   };
@@ -121,7 +124,8 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, items, onMenuItemAction
           <button 
             key={`${item.label}-${index}`}
             className={`context-menu-item ${item.disabled ? 'disabled' : ''}`}
-            onClick={() => handleItemClick(item)}
+            onClick={(event) => handleItemClick(item, event)}
+            onMouseDown={(event) => event.stopPropagation()}
             disabled={item.disabled}
             type="button"
             data-item-name={item.label}
