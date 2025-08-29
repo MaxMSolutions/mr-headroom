@@ -36,7 +36,7 @@
   font-family: var(--font-alt);
   text-shadow: 0 0 8px var(--accent-primary);
   letter-spacing: 1px;
-  font-size: 1.8em;
+  font-size: 1.1em;
 }
 
 .guide-subheader {
@@ -186,7 +186,7 @@
   margin: 0;
   color: var(--accent-secondary);
   text-transform: uppercase;
-  font-size: 0.8em;
+  font-size: 0.6em;
   font-family: var(--font-alt);
   letter-spacing: 1px;
   text-shadow: 0 0 3px var(--accent-secondary);
@@ -395,7 +395,7 @@
   color: var(--accent-primary);
   font-family: var(--font-alt);
   text-shadow: 0 0 5px var(--accent-primary);
-  font-size: 1.5em;
+  font-size: 0.95em;
   letter-spacing: 1px;
 }
 
@@ -413,7 +413,7 @@
   margin: 20px 0 10px;
   color: var(--accent-secondary);
   font-family: var(--font-alt);
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 1px;
 }
 
@@ -801,7 +801,7 @@ li.completed .req-status {
 }
 
 .system-logo {
-  font-size: 5em;
+  font-size: 3em;
   font-family: var(--font-alt);
   color: var(--accent-primary);
   text-shadow: 0 0 15px var(--accent-primary);
