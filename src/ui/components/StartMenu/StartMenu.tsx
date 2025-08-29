@@ -83,18 +83,14 @@ const StartMenu: React.FC<StartMenuProps> = ({
               <div className="menu-item-icon files-icon"></div>
               <span>File Explorer</span>
             </div>
-            <div className="menu-item-large" onClick={() => launchApp('TextEditor')}>
-              <div className="menu-item-icon notes-icon"></div>
-              <span>Research Notes</span>
-            </div>
             <div className="menu-item-large" onClick={() => {
               // Show Reality Boundary Error dialog instead of launching Reality Simulator
               if (window.windowManager) {
                 window.windowManager.addWindow({
                   title: 'System Error',
                   component: 'ErrorDialog',
-                  width: 450,
-                  height: 250,
+                  width: 500,
+                  height: 400,
                   componentProps: {
                     errorTitle: 'Reality Boundary Error',
                     errorMessage: 'CRITICAL ERROR: Reality desynchronization detected. Access to this program has been revoked by SYSTEM.',

@@ -226,8 +226,8 @@ const Desktop: React.FC<DesktopProps> = ({ fileSystem }) => {
               window.windowManager.addWindow({
                 title: 'System Error',
                 component: 'ErrorDialog',
-                width: 450,
-                height: 250,
+                width: 500,
+                height: 400,
                 componentProps: {
                   errorTitle: 'Reality Boundary Error',
                   errorMessage: 'CRITICAL ERROR: Reality desynchronization detected. Access to this program has been revoked by SYSTEM.',
