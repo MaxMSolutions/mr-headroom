@@ -173,6 +173,18 @@ export function useIconsData() {
       created: '1998-01-01 00:00:00',
       modified: '1998-01-01 00:00:00',
       attributes: ['System', 'Executable', 'Read-only', 'Hidden', 'Locked']
+    },
+    { 
+      type: 'calculator', 
+      label: 'Calculator', 
+      id: 'calculator', 
+      isGlitched: false, 
+      filePath: '/system/CALC.EXE',
+      gridPosition: { row: 3, col: 2 },
+      size: '1.5 KB',
+      created: '1998-01-06 10:15:30',
+      modified: '1998-03-15 09:22:18',
+      attributes: ['System', 'Executable']
     }
   ]);
 

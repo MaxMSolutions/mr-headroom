@@ -1,0 +1,30 @@
+.calculator-icon {
+  background: linear-gradient(135deg, #2a2a4a, #1a1a2a);
+  border: 1px solid var(--accent-secondary);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-icon::before {
+  content: '🧮';
+  color: var(--accent-secondary);
+  font-size: 28px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 8px var(--accent-secondary);
+  animation: calculatorGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes calculatorGlow {
+  0% {
+    text-shadow: 0 0 8px var(--accent-secondary);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    text-shadow: 0 0 15px var(--accent-secondary), 0 0 20px var(--accent-secondary);
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
