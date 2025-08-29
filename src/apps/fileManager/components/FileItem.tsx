@@ -5,10 +5,11 @@ import {
   IoDocumentTextOutline, 
   IoImageOutline,
   IoCodeSlashOutline,
-  IoSettingsOutline,
+  IoLogoWindows,
   IoTerminalOutline,
   IoServerOutline,
-  IoDocumentOutline
+  IoDocumentOutline,
+  IoGameControllerOutline
 } from 'react-icons/io5';
 
 interface FileItemProps {
@@ -44,8 +45,18 @@ const FileItem: React.FC<FileItemProps> = ({
       case 'gif':
         return <IoImageOutline className="file-icon" />;
       case 'exe':
+        // Check if it's a game executable by name
+        if (file.name.toLowerCase().includes('game') || 
+            file.name.toLowerCase().includes('doom') ||
+            file.name.toLowerCase().includes('wolf') ||
+            file.name.toLowerCase().includes('starfield') ||
+            file.name.toLowerCase().includes('labyrinth')) {
+          return <IoGameControllerOutline className="file-icon" />;
+        }
+        // Default exe icon
+        return <IoLogoWindows className="file-icon" />;
       case 'com':
-        return <IoSettingsOutline className="file-icon" />;
+        return <IoLogoWindows className="file-icon" />;
       case 'bat':
         return <IoTerminalOutline className="file-icon" />;
       case 'ini':

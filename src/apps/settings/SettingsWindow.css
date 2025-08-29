@@ -58,6 +58,9 @@
   text-shadow: 0 0 8px #ff00ff;
   letter-spacing: 2px;
   font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .settings-section {
@@ -76,6 +79,8 @@
 }
 
 .settings-section h3 {
+  display: flex;
+  align-items: center;
   margin-top: 0;
   margin-bottom: 15px;
   border-bottom: 1px solid #00ffff; /* Default cyan border */
@@ -113,7 +118,9 @@
   background: linear-gradient(to right, transparent, #00ffff 0.3, transparent);
 }
 
-.settings-group label {
+.settings-group > label {
+  display: flex;
+  align-items: center;
   min-width: 150px;
   font-size: 1.1rem;
   text-transform: uppercase;
@@ -160,85 +167,6 @@
   color: #ff5f6d;
 }
 
-.toggle-switch {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.toggle-switch .switch-container {
-  position: relative;
-  width: 60px;
-  height: 30px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #00ffff;
-  border-radius: 34px;
-  cursor: pointer;
-  transition: 0.4s;
-  overflow: hidden;
-}
-
-.toggle-switch .switch-container::before {
-  content: "";
-  position: absolute;
-  height: 22px;
-  width: 22px;
-  left: 4px;
-  bottom: 4px;
-  background-color: #00f0ff;
-  border-radius: 50%;
-  transition: 0.4s;
-  box-shadow: 0 0 5px #00f0ff;
-}
-
-.toggle-switch input:checked + .switch-container {
-  background-color: rgba(0, 0, 0, 0.7);
-  border-color: #ff00ff;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-}
-
-.toggle-switch input:checked + .switch-container::before {
-  transform: translateX(30px);
-  background-color: #ff00ff;
-  box-shadow: 0 0 5px #ff00ff;
-}
-
-.toggle-switch .switch-container:hover {
-  box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
-  border-color: #00f0ff;
-}
-
-.toggle-switch .switch-container:hover::before {
-  box-shadow: 0 0 8px #00f0ff;
-}
-
-.toggle-switch input:checked + .switch-container:hover {
-  box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
-  border-color: #ff00ff;
-}
-
-.toggle-switch input:checked + .switch-container:hover::before {
-  box-shadow: 0 0 8px #ff00ff;
-}
-
-.toggle-switch .status-text {
-  font-size: 0.9rem;
-  color: #00f0ff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 0 0 3px #00f0ff;
-  min-width: 70px;
-  text-align: center;
-}
-
 select {
   background-color: rgba(0, 0, 0, 0.7);
   color: #00f0ff; /* Default neon blue text */
@@ -280,6 +208,9 @@ select {
 }
 
 .save-button, .close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 20px;
   border: 1px solid;
   border-radius: 4px;
@@ -290,6 +221,7 @@ select {
   text-transform: uppercase;
   letter-spacing: 1px;
   background-color: rgba(0, 0, 0, 0.7);
+  gap: 8px; /* Space between icon and text */
 }
 
 .save-button {
@@ -319,6 +251,9 @@ select {
   animation: status-fade 0.3s ease-in;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes status-fade {
@@ -507,4 +442,70 @@ select {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
+}
+
+/* Icon styling */
+.settings-header-icon,
+.settings-section-icon,
+.settings-icon,
+.button-icon,
+.status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  filter: drop-shadow(0 0 3px var(--accent-secondary, #00f0ff));
+  transition: transform 0.3s ease;
+}
+
+.header-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-header-icon {
+  font-size: 24px;
+  color: #ff00ff; /* Magenta for main header */
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.section-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+}
+
+.settings-section-icon {
+  font-size: 20px;
+  color: var(--accent-secondary, #00f0ff);
+}
+
+.settings-icon {
+  font-size: 16px;
+  margin-right: 5px;
+  color: var(--text-primary, #33ff33);
+}
+
+.button-icon {
+  font-size: 16px;
+  position: relative;
+  top: -1px;
+}
+
+.status-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  animation: pulse 2s infinite ease-in-out;
+  vertical-align: middle;
+}
+
+.status-text {
+  display: inline-block;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 }

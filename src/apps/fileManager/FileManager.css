@@ -392,6 +392,10 @@
   color: #9966ff; /* Purple for images */
 }
 
-.file-icon[class*="Settings"] {
-  color: #ff6633; /* Orange for executables */
+.file-icon[class*="LogoWindows"] {
+  color: #33aaff; /* Blue for Windows-like executables */
+}
+
+.file-icon[class*="GameController"] {
+  color: #ff3366; /* Red for game executables */
 }

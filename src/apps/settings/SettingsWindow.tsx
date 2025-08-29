@@ -2,6 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../ui/ThemeContext';
 import FileSystem from '../../engine/fileSystem';
 import './SettingsWindow.css';
+import ToggleSwitch from '../../ui/components/ToggleSwitch';
+import { 
+  IoColorPaletteOutline, 
+  IoDesktopOutline, 
+  IoAccessibilityOutline,
+  IoSpeedometerOutline,
+  IoSaveOutline,
+  IoCloseOutline,
+  IoWarningOutline,
+  IoStatsChartOutline,
+  IoHardwareChipOutline
+} from 'react-icons/io5';
 
 interface SettingsWindowProps {
   id: string;
@@ -78,12 +90,27 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({ id, onClose, fileSystem
   return (
     <div className={`settings-window ${isGlitching ? 'glitching' : ''}`} id={`settings-${id}`}>
       <div className="settings-content">
-        <h2>:: System Settings ::</h2>
+        <h2>
+          <span className="header-icon-wrapper">
+            <IoHardwareChipOutline className="settings-header-icon" />
+          </span>
+          <span>SYSTEM SETTINGS</span>
+        </h2>
         
         <section className="settings-section">
-          <h3>⚡ Interface Configuration</h3>
+          <h3>
+            <span className="section-icon-wrapper">
+              <IoDesktopOutline className="settings-section-icon" />
+            </span>
+            <span>Interface Configuration</span>
+          </h3>
           <div className="settings-group">
-            <label>Visual Theme</label>
+            <label>
+              <span className="label-icon-wrapper">
+                <IoColorPaletteOutline className="settings-icon" />
+              </span>
+              <span>Visual Theme</span>
+            </label>
             <div className="theme-selector">
               <button 
                 className={`theme-option amber ${currentTheme === 'amber' ? 'selected' : ''}`} 
@@ -107,38 +134,50 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({ id, onClose, fileSystem
           </div>
           
           <div className="settings-group">
-            <label htmlFor="crt-effect">CRT Effect</label>
-            <div className="toggle-switch">
-              <input 
-                type="checkbox" 
-                id="crt-effect" 
-                checked={crtEffect} 
-                onChange={toggleCrtEffect}
-              />
-              <div className="switch-container" onClick={() => document.getElementById('crt-effect')?.click()}></div>
-              <span className="status-text">{crtEffect ? 'ENABLED' : 'DISABLED'}</span>
-            </div>
+            <label>
+              <span className="label-icon-wrapper">
+                <IoDesktopOutline className="settings-icon" />
+              </span>
+              <span>CRT Effect</span>
+            </label>
+            <ToggleSwitch
+              id="crt-effect"
+              checked={crtEffect}
+              onChange={toggleCrtEffect}
+              statusLabels={{ on: 'ENABLED', off: 'DISABLED' }}
+            />
           </div>
           
           <div className="settings-group">
-            <label htmlFor="accessibility-mode">Accessibility Mode</label>
-            <div className="toggle-switch">
-              <input 
-                type="checkbox" 
-                id="accessibility-mode" 
-                checked={accessibilityMode} 
-                onChange={toggleAccessibilityMode}
-              />
-              <div className="switch-container" onClick={() => document.getElementById('accessibility-mode')?.click()}></div>
-              <span className="status-text">{accessibilityMode ? 'ENABLED' : 'DISABLED'}</span>
-            </div>
+            <label>
+              <span className="label-icon-wrapper">
+                <IoAccessibilityOutline className="settings-icon" />
+              </span>
+              <span>Accessibility Mode</span>
+            </label>
+            <ToggleSwitch
+              id="accessibility-mode"
+              checked={accessibilityMode}
+              onChange={toggleAccessibilityMode}
+              statusLabels={{ on: 'ENABLED', off: 'DISABLED' }}
+            />
           </div>
         </section>
         
         <section className="settings-section">
-          <h3>⚙ System Configuration</h3>
+          <h3>
+            <span className="section-icon-wrapper">
+              <IoHardwareChipOutline className="settings-section-icon" />
+            </span>
+            <span>System Configuration</span>
+          </h3>
           <div className="settings-group">
-            <label htmlFor="boot-mode">Boot Sequence</label>
+            <label htmlFor="boot-mode">
+              <span className="label-icon-wrapper">
+                <IoSpeedometerOutline className="settings-icon" />
+              </span>
+              <span>Boot Sequence</span>
+            </label>
             <select 
               id="boot-mode" 
               value={bootMode} 
@@ -152,7 +191,12 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({ id, onClose, fileSystem
         </section>
         
         <section className="settings-section system-monitor">
-          <h3>⚠ System Diagnostics</h3>
+          <h3>
+            <span className="section-icon-wrapper">
+              <IoStatsChartOutline className="settings-section-icon" />
+            </span>
+            <span>System Diagnostics</span>
+          </h3>
           <div className="system-stats">
             <div className="stat-item">
               <div className="stat-label">CPU USAGE</div>
@@ -179,15 +223,18 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({ id, onClose, fileSystem
         </section>
         
         <div className="settings-actions">
-          <button className="save-button" onClick={saveSettings}>⌘ SAVE CONFIG</button>
-          <button className="close-button" onClick={onClose}>⊗ CLOSE</button>
+          <button className="save-button" onClick={saveSettings}>
+            <IoSaveOutline className="button-icon" /> SAVE CONFIG
+          </button>
+          <button className="close-button" onClick={onClose}>
+            <IoCloseOutline className="button-icon" /> CLOSE
+          </button>
         </div>
         
         {saveStatus && (
           <div className={`save-status ${saveStatus.includes('Error') ? 'error' : 'success'}`}>
-            {saveStatus.includes('Error') ? '! ERROR !' : '// SUCCESS //'}
-            <br />
-            {saveStatus}
+            {saveStatus.includes('Error') ? <IoWarningOutline className="status-icon" /> : <IoSaveOutline className="status-icon" />}
+            <span className="status-text">{saveStatus}</span>
           </div>
         )}
       </div>
