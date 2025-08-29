@@ -115,7 +115,8 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({ id, onClose, fileSystem
                 checked={crtEffect} 
                 onChange={toggleCrtEffect}
               />
-              <label htmlFor="crt-effect">{crtEffect ? 'ENABLED' : 'DISABLED'}</label>
+              <div className="switch-container" onClick={() => document.getElementById('crt-effect')?.click()}></div>
+              <span className="status-text">{crtEffect ? 'ENABLED' : 'DISABLED'}</span>
             </div>
           </div>
           
@@ -128,7 +129,8 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({ id, onClose, fileSystem
                 checked={accessibilityMode} 
                 onChange={toggleAccessibilityMode}
               />
-              <label htmlFor="accessibility-mode">{accessibilityMode ? 'ENABLED' : 'DISABLED'}</label>
+              <div className="switch-container" onClick={() => document.getElementById('accessibility-mode')?.click()}></div>
+              <span className="status-text">{accessibilityMode ? 'ENABLED' : 'DISABLED'}</span>
             </div>
           </div>
         </section>
