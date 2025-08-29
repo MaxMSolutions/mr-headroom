@@ -1,17 +1,17 @@
 /* Global CSS Variables */
 :root {
-  /* Primary Theme - Sunset */
+  /* Primary Theme - Sunset (Neon Blue) */
   --bg-primary: #000000;
-  --bg-secondary: #1a0a1a;
-  --text-primary: #ff6b6b;
-  --text-secondary: #cc5555;
-  --accent-primary: #ff4757;
-  --accent-secondary: #ff3838;
-  --window-border: #ff6b6b;
-  --window-header: #1a0a1a;
-  --window-titlebar: #ff6b6b;
+  --bg-secondary: #0a0a1a;
+  --text-primary: #00f0ff;
+  --text-secondary: #0088aa;
+  --accent-primary: #ff00ff;
+  --accent-secondary: #00ffff;
+  --window-border: #00f0ff;
+  --window-header: #0a0a1a;
+  --window-titlebar: #00f0ff;
   --terminal-bg: #000000;
-  --terminal-text: #ff6b6b;
+  --terminal-text: #00f0ff;
   --crt-scanline: rgba(0, 0, 0, 0.2);
   
   /* Font Settings */

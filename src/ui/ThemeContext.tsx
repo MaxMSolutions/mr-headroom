@@ -80,11 +80,11 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       root.style.setProperty('--accent-secondary', '#00aa00');
     } else if (currentTheme === 'sunset') {
       root.style.setProperty('--bg-primary', '#000000');
-      root.style.setProperty('--bg-secondary', '#1a0a1a');
-      root.style.setProperty('--text-primary', '#ff6b6b');
-      root.style.setProperty('--text-secondary', '#cc5555');
-      root.style.setProperty('--accent-primary', '#ff4757');
-      root.style.setProperty('--accent-secondary', '#ff3838');
+      root.style.setProperty('--bg-secondary', '#0a0a1a');
+      root.style.setProperty('--text-primary', '#00f0ff');
+      root.style.setProperty('--text-secondary', '#0088aa');
+      root.style.setProperty('--accent-primary', '#ff00ff');
+      root.style.setProperty('--accent-secondary', '#00ffff');
     } else {
       // Fallback to amber theme for any invalid theme
       root.style.setProperty('--bg-primary', '#000000');
