@@ -295,6 +295,18 @@
   background-color: var(--accent-primary);
 }
 
+.path-alpha .mini-bar {
+  background-color: var(--accent-alpha);
+}
+
+.path-beta .mini-bar {
+  background-color: var(--accent-beta);
+}
+
+.path-gamma .mini-bar {
+  background-color: var(--accent-gamma);
+}
+
 /* Subcategory List */
 .subcategory {
   list-style: none;
@@ -668,16 +680,39 @@
 
 .progress-bar {
   height: 15px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.8); /* Much darker background */
   border-radius: 8px;
   overflow: hidden;
   margin: 10px 0;
-  border: 1px solid rgba(51, 255, 51, 0.2);
+  border: 1px solid rgba(51, 255, 51, 0.6); /* More visible border */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7), 0 0 3px rgba(51, 255, 51, 0.3);
 }
 
 .progress-fill {
   height: 100%;
   transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.2));
+  border-right: 2px solid rgba(255, 255, 255, 0.5); /* Add edge highlight */
+}
+
+/* Add specific styles for each path fill */
+.path-alpha .progress-fill {
+  background-color: rgba(51, 255, 51, 0.8) !important; /* Brighter green */
+  box-shadow: 0 0 20px rgba(51, 255, 51, 0.8) !important; /* More intense glow */
+  background-image: linear-gradient(to bottom, rgba(151, 255, 151, 0.6), rgba(30, 200, 30, 0.8)) !important;
+}
+
+.path-beta .progress-fill {
+  background-color: rgba(0, 255, 255, 0.8) !important; /* Brighter cyan */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8) !important; /* More intense glow */
+  background-image: linear-gradient(to bottom, rgba(100, 255, 255, 0.6), rgba(0, 200, 200, 0.8)) !important;
+}
+
+.path-gamma .progress-fill {
+  background-color: rgba(255, 0, 255, 0.8) !important; /* Brighter magenta */
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8) !important; /* More intense glow */
+  background-image: linear-gradient(to bottom, rgba(255, 100, 255, 0.6), rgba(200, 0, 200, 0.8)) !important;
 }
 
 .progress-markers {
@@ -694,16 +729,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 0.7em;
-  color: var(--text-secondary);
+  font-size: 0.75em;
+  font-weight: bold;
+  color: var(--text-primary);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
 
 .marker-dot {
-  width: 8px;
-  height: 8px;
-  background-color: rgba(51, 255, 51, 0.5);
+  width: 10px;
+  height: 10px;
+  background-color: rgba(51, 255, 51, 0.6);
   border-radius: 50%;
   margin-bottom: 5px;
+  border: 1px solid rgba(51, 255, 51, 0.8);
+  box-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
 }
 
 /* Path Requirements */

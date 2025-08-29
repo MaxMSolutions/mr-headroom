@@ -304,6 +304,9 @@ export default function GuideWindow() {
                 </div>
                 <div className="path-progress-mini">
                   <span>{mysteryEngine.getPathProgress().alpha}%</span>
+                  <div className="mini-progress">
+                    <div className="mini-bar" style={{ width: `${mysteryEngine.getPathProgress().alpha}%` }}></div>
+                  </div>
                 </div>
               </li>
               <li 
@@ -319,6 +322,9 @@ export default function GuideWindow() {
                 </div>
                 <div className="path-progress-mini">
                   <span>{mysteryEngine.getPathProgress().beta}%</span>
+                  <div className="mini-progress">
+                    <div className="mini-bar" style={{ width: `${mysteryEngine.getPathProgress().beta}%` }}></div>
+                  </div>
                 </div>
               </li>
               <li 
@@ -334,6 +340,9 @@ export default function GuideWindow() {
                 </div>
                 <div className="path-progress-mini">
                   <span>{mysteryEngine.getPathProgress().gamma}%</span>
+                  <div className="mini-progress">
+                    <div className="mini-bar" style={{ width: `${mysteryEngine.getPathProgress().gamma}%` }}></div>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -451,7 +460,8 @@ export default function GuideWindow() {
                 </div>
                 <div className="progress-bar">
                   <div 
-                    className="progress-fill"
+                    className={`progress-fill ${selectedCategory === 'path_alpha' ? 'path-alpha' : 
+                               selectedCategory === 'path_beta' ? 'path-beta' : 'path-gamma'}`}
                     style={{ 
                       width: `${selectedCategory === 'path_alpha' ? 
                         mysteryEngine.getPathProgress().alpha : 
@@ -462,7 +472,12 @@ export default function GuideWindow() {
                         'var(--accent-alpha)' : 
                         selectedCategory === 'path_beta' ? 
                         'var(--accent-beta)' : 
-                        'var(--accent-gamma)'
+                        'var(--accent-gamma)',
+                      boxShadow: selectedCategory === 'path_alpha' ? 
+                        '0 0 15px rgba(51, 255, 51, 0.7)' : 
+                        selectedCategory === 'path_beta' ? 
+                        '0 0 15px rgba(0, 255, 255, 0.7)' : 
+                        '0 0 15px rgba(255, 0, 255, 0.7)'
                     }}
                   ></div>
                 </div>
