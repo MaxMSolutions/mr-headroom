@@ -1,8 +1,9 @@
 import React from 'react';
+import { ReactElement } from 'react';
 
 interface SidebarLocation {
   name: string;
-  icon: string;
+  icon: ReactElement | string; // Update to support React components
   path: string;
 }
 

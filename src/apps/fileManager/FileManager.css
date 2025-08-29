@@ -67,6 +67,7 @@
   padding: 2px 8px;
   margin-right: 4px;
   background-color: var(--bg-secondary);
+  gap: 5px; /* Space between icon and text */
   color: var(--text-primary);
   border: 1px solid var(--accent-secondary);
   border-radius: 2px;
@@ -84,6 +85,8 @@
 }
 
 .file-manager-path {
+  display: flex;
+  align-items: center;
   padding: 4px 8px;
   background-color: var(--terminal-bg, #000000);
   border-bottom: 1px solid var(--window-border, #33ff33);
@@ -92,6 +95,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--accent-secondary);
+  gap: 5px; /* Space between icon and text */
 }
 
 .file-manager-container {
@@ -335,4 +339,59 @@
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* Icon styles for file manager components */
+.toolbar-icon,
+.file-icon,
+.sidebar-icon {
+  font-size: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 2px var(--accent-secondary));
+  transition: all 0.3s ease;
+}
+
+/* Specific icon styles */
+.toolbar-icon {
+  font-size: 18px;
+  color: var(--accent-secondary);
+}
+
+.file-icon {
+  color: var(--text-primary);
+}
+
+.sidebar-icon {
+  font-size: 20px;
+  color: var(--accent-secondary);
+  margin-right: 8px;
+}
+
+.path-icon {
+  font-size: 16px;
+  color: var(--accent-secondary);
+  filter: drop-shadow(0 0 3px var(--accent-secondary));
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Animation for icons on hover */
+.file-manager-toolbar-button:hover .toolbar-icon,
+.file-manager-sidebar-item:hover .sidebar-icon,
+.file-dialog-item:hover .file-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 4px var(--accent-secondary));
+}
+
+/* Special effect for file icons based on type */
+.file-icon[class*="Document"] {
+  color: var(--accent-primary);
+}
+
+.file-icon[class*="Image"] {
+  color: #9966ff; /* Purple for images */
+}
+
+.file-icon[class*="Settings"] {
+  color: #ff6633; /* Orange for executables */
 }

@@ -1,5 +1,15 @@
 import React from 'react';
 import { FileSystemObject } from '../../../engine/fileSystem';
+import { 
+  IoFolderOutline, 
+  IoDocumentTextOutline, 
+  IoImageOutline,
+  IoCodeSlashOutline,
+  IoSettingsOutline,
+  IoTerminalOutline,
+  IoServerOutline,
+  IoDocumentOutline
+} from 'react-icons/io5';
 
 interface FileItemProps {
   item: FileSystemObject;
@@ -17,9 +27,9 @@ const FileItem: React.FC<FileItemProps> = ({
   onContextMenu
 }) => {
   // Get file icon based on type and extension
-  const getFileIcon = (file: FileSystemObject): string => {
+  const getFileIcon = (file: FileSystemObject): JSX.Element => {
     if (file.type === 'directory') {
-      return '⊞';
+      return <IoFolderOutline className="file-icon" />;
     }
     
     const extension = file.name.split('.').pop()?.toLowerCase();
@@ -27,23 +37,23 @@ const FileItem: React.FC<FileItemProps> = ({
     switch (extension) {
       case 'txt':
       case 'log':
-        return '◰';
+        return <IoDocumentTextOutline className="file-icon" />;
       case 'jpg':
       case 'jpeg':
       case 'png':
       case 'gif':
-        return '◨';
+        return <IoImageOutline className="file-icon" />;
       case 'exe':
       case 'com':
-        return '⚙';
+        return <IoSettingsOutline className="file-icon" />;
       case 'bat':
-        return '≡';
+        return <IoTerminalOutline className="file-icon" />;
       case 'ini':
-        return '⌆';
+        return <IoCodeSlashOutline className="file-icon" />;
       case 'dat':
-        return '⧈';
+        return <IoServerOutline className="file-icon" />;
       default:
-        return '◎';
+        return <IoDocumentOutline className="file-icon" />;
     }
   };
 

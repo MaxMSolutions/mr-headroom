@@ -2,6 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import './FileManager.css';
 import FileSystem, { FileSystemObject, File, Directory, joinPath, getParentPath } from '../../engine/fileSystem';
+import { 
+  IoDesktopOutline, 
+  IoHomeOutline, 
+  IoSettingsOutline,
+  IoFolderOutline,
+  IoAppsOutline
+} from 'react-icons/io5';
 import {
   FileManagerToolbar,
   FileManagerSidebar,
@@ -349,9 +356,9 @@ const FileManagerWindow: React.FC<FileManagerWindowProps> = ({
 
   // Common sidebar locations - build dynamically based on filesystem
   const [sidebarLocations, setSidebarLocations] = useState([
-    { name: 'My Computer', icon: '⌘', path: '/' },
-    { name: 'Home', icon: '⌂', path: '/home' },
-    { name: 'System', icon: '⚙', path: '/system' },
+    { name: 'My Computer', icon: <IoDesktopOutline className="sidebar-icon" />, path: '/' },
+    { name: 'Home', icon: <IoHomeOutline className="sidebar-icon" />, path: '/home' },
+    { name: 'System', icon: <IoSettingsOutline className="sidebar-icon" />, path: '/system' },
   ]);
   
   // Update sidebar locations once file system is loaded
@@ -359,23 +366,23 @@ const FileManagerWindow: React.FC<FileManagerWindowProps> = ({
     if (!fileSystem) return;
     
     const locations = [
-      { name: 'My Computer', icon: '⌘', path: '/' },
-      { name: 'Home', icon: '⌂', path: '/home' }
+      { name: 'My Computer', icon: <IoDesktopOutline className="sidebar-icon" />, path: '/' },
+      { name: 'Home', icon: <IoHomeOutline className="sidebar-icon" />, path: '/home' }
     ];
     
     // Only add paths that exist
     if (fileSystem.exists('/home/hedrum')) {
       if (fileSystem.exists('/home/hedrum/documents')) {
-        locations.push({ name: 'Documents', icon: '⊟', path: '/home/hedrum/documents' });
+        locations.push({ name: 'Documents', icon: <IoFolderOutline className="sidebar-icon" />, path: '/home/hedrum/documents' });
       }
       
       if (fileSystem.exists('/home/hedrum/apps')) {
-        locations.push({ name: 'Applications', icon: '⊞', path: '/home/hedrum/apps' });
+        locations.push({ name: 'Applications', icon: <IoAppsOutline className="sidebar-icon" />, path: '/home/hedrum/apps' });
       }
     }
     
     if (fileSystem.exists('/system')) {
-      locations.push({ name: 'System', icon: '⚙', path: '/system' });
+      locations.push({ name: 'System', icon: <IoSettingsOutline className="sidebar-icon" />, path: '/system' });
     }
     
     setSidebarLocations(locations);

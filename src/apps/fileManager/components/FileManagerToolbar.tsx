@@ -1,4 +1,9 @@
 import React from 'react';
+import { 
+  IoArrowUpOutline, 
+  IoEyeOutline, 
+  IoEyeOffOutline 
+} from 'react-icons/io5';
 
 interface FileManagerToolbarProps {
   onGoUp: () => void;
@@ -13,12 +18,22 @@ const FileManagerToolbar: React.FC<FileManagerToolbarProps> = ({
 }) => {
   return (
     <div className="file-manager-toolbar">
-      <button className="file-manager-toolbar-button" onClick={onGoUp}>⇧ PARENT_DIR</button>
+      <button 
+        className="file-manager-toolbar-button" 
+        onClick={onGoUp}
+        title="Parent Directory"
+      >
+        <IoArrowUpOutline className="toolbar-icon" /> PARENT_DIR
+      </button>
       <button 
         className="file-manager-toolbar-button" 
         onClick={onToggleHiddenFiles}
+        title={showHiddenFiles ? "Show Normal Files" : "Show All Files"}
       >
-        {showHiddenFiles ? '◉ SHOW_ALL' : '◎ SHOW_NORMAL'}
+        {showHiddenFiles ? 
+          <IoEyeOutline className="toolbar-icon" /> : 
+          <IoEyeOffOutline className="toolbar-icon" />
+        } {showHiddenFiles ? 'SHOW_ALL' : 'SHOW_NORMAL'}
       </button>
     </div>
   );

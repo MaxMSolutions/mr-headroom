@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoFolderOpenOutline } from 'react-icons/io5';
 
 interface FileManagerPathDisplayProps {
   currentPath: string;
@@ -7,7 +8,7 @@ interface FileManagerPathDisplayProps {
 const FileManagerPathDisplay: React.FC<FileManagerPathDisplayProps> = ({ currentPath }) => {
   return (
     <div className="file-manager-path">
-      &gt; {currentPath}
+      <IoFolderOpenOutline className="path-icon" /> {currentPath}
     </div>
   );
 };

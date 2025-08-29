@@ -122,15 +122,6 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
           onToggleAccessibilityMode();
           onClose();
         }
-      },
-      { separator: true, label: '' },
-      {
-        label: 'Replay Boot Sequence',
-        icon: '↻',
-        onClick: () => {
-          // Add Boot Sequence replay handler here
-          onClose();
-        }
       }
     ];
   };

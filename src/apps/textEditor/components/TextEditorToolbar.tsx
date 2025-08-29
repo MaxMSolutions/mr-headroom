@@ -1,4 +1,10 @@
 import React from 'react';
+import { 
+  IoFolderOpenOutline,
+  IoSaveOutline,
+  IoDocumentTextOutline,
+  IoTimeOutline 
+} from 'react-icons/io5';
 
 interface TextEditorToolbarProps {
   onSave: () => void;
@@ -20,27 +26,31 @@ const TextEditorToolbar: React.FC<TextEditorToolbarProps> = ({
       <button 
         className="text-editor-toolbar-button"
         onClick={onOpen}
+        title="Open File"
       >
-        ⌘ OPEN
+        <IoFolderOpenOutline className="text-editor-icon" /> OPEN
       </button>
       <button 
         className="text-editor-toolbar-button"
         onClick={onSave}
+        title="Save File"
       >
-        ⌘ {isModified ? "SAVE*" : "SAVE"}
+        <IoSaveOutline className="text-editor-icon" /> {isModified ? "SAVE*" : "SAVE"}
       </button>
       <button 
         className="text-editor-toolbar-button"
         onClick={onSaveAs}
+        title="Save As"
       >
-        ⌘ SAVE AS
+        <IoDocumentTextOutline className="text-editor-icon" /> SAVE AS
       </button>
       {onAddTimestamp && (
         <button
           className="text-editor-toolbar-button"
           onClick={onAddTimestamp}
+          title="Insert Timestamp"
         >
-          ⌚ TIMESTAMP
+          <IoTimeOutline className="text-editor-icon" /> TIMESTAMP
         </button>
       )}
     </div>

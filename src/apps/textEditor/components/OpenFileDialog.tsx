@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FileSystem from '../../../engine/fileSystem';
 import { getParentPath, joinPath } from '../utils';
+import { 
+  IoFolderOutline, 
+  IoDocumentOutline, 
+  IoArrowUpOutline,
+  IoCheckmarkOutline,
+  IoCloseOutline 
+} from 'react-icons/io5';
 
 interface OpenFileDialogProps {
   isOpen: boolean;
@@ -161,8 +168,9 @@ const OpenFileDialog: React.FC<OpenFileDialogProps> = ({
             <button 
               className="file-dialog-button"
               onClick={goToParentDirectory}
+              title="Parent Directory"
             >
-              ⬆ Parent Directory
+              <IoArrowUpOutline className="file-dialog-icon" /> Parent Directory
             </button>
           </div>
           
@@ -176,7 +184,7 @@ const OpenFileDialog: React.FC<OpenFileDialogProps> = ({
                     className="file-dialog-item directory"
                     onDoubleClick={() => navigateToDirectory(dir)}
                   >
-                    📁 {dir.split('/').pop()}
+                    <IoFolderOutline className="file-dialog-icon" /> {dir.split('/').pop()}
                   </li>
                 ))}
               </ul>
@@ -197,7 +205,7 @@ const OpenFileDialog: React.FC<OpenFileDialogProps> = ({
                       handleOpenClick();
                     }}
                   >
-                    📄 {file.name}
+                    <IoDocumentOutline className="file-dialog-icon" /> {file.name}
                   </li>
                 ))}
               </ul>
@@ -209,8 +217,9 @@ const OpenFileDialog: React.FC<OpenFileDialogProps> = ({
             className="file-dialog-button"
             onClick={handleOpenClick}
             disabled={!selectedFile}
+            title="Open Selected File"
           >
-            Open
+            <IoCheckmarkOutline className="file-dialog-icon" /> Open
           </button>
           <button 
             className="file-dialog-button"
@@ -221,8 +230,9 @@ const OpenFileDialog: React.FC<OpenFileDialogProps> = ({
               setDirectories([]);
               onCancel();
             }}
+            title="Cancel"
           >
-            Cancel
+            <IoCloseOutline className="file-dialog-icon" /> Cancel
           </button>
         </div>
       </div>

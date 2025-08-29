@@ -74,6 +74,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   text-shadow: 0 0 3px var(--text-primary);
+  gap: 5px; /* Space between icon and text */
 }
 
 .text-editor-toolbar-button:hover {
@@ -81,6 +82,17 @@
   color: var(--bg-primary);
   text-shadow: 0 0 5px var(--bg-primary);
   box-shadow: 0 0 8px var(--accent-secondary);
+}
+
+.text-editor-icon {
+  font-size: 16px; /* Slightly larger than text */
+  filter: drop-shadow(0 0 2px var(--accent-secondary));
+  transition: all 0.3s ease;
+}
+
+.text-editor-toolbar-button:hover .text-editor-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 4px var(--bg-primary));
 }
 
 .text-editor-content {
@@ -481,18 +493,27 @@ body.accessibility-mode .text-editor::before {
 }
 
 .file-dialog-button {
-  background-color: var(--bg-primary, #000000);
-  color: var(--accent-primary, #33ff33);
-  border: 1px solid var(--accent-primary, #33ff33);
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-secondary);
+  border-radius: 2px;
   padding: 6px 12px;
   margin-left: 8px;
   cursor: pointer;
   text-transform: uppercase;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 3px var(--text-primary);
+  gap: 5px; /* Space between icon and text */
 }
 
 .file-dialog-button:hover {
-  background-color: var(--accent-primary, #33ff33);
-  color: var(--bg-primary, #000000);
+  background-color: var(--accent-secondary);
+  color: var(--bg-primary);
+  text-shadow: 0 0 5px var(--bg-primary);
+  box-shadow: 0 0 8px var(--accent-secondary);
 }
 
 .file-dialog-button:disabled {
@@ -543,6 +564,24 @@ body.accessibility-mode .text-editor::before {
 
 .file-dialog-item.directory {
   color: var(--accent-secondary, #00ffff);
+}
+
+.file-dialog-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+  font-size: 16px;
+  filter: drop-shadow(0 0 2px var(--accent-secondary));
+}
+
+.file-dialog-button .file-dialog-icon {
+  margin-right: 5px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
 }
 
 .file-dialog-navigation {
