@@ -32,6 +32,12 @@ export interface Window {
   component?: string;
   componentProps?: Record<string, any>;
   icon?: string; // Icon to display in taskbar
+  originalState?: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  }; // Store original dimensions when maximized
 }
 
 interface WindowManagerProps {
@@ -358,11 +364,36 @@ const WindowManager: React.FC<WindowManagerProps> = ({
     }
     
     setWindows(prev => 
-      prev.map(window => {
-        if (window.id === id) {
-          return { ...window, isMaximized: !window.isMaximized };
+      prev.map(w => {
+        if (w.id === id) {
+          if (!w.isMaximized) {
+            // Save original dimensions for when window is restored
+            const originalState = {
+              x: w.x,
+              y: w.y,
+              width: w.width,
+              height: w.height
+            };
+            
+            return {
+              ...w,
+              originalState, // Store original state to restore later
+              isMaximized: true
+            };
+          } else {
+            // Restore the window to its previous dimensions
+            const originalState = w.originalState || { x: 50, y: 50, width: 400, height: 300 };
+            return {
+              ...w,
+              x: originalState.x,
+              y: originalState.y,
+              width: originalState.width,
+              height: originalState.height,
+              isMaximized: false
+            };
+          }
         }
-        return window;
+        return w;
       })
     );
     
@@ -458,7 +489,7 @@ const WindowManager: React.FC<WindowManagerProps> = ({
               left: window.isMaximized ? 0 : `${window.x}px`,
               top: window.isMaximized ? 0 : `${window.y}px`,
               width: window.isMaximized ? '100%' : `${window.width}px`,
-              height: window.isMaximized ? 'calc(100% - var(--taskbar-height))' : `${window.height}px`,
+              height: window.isMaximized ? 'calc(100vh - var(--taskbar-height))' : `${window.height}px`,
               zIndex: window.zIndex,
             }}
           >

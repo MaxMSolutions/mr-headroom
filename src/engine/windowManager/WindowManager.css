@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - var(--taskbar-height));
+  height: calc(100vh - var(--taskbar-height));
   pointer-events: none;
   overflow: hidden;
   z-index: 1001; /* Higher z-index to ensure windows appear above desktop icons */
@@ -267,6 +267,7 @@
   border-bottom: 1px solid rgba(0, 195, 255, 0.6);
   border-radius: 0;
   box-shadow: 0 0 15px rgba(0, 195, 255, 0.2);
+  height: calc(100vh - var(--taskbar-height)) !important;
 }
 
 .window.maximized .window-titlebar {
