@@ -20,7 +20,6 @@ import Wolfenstein3DWindow from '../wolfenstein';
 import CommanderKeenWindow from '../keenGame';
 import OregonTrailWindow from '../oregonTrail';
 import PaintGameWindow from '../paintGame';
-import Win95GameWindow from '../win95Game';
 
 // Define the interface for the registry
 export interface AppRegistryItem {
@@ -191,17 +190,6 @@ const appRegistry: AppRegistry = {
     minSize: { width: 640, height: 480 },
     icon: "paint",
     description: "Classic MS Paint drawing application",
-    category: "Games",
-    isGame: true,
-    showInMenu: true
-  },
-  Win95Game: {
-    title: "WIN95.EXE",
-    component: Win95GameWindow,
-    defaultSize: { width: 800, height: 600 },
-    minSize: { width: 640, height: 480 },
-    icon: "win95",
-    description: "Windows 95 operating system simulation",
     category: "Games",
     isGame: true,
     showInMenu: true

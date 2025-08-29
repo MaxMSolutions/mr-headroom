@@ -149,18 +149,6 @@ export function useIconsData() {
       attributes: ['Executable', 'Read/Write']
     },
     { 
-      type: 'win95', 
-      label: 'WIN95', 
-      id: 'win95', 
-      isGlitched: false, 
-      filePath: '/home/hedrum/apps/WIN95.EXE',
-      gridPosition: { row: 4, col: 4 },
-      size: '2.3 MB',
-      created: '1995-08-24 15:45:22',
-      modified: '1996-12-01 11:15:44',
-      attributes: ['Executable', 'Read/Write']
-    },
-    { 
       type: 'corrupted', 
       label: 'BOUNDARY_TEST.DAT', 
       id: 'boundary-test', 
