@@ -1,0 +1,168 @@
+/* Additional animations and effects for Terminal */
+
+/* Boot sequence animations */
+@keyframes terminalStartupFlicker {
+  0% { opacity: 0; }
+  5% { opacity: 0.8; }
+  6% { opacity: 0.2; }
+  10% { opacity: 1; }
+  15% { opacity: 0.5; }
+  16% { opacity: 1; }
+  50% { opacity: 0.9; }
+  80% { opacity: 1; }
+}
+
+@keyframes textShadowPulse {
+  0% { text-shadow: 0 0 2px var(--primary-text, #33ff33); }
+  25% { text-shadow: 0 0 4px var(--primary-text, #33ff33); }
+  50% { text-shadow: 0 0 6px var(--primary-text, #33ff33); }
+  75% { text-shadow: 0 0 4px var(--primary-text, #33ff33); }
+  100% { text-shadow: 0 0 2px var(--primary-text, #33ff33); }
+}
+
+/* Apply this class dynamically when typing to mimic old terminal behavior */
+.text-flicker {
+  animation: textShadowPulse 2s infinite;
+}
+
+/* Terminal startup text animation */
+.terminal-startup-text {
+  animation: terminalStartupFlicker 2s ease-in-out;
+  display: inline-block;
+}
+
+/* Command execution feedback animation */
+@keyframes commandExecute {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(1px); }
+  30% { transform: translateX(-1px); }
+  50% { transform: translateX(1px); }
+  70% { transform: translateX(-1px); }
+  90% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+.command-executing {
+  animation: commandExecute 0.3s ease-out;
+}
+
+/* Random digital noise pattern that appears occasionally */
+@keyframes digitalNoise {
+  0% { background-position: 0 0; opacity: 0; }
+  10% { opacity: 0.05; }
+  20% { opacity: 0; }
+  30% { opacity: 0.02; }
+  40% { opacity: 0; }
+  50% { background-position: 100% 100%; opacity: 0.01; }
+  100% { background-position: 0 0; opacity: 0; }
+}
+
+.terminal-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><text x="0" y="15" fill="%2333ff33" font-size="15">01010100100010101101001001010101</text></svg>');
+  background-repeat: repeat;
+  background-size: 100px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0;
+  animation: digitalNoise 10s infinite;
+}
+
+/* Blinking cursor that resembles old terminal cursors */
+@keyframes oldTerminalCursor {
+  0%, 49% { border-bottom: 2px solid var(--primary-text, #33ff33); }
+  50%, 100% { border-bottom: 2px solid transparent; }
+}
+
+.old-terminal-cursor {
+  display: inline-block;
+  min-width: 0.5em;
+  min-height: 1em;
+  animation: oldTerminalCursor 1s step-end infinite;
+}
+
+/* Power button animation */
+.power-button {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-text, #33ff33);
+  position: relative;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.power-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary-text, #33ff33);
+  border-radius: 50%;
+  animation: powerPulse 4s infinite;
+}
+
+@keyframes powerPulse {
+  0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(0.8); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Retro terminal block cursor */
+@keyframes blockCursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.block-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background-color: var(--primary-text, #33ff33);
+  animation: blockCursorBlink 1s step-end infinite;
+  vertical-align: bottom;
+}
+
+/* Matrix-like effect for special events */
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.1;
+}
+
+.matrix-rain span {
+  color: var(--primary-text);
+  font-size: 1.5em;
+  position: absolute;
+  animation: matrixRain linear infinite;
+}
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+    color: var(--primary-text);
+  }
+  85% {
+    opacity: 1;
+    color: var(--primary-text);
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+    color: var(--primary-text);
+  }
+}

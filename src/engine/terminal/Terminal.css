@@ -1,7 +1,7 @@
 .terminal {
-  background-color: var(--terminal-bg, #000);
-  color: var(--terminal-text, #00ff00);
-  font-family: 'Courier New', monospace;
+  background-color: var(--terminal-bg, var(--primary-background, #000));
+  color: var(--terminal-text, var(--primary-text));
+  font-family: 'VT323', 'Courier New', var(--font-main), monospace;
   padding: 10px;
   overflow-y: auto;
   height: 100%;
@@ -28,35 +28,35 @@
 }
 
 .terminal-prompt {
-  color: var(--terminal-prompt, #00ff00);
+  color: var(--terminal-prompt, var(--secondary-accent, var(--primary-accent)));
   margin-right: 4px;
 }
 
 .terminal-input {
   background-color: transparent;
   border: none;
-  color: var(--terminal-text, #00ff00);
-  font-family: 'Courier New', monospace;
+  color: var(--terminal-text, var(--primary-text));
+  font-family: 'VT323', 'Courier New', var(--font-main), monospace;
   font-size: 14px;
   outline: none;
   flex-grow: 1;
-  caret-color: var(--terminal-cursor, #00ff00);
+  caret-color: var(--terminal-cursor, var(--primary-text));
 }
 
 .terminal-system {
-  color: var(--terminal-system, #0088ff);
+  color: var(--terminal-system, var(--secondary-accent));
 }
 
 .terminal-output {
-  color: var(--terminal-output, #00ff00);
+  color: var(--terminal-output, var(--primary-text));
 }
 
 .terminal-error {
-  color: var(--terminal-error, #ff0000);
+  color: var(--terminal-error, var(--error-color, #ff0000));
 }
 
 .terminal-input {
-  color: var(--terminal-input, #00ffff);
+  color: var(--terminal-input, var(--primary-text));
 }
 
 /* Animation for cursor blinking */
