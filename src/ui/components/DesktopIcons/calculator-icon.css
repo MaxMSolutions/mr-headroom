@@ -1,30 +1,100 @@
+/* Calculator Icon styles */
 .calculator-icon {
-  background: linear-gradient(135deg, #2a2a4a, #1a1a2a);
-  border: 1px solid var(--accent-secondary);
-  border-radius: 4px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; /* Standardized icon size */
+  height: 52px; /* Standardized icon size */
+  min-width: 52px; /* Prevent shrinking */
+  min-height: 52px; /* Prevent shrinking */
+  background: linear-gradient(135deg, #1a001a, #000000);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
-.calculator-icon::before {
-  content: '🧮';
-  color: var(--accent-secondary);
-  font-size: 28px;
+/* Calculator header section */
+.calculator-icon:before {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 8px var(--accent-secondary);
-  animation: calculatorGlow 3s ease-in-out infinite alternate;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: rgba(255, 0, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
 }
 
-@keyframes calculatorGlow {
-  0% {
-    text-shadow: 0 0 8px var(--accent-secondary);
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    text-shadow: 0 0 15px var(--accent-secondary), 0 0 20px var(--accent-secondary);
-    transform: translate(-50%, -50%) scale(1.05);
-  }
+/* Calculator display */
+.calculator-icon .display {
+  position: absolute;
+  top: 22%;
+  left: 15%;
+  right: 15%;
+  height: 15%;
+  background: rgba(20, 0, 20, 0.8);
+  border: 1px solid rgba(255, 0, 255, 0.4);
+  box-shadow: 0 0 3px rgba(255, 0, 255, 0.2) inset;
+}
+
+/* Display digits */
+.calculator-icon .digits {
+  position: absolute;
+  top: 24%;
+  right: 18%;
+  font-size: 6px;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: rgba(255, 0, 255, 0.8);
+  text-shadow: 0 0 3px rgba(255, 0, 255, 0.5);
+}
+
+/* Calculator buttons grid */
+.calculator-icon .button-grid {
+  position: absolute;
+  top: 45%;
+  left: 15%;
+  right: 15%;
+  bottom: 12%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+}
+
+/* Calculator buttons */
+.calculator-icon .button {
+  background: rgba(40, 0, 40, 0.8);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 2px;
+}
+
+/* Label for consistency with other icons */
+.calculator-icon:after {
+  content: 'CALC';
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 8px;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: rgba(255, 0, 255, 0.8);
+  letter-spacing: 1px;
+}
+
+/* Hover effects */
+.desktop-icon:hover .calculator-icon {
+  background: linear-gradient(135deg, #2a002a, #000505);
+}
+
+.desktop-icon:hover .calculator-icon .display {
+  border-color: rgba(255, 0, 255, 0.6);
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.3) inset;
+}
+
+.desktop-icon:hover .calculator-icon .digits {
+  color: rgba(255, 0, 255, 1);
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
 }

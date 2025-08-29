@@ -1,0 +1,212 @@
+/* File Explorer Icon styles */
+.folder-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; /* Standardized icon size */
+  height: 52px; /* Standardized icon size */
+  min-width: 52px; /* Prevent shrinking */
+  min-height: 52px; /* Prevent shrinking */
+  background: linear-gradient(135deg, #00294d, #000a14);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 180, 255, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Title bar of the explorer window */
+.folder-icon:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(90deg, rgba(0, 120, 210, 0.7), rgba(0, 180, 255, 0.5));
+  border-bottom: 1px solid rgba(0, 180, 255, 0.7);
+}
+
+/* Window buttons in the title bar */
+.folder-icon .window-controls {
+  position: absolute;
+  top: 6%;
+  right: 5%;
+  display: flex;
+  gap: 2px;
+}
+
+.folder-icon .window-button {
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+/* Navigation bar */
+.folder-icon .nav-bar {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  right: 5%;
+  height: 12%;
+  background: rgba(0, 60, 100, 0.4);
+  border-bottom: 1px solid rgba(0, 180, 255, 0.5);
+}
+
+/* Directory path indicator */
+.folder-icon .path-indicator {
+  position: absolute;
+  top: 23%;
+  left: 18%;
+  width: 60%;
+  height: 6%;
+  background: rgba(0, 180, 255, 0.3);
+}
+
+/* Sidebar (left panel) */
+.folder-icon .sidebar {
+  position: absolute;
+  top: 32%;
+  left: 5%;
+  width: 25%;
+  bottom: 10%;
+  background: rgba(0, 40, 70, 0.4);
+  border-right: 1px solid rgba(0, 180, 255, 0.5);
+}
+
+/* Sidebar items */
+.folder-icon .sidebar-item {
+  position: absolute;
+  height: 1px;
+  background: rgba(0, 180, 255, 0.6);
+  left: 9%;
+  width: 15%;
+}
+
+.folder-icon .sidebar-item:nth-child(1) {
+  top: 38%;
+}
+
+.folder-icon .sidebar-item:nth-child(2) {
+  top: 48%;
+}
+
+.folder-icon .sidebar-item:nth-child(3) {
+  top: 58%;
+}
+
+/* File content area */
+.folder-icon .content-area {
+  position: absolute;
+  top: 32%;
+  left: 35%;
+  right: 5%;
+  bottom: 10%;
+}
+
+/* File items */
+.folder-icon .file-item {
+  position: absolute;
+  height: 8%;
+  background: rgba(0, 180, 255, 0.2);
+  border: 1px solid rgba(0, 180, 255, 0.3);
+  left: 35%;
+  right: 10%;
+}
+
+.folder-icon .file-item:nth-child(1) {
+  top: 38%;
+}
+
+.folder-icon .file-item:nth-child(2) {
+  top: 50%;
+}
+
+.folder-icon .file-item:nth-child(3) {
+  top: 62%;
+}
+
+/* File icons */
+.folder-icon .file-icon {
+  position: absolute;
+  width: 8%;
+  height: 8%;
+  background: rgba(0, 180, 255, 0.4);
+  border: 1px solid rgba(0, 180, 255, 0.5);
+}
+
+.folder-icon .file-icon:nth-child(4) {
+  top: 38%;
+  left: 37%;
+}
+
+.folder-icon .file-icon:nth-child(5) {
+  top: 50%;
+  left: 37%;
+}
+
+.folder-icon .file-icon:nth-child(6) {
+  top: 62%;
+  left: 37%;
+}
+
+/* Status bar */
+.folder-icon .status-bar {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  height: 5%;
+  background: rgba(0, 60, 100, 0.4);
+  border-top: 1px solid rgba(0, 180, 255, 0.5);
+}
+
+/* Label for consistency with other icons */
+.folder-icon:after {
+  content: 'XPLR';
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  font-size: 8px;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: rgba(0, 180, 255, 0.9);
+  letter-spacing: 1px;
+  text-shadow: 0 0 2px rgba(0, 180, 255, 0.4);
+}
+
+/* Hover effects */
+.desktop-icon:hover .folder-icon {
+  background: linear-gradient(135deg, #003366, #001220);
+  border-color: rgba(0, 180, 255, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 180, 255, 0.3);
+}
+
+.desktop-icon:hover .folder-icon:before {
+  background: linear-gradient(90deg, rgba(0, 140, 230, 0.8), rgba(0, 200, 255, 0.6));
+}
+
+.desktop-icon:hover .folder-icon .nav-bar,
+.desktop-icon:hover .folder-icon .sidebar,
+.desktop-icon:hover .folder-icon .status-bar {
+  background: rgba(0, 70, 110, 0.5);
+}
+
+.desktop-icon:hover .folder-icon .path-indicator {
+  background: rgba(0, 200, 255, 0.4);
+}
+
+.desktop-icon:hover .folder-icon .file-item {
+  background: rgba(0, 200, 255, 0.3);
+  border-color: rgba(0, 200, 255, 0.5);
+}
+
+.desktop-icon:hover .folder-icon .file-icon {
+  background: rgba(0, 200, 255, 0.6);
+  border-color: rgba(0, 200, 255, 0.7);
+}
+
+.desktop-icon:hover .folder-icon .sidebar-item {
+  background: rgba(0, 200, 255, 0.8);
+}

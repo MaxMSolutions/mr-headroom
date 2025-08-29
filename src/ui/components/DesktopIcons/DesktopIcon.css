@@ -81,40 +81,6 @@
   box-sizing: border-box; /* Ensure padding and border are included in dimensions */
 }
 
-/* Icon Styles */
-.folder-icon {
-  background: linear-gradient(135deg, var(--accent-secondary), #0a4a4a);
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-}
-
-.folder-icon::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: rgba(0, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(0, 255, 255, 0.4);
-}
-
-.folder-icon::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 255, 255, 0.05) 2px,
-      rgba(0, 255, 255, 0.05) 4px
-    );
-}
-
 .executable-icon {
   background: linear-gradient(135deg, #3a0066, #000000);
   border: 1px solid var(--accent-secondary);

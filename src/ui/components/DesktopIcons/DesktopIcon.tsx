@@ -206,6 +206,32 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
     >
       <div className={`icon-image ${iconType}-icon`}>
         {iconType === 'system' && <div className="system-cube">⌬</div>}
+        {iconType === 'folder' && (
+          <div className="folder-icon">
+            <div className="window-controls">
+              <div className="window-button"></div>
+              <div className="window-button"></div>
+              <div className="window-button"></div>
+            </div>
+            <div className="nav-bar">
+              <div className="path-indicator"></div>
+            </div>
+            <div className="sidebar">
+              <div className="sidebar-item"></div>
+              <div className="sidebar-item"></div>
+              <div className="sidebar-item"></div>
+            </div>
+            <div className="content-area">
+              <div className="file-item"></div>
+              <div className="file-item"></div>
+              <div className="file-item"></div>
+              <div className="file-icon"></div>
+              <div className="file-icon"></div>
+              <div className="file-icon"></div>
+            </div>
+            <div className="status-bar"></div>
+          </div>
+        )}
         {iconType === 'texteditor' && (
           <div className="texteditor-icon">
             <div className="text-line"></div>
@@ -232,6 +258,30 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
             <div className="slider-knob slider-knob-2"></div>
             <div className="slider-knob slider-knob-3"></div>
             <div className="label">SET</div>
+          </div>
+        )}
+        {iconType === 'calculator' && (
+          <div className="calculator-icon">
+            <div className="display"></div>
+            <div className="digits">123</div>
+            <div className="button-grid">
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+              <div className="button"></div>
+            </div>
           </div>
         )}
         {iconType === 'doom' && <img src="/msdos/icons/doom-icon.png" alt="DOOM" className="doom-icon-image" draggable="false" />}
