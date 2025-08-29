@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Define available themes
 export type ThemeName = 'amber' | 'matrix' | 'sunset';
@@ -14,7 +14,7 @@ interface ThemeContextType {
 }
 
 const defaultThemeContext: ThemeContextType = {
-  currentTheme: 'amber',
+  currentTheme: 'sunset',
   setTheme: () => {},
   crtEffect: true,
   toggleCrtEffect: () => {},
@@ -29,7 +29,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>('amber');
+  const [currentTheme, setCurrentTheme] = useState<ThemeName>('sunset');
   const [crtEffect, setCrtEffect] = useState(true);
   const [accessibilityMode, setAccessibilityMode] = useState(false);
 
