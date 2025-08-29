@@ -65,14 +65,55 @@
 }
 
 .log-viewer-header h2 {
-  font-family: 'Orbitron', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  font-family: 'VT323', 'BlinkMacSystemFont', 'Segoe UI', monospace;
   color: #00f0ff;
   text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin: 0;
+  position: relative;
+}
+
+.log-viewer-header h2::before {
+  content: '█';
+  margin-right: 10px;
+  animation: blink 1s step-end infinite;
+}
+
+.log-viewer-header h2::after {
+  content: '█';
+  margin-left: 10px;
+  animation: blink 1s step-end infinite;
+  animation-delay: 0.5s;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.view-mode-button {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  border-radius: 4px;
+  color: #33ff33;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-mode-button.active {
+  background: rgba(51, 255, 51, 0.2);
+  box-shadow: 0 0 8px rgba(51, 255, 51, 0.7);
+}
+
+.view-mode-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(0, 195, 255, 0.6);
 }
 
 @keyframes neonPulse {
@@ -88,52 +129,238 @@
 }
 
 .log-viewer-toolbar {
-  padding: 16px;
+  padding: 12px;
   border-bottom: 1px solid rgba(0, 195, 255, 0.4);
   background: rgba(10, 5, 20, 0.8);
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.toolbar-row {
+.search-bar {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-  gap: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  border-radius: 4px;
+  padding: 5px 10px;
+  width: 100%;
+  position: relative;
 }
 
-.toolbar-row:last-child {
-  margin-bottom: 0;
-}
-
-.toolbar-row label {
-  display: flex;
-  align-items: center;
+.search-bar label {
   color: #33ff33;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  margin-right: 8px;
   text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
 }
 
-.log-viewer-toolbar select,
-.log-viewer-toolbar input {
-  margin-left: 8px;
-  padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.8);
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
   color: #33ff33;
-  border: 1px solid rgba(0, 195, 255, 0.6);
-  border-radius: 2px;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.search-bar input::placeholder {
+  color: rgba(51, 255, 51, 0.5);
+}
+
+.search-bar .clear-search {
+  background: none;
+  border: none;
+  color: #ff3366;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 5px;
+}
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-controls select {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  border-radius: 4px;
+  color: #33ff33;
   font-family: 'VT323', monospace;
   font-size: 14px;
-  min-width: 120px;
-  box-shadow: 
-    inset 0 0 4px rgba(0, 195, 255, 0.2),
-    0 0 8px rgba(0, 195, 255, 0.3);
+  padding: 5px 8px;
+  min-width: 150px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' fill='%2333ff33'%3E%3Cpolygon points='0,0 12,0 6,6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 24px;
+}
+
+.filter-controls option {
+  background-color: rgba(10, 5, 20, 0.95);
+  color: #33ff33;
+}
+
+.filter-controls button {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  border-radius: 4px;
+  color: #33ff33;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
   transition: all 0.2s ease;
+}
+
+.filter-controls button.clear-filters-btn {
+  background-color: rgba(255, 0, 51, 0.2);
+  border-color: rgba(255, 0, 51, 0.5);
+}
+
+.filter-controls button.export-btn {
+  background-color: rgba(0, 195, 255, 0.2);
+}
+
+.filter-controls button:hover {
+  box-shadow: 0 0 8px rgba(51, 255, 51, 0.7);
+  transform: translateY(-1px);
+}
+
+.log-viewer-toolbar select[multiple] {
+  min-height: 80px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.log-viewer-toolbar select[multiple] option {
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #33ff33;
+  border-bottom: 1px solid rgba(0, 195, 255, 0.2);
+}
+
+.log-viewer-toolbar select[multiple] option:hover {
+  background: rgba(0, 195, 255, 0.1);
+}
+
+.log-viewer-toolbar select[multiple] option:checked {
+  background: rgba(0, 195, 255, 0.3);
+  color: #00f0ff;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 8px;
+  background: rgba(10, 5, 20, 0.8);
+  border-top: 1px solid rgba(0, 195, 255, 0.4);
+}
+
+.pagination-controls button {
+  background: rgba(0, 0, 0, 0.6);
+  color: #33ff33;
+  border: 1px solid rgba(0, 195, 255, 0.5);
+  padding: 4px 10px;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background: rgba(0, 195, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.8);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(30, 30, 30, 0.5);
+}
+
+.page-indicator {
+  font-family: 'VT323', monospace;
+  color: #00f0ff;
+  margin: 0 8px;
+  font-size: 16px;
+  padding: 0 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 195, 255, 0.3);
+  display: flex;
+  align-items: center;
+  height: 28px;
+}
+
+/* Enhanced log entry styles */
+.log-entry {
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid rgba(0, 195, 255, 0.4);
+  border-left: 4px solid #00f0ff;
+  background: rgba(10, 5, 20, 0.8);
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px rgba(0, 195, 255, 0.1);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.log-entry:hover {
+  border-color: rgba(0, 240, 255, 0.7);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+  background: rgba(15, 10, 30, 0.9);
+  transform: translateY(-1px);
+}
+
+.log-entry.error-log {
+  border-left-color: #ff0033;
+}
+
+.log-entry.error-log:hover {
+  border-color: rgba(255, 0, 51, 0.7);
+  box-shadow: 0 0 12px rgba(255, 0, 51, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.log-message {
+  font-family: 'VT323', monospace;
+  color: #33ff33;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+
+.log-details {
+  color: rgba(51, 255, 51, 0.7);
+  font-size: 14px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(51, 255, 51, 0.3);
 }
 
 .log-viewer-toolbar input:focus {
@@ -240,12 +467,95 @@
   font-family: 'VT323', monospace;
   position: relative;
   z-index: 2;
+  scroll-behavior: smooth;
 }
 
-/* Add typing animation for log data */
+.log-viewer-results {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-image: 
+    repeating-linear-gradient(
+      0deg, 
+      rgba(0, 195, 255, 0.05) 0px, 
+      rgba(0, 195, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+}
+
+/* Animation keyframes */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 @keyframes typeIn {
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes loadingDots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60%, 100% { content: "..."; }
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.loading-indicator {
+  color: #00f0ff;
+  animation: loadingPulse 2s infinite;
+  font-family: 'VT323', monospace;
+  text-shadow: 0 0 5px rgba(0, 240, 255, 0.6);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loading-indicator::after {
+  content: "";
+  animation: loadingDots 1.5s infinite;
+  margin-left: 4px;
+}
+
+/* Log stats bar */
+.log-stats {
+  display: flex;
+  padding: 10px 16px;
+  background: rgba(10, 5, 20, 0.9);
+  border-top: 1px solid rgba(0, 195, 255, 0.4);
+  position: relative;
+  z-index: 2;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+}
+
+.stat-item {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.stat-label {
+  color: #00f0ff;
+  margin-right: 8px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  color: #33ff33;
 }
 
 .log-entry {
@@ -257,23 +567,147 @@
   border-radius: 2px;
   position: relative;
   transition: all 0.2s ease;
-  box-shadow: 
+  box-shadow:
     inset 0 0 4px rgba(0, 195, 255, 0.1),
     0 0 8px rgba(0, 195, 255, 0.2);
   animation: typeIn 0.3s ease-out;
 }
 
-.log-entry:nth-child(odd) {
-  animation-delay: 0.1s;
+.log-entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 195, 255, 0.2);
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.log-entry:nth-child(even) {
-  animation-delay: 0.2s;
+.log-timestamp {
+  color: #00f0ff;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(0, 240, 255, 0.6);
+  font-family: 'VT323', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.log-source {
+  font-weight: bold;
+  color: #ff00ff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.6);
+  font-family: 'Orbitron', sans-serif;
+  background: rgba(255, 0, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.log-source:hover {
+  background: rgba(255, 0, 255, 0.2);
+  border-color: rgba(255, 0, 255, 0.6);
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.8);
+}
+
+.log-type {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #33ff33;
+  text-shadow: 0 0 5px rgba(51, 255, 51, 0.6);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  background: rgba(51, 255, 51, 0.1);
+  padding: 3px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(51, 255, 51, 0.3);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.log-type:hover {
+  background: rgba(51, 255, 51, 0.2);
+  border-color: rgba(51, 255, 51, 0.6);
+  text-shadow: 0 0 8px rgba(51, 255, 51, 0.8);
+}
+
+/* Add visual indicator for log entry type */
+.log-entry::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -2px;
+  width: 4px;
+  height: 4px;
+  background: #00f0ff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 240, 255, 0.8);
+}
+
+.log-entry.error-log::before {
+  background: #ff0033;
+  box-shadow: 0 0 6px rgba(255, 0, 51, 0.8);
+}
+
+/* Enhanced hover effects for better interactivity */
+.log-entry:hover .log-entry-header {
+  border-bottom-color: rgba(0, 240, 255, 0.4);
+}
+
+.log-entry.error-log:hover .log-entry-header {
+  border-bottom-color: rgba(255, 0, 51, 0.4);
+}
+
+/* Add subtle animation for header elements on hover */
+.log-entry:hover .log-timestamp {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+}
+
+.log-entry:hover .log-source {
+  transform: translateY(-1px);
+}
+
+.log-entry:hover .log-type {
+  transform: translateY(-1px);
+}
+
+.log-data {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  position: relative;
+}
+
+/* Enhanced log entry spacing and visual hierarchy */
+.log-entry {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0, 195, 255, 0.4);
+  border-left: 4px solid #00f0ff;
+  background: rgba(10, 5, 20, 0.8);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow:
+    inset 0 0 4px rgba(0, 195, 255, 0.1),
+    0 0 8px rgba(0, 195, 255, 0.2);
+  animation: typeIn 0.3s ease-out;
 }
 
 .log-entry:hover {
   border-color: rgba(0, 240, 255, 0.8);
-  box-shadow: 
+  box-shadow:
     inset 0 0 4px rgba(0, 195, 255, 0.2),
     0 0 12px rgba(0, 240, 255, 0.4);
   background: rgba(15, 10, 30, 0.9);
@@ -282,71 +716,16 @@
 
 .log-entry.error-log {
   border-left-color: #ff0033;
-  box-shadow: 
+  box-shadow:
     inset 0 0 4px rgba(255, 0, 51, 0.2),
     0 0 8px rgba(255, 0, 51, 0.3);
 }
 
 .log-entry.error-log:hover {
   border-color: rgba(255, 0, 51, 0.8);
-  box-shadow: 
+  box-shadow:
     inset 0 0 4px rgba(255, 0, 51, 0.3),
     0 0 12px rgba(255, 0, 51, 0.5);
-}
-
-.log-timestamp {
-  color: #00f0ff;
-  margin-bottom: 8px;
-  font-size: 12px;
-  text-shadow: 0 0 5px rgba(0, 240, 255, 0.6);
-  font-family: 'VT323', monospace;
-}
-
-.log-source {
-  font-weight: bold;
-  color: #ff00ff;
-  margin-bottom: 8px;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(255, 0, 255, 0.6);
-  font-family: 'Orbitron', sans-serif;
-}
-
-.log-type {
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #33ff33;
-  text-shadow: 0 0 5px rgba(51, 255, 51, 0.6);
-  font-family: 'Orbitron', sans-serif;
-  font-size: 12px;
-  padding: 4px 8px;
-  background: rgba(51, 255, 51, 0.1);
-  border: 1px solid rgba(51, 255, 51, 0.4);
-  border-radius: 2px;
-  display: inline-block;
-}
-
-.log-data {
-  margin: 8px 0;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  overflow: visible;
-}
-
-.no-logs {
-  text-align: center;
-  margin-top: 50px;
-  color: #00cc00;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(0, 204, 0, 0.6);
 }
 
 .log-stats {
