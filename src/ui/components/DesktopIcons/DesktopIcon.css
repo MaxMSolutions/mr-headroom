@@ -3,6 +3,8 @@
 @import './wolf3d-icon.css';
 @import './keen-icon.css';
 @import './oregontrail-icon.css';
+@import './paint-icon.css';
+@import './win95-icon.css';
 
 .desktop-icon {
   display: flex;

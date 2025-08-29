@@ -239,6 +239,8 @@ const Desktop: React.FC<DesktopProps> = ({ fileSystem }) => {
             break;
           case 'NEXUS9': componentName = 'Nexus9'; break;
           case 'GUIDE': componentName = 'Guide'; break;
+          case 'PAINT': componentName = 'PaintGame'; break;
+          case 'WIN95': componentName = 'Win95Game'; break;
           // Add other mappings as needed
         }
         

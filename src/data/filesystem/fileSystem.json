@@ -595,6 +595,50 @@
                   },
                   {
                     "type": "file",
+                    "name": "PAINT.EXE",
+                    "created": "1995-08-24T14:30:15.000Z",
+                    "modified": "1996-11-12T09:22:33.000Z",
+                    "size": 987000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "Microsoft Corporation",
+                      "reality_index": 0.88,
+                      "description": "Microsoft Paint - Classic drawing application",
+                      "version": "2.0",
+                      "hidden_message": "Colors blend reality with imagination. What you create here might manifest elsewhere."
+                    },
+                    "appId": "PaintGame"
+                  },
+                  {
+                    "type": "file",
+                    "name": "WIN95.EXE",
+                    "created": "1995-08-24T15:45:22.000Z",
+                    "modified": "1996-12-01T11:15:44.000Z",
+                    "size": 2345000,
+                    "content": "BINARY_CONTENT",
+                    "attributes": {
+                      "hidden": false,
+                      "system": false,
+                      "readonly": false,
+                      "executable": true
+                    },
+                    "metadata": {
+                      "author": "Microsoft Corporation",
+                      "reality_index": 0.85,
+                      "description": "Windows 95 - Operating system simulation",
+                      "version": "4.00.950",
+                      "hidden_message": "The interface between user and machine holds secrets. Explore the Start menu carefully."
+                    },
+                    "appId": "Win95Game"
+                  },
+                  {
+                    "type": "file",
                     "name": "LABYRINTH.EXE",
                     "created": "1998-03-22T20:45:12.000Z",
                     "modified": "1998-04-09T03:17:08.000Z",

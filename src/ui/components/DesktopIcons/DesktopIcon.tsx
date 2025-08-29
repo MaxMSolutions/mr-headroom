@@ -209,6 +209,8 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
         {iconType === 'wolf3d' && <img src="/msdos/icons/wolf3d.png" alt="Wolfenstein 3D" className="wolf3d-icon-image" draggable="false" />}
         {iconType === 'keen' && <img src="/msdos/icons/keen4.png" alt="Commander Keen" className="keen-icon-image" draggable="false" />}
         {iconType === 'oregontrail' && <img src="/msdos/icons/oregontrail.png" alt="Oregon Trail" className="oregontrail-icon-image" draggable="false" />}
+        {iconType === 'paint' && <img src="/msdos/icons/paint.png" alt="MS Paint" className="paint-icon-image" draggable="false" />}
+        {iconType === 'win95' && <img src="/msdos/icons/win95.png" alt="Windows 95" className="win95-icon-image" draggable="false" />}
       </div>
       <div className="icon-text">{label}</div>
     </div>
