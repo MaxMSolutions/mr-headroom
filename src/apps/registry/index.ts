@@ -7,6 +7,7 @@ import FileManagerWindow from '../fileManager';
 import TextEditorWindow from '../textEditor';
 import ImageViewerWindow from '../imageViewer';
 import SettingsWindow from '../settings';
+import CalculatorWindow from '../calculator';
 import DoomWindow from '../doom';
 import ErrorDialog from '../../ui/components/ErrorDialog';
 import StarfieldWindow from '../starfield';
@@ -95,6 +96,16 @@ const appRegistry: AppRegistry = {
     icon: "settings",
     description: "Configure system settings",
     category: "System",
+    showInMenu: true
+  },
+  Calculator: {
+    title: "Calculator",
+    component: CalculatorWindow,
+    defaultSize: { width: 420, height: 600 },
+    minSize: { width: 380, height: 500 },
+    icon: "calculator",
+    description: "Scientific calculator with memory functions",
+    category: "Productivity",
     showInMenu: true
   },
   Doom: {

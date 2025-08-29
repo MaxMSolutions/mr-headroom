@@ -771,6 +771,25 @@
           },
           {
             "type": "file",
+            "name": "CALC.EXE",
+            "created": "1998-01-06T10:15:30.000Z",
+            "modified": "1998-03-15T09:22:18.000Z",
+            "size": 1536,
+            "attributes": {
+              "hidden": false,
+              "system": false,
+              "readonly": true,
+              "executable": true
+            },
+            "metadata": {
+              "author": "SYSTEM",
+              "description": "Scientific Calculator with Memory Functions",
+              "version": "1.2"
+            },
+            "appId": "Calculator"
+          },
+          {
+            "type": "file",
             "name": "TEXTEDITOR.EXE",
             "created": "1998-01-08T11:22:43.000Z",
             "modified": "1998-03-12T14:08:15.000Z",

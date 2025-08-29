@@ -126,6 +126,14 @@ const StartMenu: React.FC<StartMenuProps> = ({
               </div>
               <span>System Control</span>
             </div>
+
+            <div
+              className="menu-item-large"
+              onClick={() => launchApp('Calculator')}
+            >
+              <div className="menu-item-icon calc-icon">🧮</div>
+              <span>Calculator</span>
+            </div>
             
             <div className="menu-item-large" onClick={() => {
               if (window.windowManager) {
