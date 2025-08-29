@@ -938,7 +938,7 @@
   background-color: #ffcc00;
 }
 
-.start-menu-content.settings-icon {
+.start-menu-content .settings-icon {
   background-color: #ffffff;
   position: relative;
   border: 1px solid #808080;

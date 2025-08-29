@@ -1,24 +1,107 @@
+/* Settings Icon styles */
 .settings-icon {
-  background: linear-gradient(135deg, #3a3a3a, #1a1a1a);
-  border: 1px solid var(--accent-tertiary);
-  border-radius: 4px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; /* Standardized icon size */
+  height: 52px; /* Standardized icon size */
+  min-width: 52px; /* Prevent shrinking */
+  min-height: 52px; /* Prevent shrinking */
+  background: linear-gradient(135deg, #001a2a, #000000);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 217, 0, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
-.settings-icon::before {
-  content: '⚙';
-  color: var(--accent-tertiary);
-  font-size: 28px;
+/* Settings header section */
+.settings-icon:before {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 5px var(--accent-primary);
-  animation: slowRotation 10s linear infinite;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: rgba(255, 217, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 217, 0, 0.5);
 }
 
-@keyframes slowRotation {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+/* Settings label at bottom */
+.settings-icon .label {
+  content: 'SET';
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 8px;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: rgba(255, 217, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+/* Three sliders positioned at the bottom */
+.settings-icon .slider {
+  position: absolute;
+  height: 2px;
+  background: rgba(255, 217, 0, 0.7);
+  box-shadow: 0 0 2px rgba(255, 217, 0, 0.3);
+  left: 12px;
+  right: 12px;
+}
+
+.settings-icon .slider-1 {
+  bottom: 28px;
+}
+
+.settings-icon .slider-2 {
+  bottom: 22px;
+}
+
+.settings-icon .slider-3 {
+  bottom: 16px;
+}
+
+/* Slider knobs */
+.settings-icon .slider-knob {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 217, 0, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(255, 217, 0, 0.5);
+}
+
+.settings-icon .slider-knob-1 {
+  bottom: 27px;
+  right: 15px;
+}
+
+.settings-icon .slider-knob-2 {
+  bottom: 21px;
+  left: 20px;
+}
+
+.settings-icon .slider-knob-3 {
+  bottom: 15px;
+  right: 25px;
+}
+
+/* Hover effects */
+.desktop-icon:hover .settings-icon {
+  background: linear-gradient(135deg, #002a3a, #000505);
+  border-color: rgba(255, 217, 0, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 4px rgba(255, 217, 0, 0.5);
+}
+
+.desktop-icon:hover .settings-icon .slider,
+.desktop-icon:hover .settings-icon .slider-knob {
+  background-color: rgba(255, 217, 0, 0.9);
+  box-shadow: 0 0 3px rgba(255, 217, 0, 0.7);
+}
+
+/* Fix blue drop shadow on sliders and knobs */
+.settings-icon .slider,
+.settings-icon .slider-knob {
+  box-shadow: 0 0 3px rgba(255, 217, 0, 0.5);
 }

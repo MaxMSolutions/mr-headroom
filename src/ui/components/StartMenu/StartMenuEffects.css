@@ -40,7 +40,7 @@
 }
 
 /* Additional icon styles */
-.settings-icon, .files-icon, .notes-icon, .media-icon, .game-icon, .boot-icon, .terminal-icon, .warning-icon {
+.start-menu .settings-icon, .files-icon, .notes-icon, .media-icon, .game-icon, .boot-icon, .terminal-icon, .warning-icon {
   transition: all 0.2s ease;
 }
 

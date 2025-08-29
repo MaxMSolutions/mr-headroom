@@ -447,7 +447,7 @@ select {
 /* Icon styling */
 .settings-header-icon,
 .settings-section-icon,
-.settings-icon,
+.settings-window .settings-icon,
 .button-icon,
 .status-icon {
   display: inline-flex;
@@ -482,7 +482,7 @@ select {
   color: var(--accent-secondary, #00f0ff);
 }
 
-.settings-icon {
+.settings-window .settings-icon {
   font-size: 16px;
   margin-right: 5px;
   color: var(--text-primary, #33ff33);

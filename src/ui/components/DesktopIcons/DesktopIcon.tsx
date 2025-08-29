@@ -223,6 +223,17 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
             <div className="output-line"></div>
           </div>
         )}
+        {iconType === 'settings' && (
+          <div className="settings-icon">
+            <div className="slider slider-1"></div>
+            <div className="slider slider-2"></div>
+            <div className="slider slider-3"></div>
+            <div className="slider-knob slider-knob-1"></div>
+            <div className="slider-knob slider-knob-2"></div>
+            <div className="slider-knob slider-knob-3"></div>
+            <div className="label">SET</div>
+          </div>
+        )}
         {iconType === 'doom' && <img src="/msdos/icons/doom-icon.png" alt="DOOM" className="doom-icon-image" draggable="false" />}
         {iconType === 'wolf3d' && <img src="/msdos/icons/wolf3d.png" alt="Wolfenstein 3D" className="wolf3d-icon-image" draggable="false" />}
         {iconType === 'keen' && <img src="/msdos/icons/keen4.png" alt="Commander Keen" className="keen-icon-image" draggable="false" />}

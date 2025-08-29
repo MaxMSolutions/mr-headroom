@@ -55,8 +55,7 @@
 
 .texteditor-icon .text-cursor {
   position: absolute;
-  top: 50%;
-  right: 38%;
+  right: 35%;
   width: 1px;
   height: 8px;
   background: rgba(0, 195, 255, 0.8);
