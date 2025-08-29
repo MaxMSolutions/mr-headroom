@@ -88,34 +88,8 @@ export class SaveManager {
     if (!this.state.gameLogs || Object.keys(this.state.gameLogs).length === 0) {
       console.log('[SaveManager] Initializing with sample logs');
       this.state.gameLogs = {
-        'system': [
-          {
-            type: 'system_init',
-            data: {
-              message: 'System initialized from SaveManager constructor',
-              timestamp: new Date().toISOString()
-            },
-            timestamp: Date.now() - 60000 // 1 minute ago
-          },
-          {
-            type: 'system_info',
-            data: {
-              message: 'Welcome to MRHEADROOM_DESCENT',
-              details: 'This log was automatically generated'
-            },
-            timestamp: Date.now() - 30000 // 30 seconds ago
-          }
-        ],
-        'debug': [
-          {
-            type: 'debug_message',
-            data: {
-              message: 'Sample debug log',
-              details: 'This is a sample debug log for testing purposes'
-            },
-            timestamp: Date.now()
-          }
-        ]
+        'system': [],
+        'debug': []
       };
     }
     
@@ -337,6 +311,25 @@ export const useSaveManager = () => {
 // Standalone functions for accessing game state outside of class
 let globalSaveManager: SaveManager | null = null;
 
+/**
+ * Converts a modern timestamp to a 1999 equivalent timestamp
+ * Preserves the month, day, hour, minute, second but changes the year to 1999
+ */
+function convertTo1999Timestamp(timestamp: number): number {
+  const date = new Date(timestamp);
+  // Create a new date in 1999 with the same month, day, hour, minute, second
+  const date1999 = new Date(
+    1999,
+    date.getMonth(),
+    date.getDate(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+    date.getMilliseconds()
+  );
+  return date1999.getTime();
+}
+
 export function getGameState(): GameState {
   if (!globalSaveManager) {
     globalSaveManager = new SaveManager();
@@ -376,7 +369,33 @@ export function addGameLog(gameId: string, log: GameEvent): void {
     currentState.gameLogs[gameId] = [];
   }
   
-  currentState.gameLogs[gameId].push(log);
+  // Convert the timestamp to 1999 equivalent
+  const modifiedLog = {
+    ...log,
+    timestamp: convertTo1999Timestamp(log.timestamp)
+  };
+  
+  // Also update any nested timestamp in the data if present
+  if (modifiedLog.data && modifiedLog.data.timestamp) {
+    if (typeof modifiedLog.data.timestamp === 'number') {
+      modifiedLog.data.timestamp = convertTo1999Timestamp(modifiedLog.data.timestamp);
+    } else if (typeof modifiedLog.data.timestamp === 'string' && !isNaN(Date.parse(modifiedLog.data.timestamp))) {
+      // If it's an ISO string, convert to 1999 equivalent
+      const date = new Date(modifiedLog.data.timestamp);
+      const date1999 = new Date(
+        1999,
+        date.getMonth(),
+        date.getDate(),
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+        date.getMilliseconds()
+      );
+      modifiedLog.data.timestamp = date1999.toISOString();
+    }
+  }
+  
+  currentState.gameLogs[gameId].push(modifiedLog);
   console.log(`[SaveManager] Log added, ${gameId} now has ${currentState.gameLogs[gameId].length} logs`);
   
   // Create or update the SaveManager instance
@@ -405,10 +424,10 @@ export function addTestLog(): void {
     type: 'test_log',
     data: {
       message: 'Test log entry',
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toISOString(), // This will be converted to 1999 by addGameLog
       details: 'This is a test log created manually for debugging purposes'
     },
-    timestamp: Date.now()
+    timestamp: Date.now() // This will be converted to 1999 by addGameLog
   });
 }
 
@@ -419,10 +438,10 @@ if (typeof window !== 'undefined') {
       type: 'test_log',
       data: {
         message,
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toISOString(), // This will be converted to 1999 by addGameLog
         details: 'This is a test log created manually for debugging purposes'
       },
-      timestamp: Date.now()
+      timestamp: Date.now() // This will be converted to 1999 by addGameLog
     });
     console.log('Test log added to', gameId);
     return 'Log added successfully';
@@ -467,26 +486,33 @@ export function addDiscoveredClue(clueId: string, data?: any): void {
   // Check if we already have this clue
   if (!currentState.discoveredClues.includes(clueId)) {
     // Import clue data dynamically to avoid circular dependencies
-    import('../../data/clues').then(({ getClue, checkClueRequirements }) => {
-      const clue = getClue(clueId);
+    import('../../data/clues').then((cluesModule) => {
+      // We need to manually get the clue since the module doesn't export getClue function
+      const clues = Object.values(cluesModule).find(Array.isArray);
+      const clue = clues?.find((c: any) => c.id === clueId);
       
       if (!clue) {
         console.error(`Tried to add non-existent clue: ${clueId}`);
         return;
       }
       
-      // Check if all requirements for this clue are met
-      const requirementsMet = checkClueRequirements(clueId, currentState.discoveredClues || []);
-      
-      if (!requirementsMet) {
-        console.log(`Clue ${clueId} requirements not met yet`);
-        return;
+      // Check if this clue has requirements and if they are met
+      if (clue.requiredClues && clue.requiredClues.length > 0) {
+        const discoveredCluesList = currentState.discoveredClues || [];
+        const missingClues = clue.requiredClues.filter(
+          (requiredId: string) => !discoveredCluesList.includes(requiredId)
+        );
+        
+        if (missingClues.length > 0) {
+          console.log(`Clue ${clueId} requirements not met yet. Missing clues: ${missingClues.join(', ')}`);
+          return;
+        }
       }
       
       // Add the clue
-      const clues = currentState.discoveredClues || [];
-      clues.push(clueId);
-      currentState.discoveredClues = clues;
+      const discoveredCluesList = currentState.discoveredClues || [];
+      discoveredCluesList.push(clueId);
+      currentState.discoveredClues = discoveredCluesList;
       console.log(`Clue discovered: ${clueId}`, clue.title);
       
       // Trigger narrative events
@@ -562,7 +588,7 @@ export function triggerClueDiscoveryEvent(clueId: string, _data?: any, clue?: an
     detail: { 
       clueId, 
       clueData: clue || { id: clueId },
-      timestamp: Date.now()
+      timestamp: convertTo1999Timestamp(Date.now())
     } 
   });
   window.dispatchEvent(event);
