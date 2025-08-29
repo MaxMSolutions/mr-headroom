@@ -119,7 +119,10 @@ export class FileSystem {
   
   // Get file or directory by path
   getItem(path: string): FileSystemObject | null {
-    if (!this.data) return null;
+    if (!this.data) {
+      console.warn(`[FileSystem] No data loaded when accessing path: ${path}`);
+      return null;
+    }
     
     if (path === '/') return this.data.fileSystem;
     
@@ -127,10 +130,16 @@ export class FileSystem {
     let current: FileSystemObject = this.data.fileSystem;
     
     for (const part of parts) {
-      if (current.type !== 'directory') return null;
+      if (!current || current.type !== 'directory') {
+        console.warn(`[FileSystem] Path component ${part} in ${path} is not a directory`);
+        return null;
+      }
       
       const found = (current as Directory).children.find(child => child.name === part);
-      if (!found) return null;
+      if (!found) {
+        console.warn(`[FileSystem] Path component ${part} not found in ${path}`);
+        return null;
+      }
       
       current = found;
     }
@@ -141,10 +150,23 @@ export class FileSystem {
   // List contents of a directory
   listDirectory(path: string): FileSystemObject[] | null {
     try {
-      const dir = this.getItem(path) as Directory;
-      if (!dir || dir.type !== 'directory') return null;
+      if (!this.data) {
+        console.warn(`[FileSystem] Attempting to list directory ${path} but file system is not loaded`);
+        return null;
+      }
       
-      return dir.children;
+      const dir = this.getItem(path);
+      if (!dir) {
+        console.warn(`[FileSystem] Directory not found: ${path}`);
+        return null;
+      }
+      
+      if (dir.type !== 'directory') {
+        console.warn(`[FileSystem] Path is not a directory: ${path}`);
+        return null;
+      }
+      
+      return (dir as Directory).children;
     } catch (error) {
       console.error(`Error listing directory: ${path}`, error);
       return null;

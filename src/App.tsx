@@ -35,13 +35,36 @@ const App = () => {
         if (assets && assets.fileSystem) {
           try {
             const fileSystemData = assets.fileSystem as unknown as FileSystemData;
+            
+            // Validate that the fileSystemData has the expected structure
+            if (!fileSystemData.fileSystem || fileSystemData.fileSystem.type !== 'directory') {
+              console.error('Invalid file system data format:', fileSystemData);
+              loadFileSystemFromUrl();
+              return;
+            }
+            
+            // Create filesystem instance
             const fs = new FileSystem(fileSystemData);
+            
+            // Verify key paths exist
+            const requiredPaths = ['/home', '/system'];
+            const missingPaths = requiredPaths.filter(path => !fs.exists(path));
+            
+            if (missingPaths.length > 0) {
+              console.error('File system is missing required paths:', missingPaths);
+              console.warn('Will try loading from URL instead');
+              loadFileSystemFromUrl();
+              return;
+            }
+            
             setFileSystem(fs);
+            console.log('File system successfully initialized from preloaded data');
           } catch (error) {
             console.error('Failed to initialize file system with loaded data:', error);
             loadFileSystemFromUrl();
           }
         } else {
+          console.warn('File system data not found in assets, loading from URL');
           loadFileSystemFromUrl();
         }
       }
@@ -51,13 +74,79 @@ const App = () => {
   // Helper function to load file system from URL
   const loadFileSystemFromUrl = () => {
     const fs = new FileSystem();
+    console.log('Loading file system from URL: /data/filesystem/fileSystem.json');
+    
     fs.loadFromUrl('/data/filesystem/fileSystem.json')
-      .then(() => {
+      .then((data) => {
+        // Validate file system data
+        if (!data.fileSystem || data.fileSystem.type !== 'directory') {
+          console.error('Invalid file system data format loaded from URL:', data);
+          tryLocalFallback();
+          return;
+        }
+        
+        // Verify key paths exist
+        const requiredPaths = ['/home', '/system'];
+        const missingPaths = requiredPaths.filter(path => !fs.exists(path));
+        
+        if (missingPaths.length > 0) {
+          console.error('File system loaded from URL is missing required paths:', missingPaths);
+          tryLocalFallback();
+          return;
+        }
+        
+        console.log('File system successfully loaded from URL');
         setFileSystem(fs);
       })
       .catch(error => {
-        console.error('Failed to load file system:', error);
+        console.error('Failed to load file system from URL:', error);
+        tryLocalFallback();
       });
+  };
+  
+  // Try to load from localStorage as a last resort
+  const tryLocalFallback = () => {
+    const fs = new FileSystem();
+    const loaded = fs.loadFromLocalStorage();
+    
+    if (loaded) {
+      console.log('Successfully loaded file system from localStorage');
+      setFileSystem(fs);
+    } else {
+      console.error('CRITICAL: Failed to load file system from any source');
+      // Create a minimal valid file system as last resort
+      const minimalFileSystem: FileSystemData = {
+        version: '1.0',
+        fileSystem: {
+          type: 'directory',
+          name: 'root',
+          created: new Date().toISOString(),
+          modified: new Date().toISOString(),
+          attributes: { hidden: false, system: true, readonly: true },
+          children: [
+            {
+              type: 'directory',
+              name: 'home',
+              created: new Date().toISOString(),
+              modified: new Date().toISOString(),
+              attributes: { hidden: false, system: false, readonly: false },
+              children: []
+            },
+            {
+              type: 'directory',
+              name: 'system',
+              created: new Date().toISOString(),
+              modified: new Date().toISOString(),
+              attributes: { hidden: false, system: true, readonly: true },
+              children: []
+            }
+          ]
+        }
+      };
+      
+      const backupFs = new FileSystem(minimalFileSystem);
+      setFileSystem(backupFs);
+    }
   };
 
   // Initialize SaveManager to ensure game state is properly loaded

@@ -47,13 +47,24 @@ const FileManagerWindow: React.FC<FileManagerWindowProps> = ({
     }
     
     try {
+      // First check if the path exists and fallback to root if not
+      const pathExists = fileSystem.exists(currentPath);
+      
+      if (!pathExists) {
+        console.warn(`[FileManagerWindow] Path does not exist: ${currentPath}, falling back to /`);
+        setCurrentPath('/');
+        setStatusMessage(`Directory not found: ${currentPath}, showing root`);
+        return;
+      }
+      
       const content = fileSystem.listDirectory(currentPath);
       if (content) {
         setDirectoryContent(content);
         setStatusMessage(`${content.length} items`);
       } else {
+        console.warn(`[FileManagerWindow] Failed to list directory: ${currentPath}`);
         setDirectoryContent([]);
-        setStatusMessage('Directory not found');
+        setStatusMessage('Directory not found or access denied');
       }
     } catch (error) {
       console.error('[FileManagerWindow] Error listing directory:', error);
@@ -336,14 +347,39 @@ const FileManagerWindow: React.FC<FileManagerWindowProps> = ({
     setShowContextMenu(false);
   };
 
-  // Common sidebar locations
-  const sidebarLocations = [
+  // Common sidebar locations - build dynamically based on filesystem
+  const [sidebarLocations, setSidebarLocations] = useState([
     { name: 'My Computer', icon: '⌘', path: '/' },
     { name: 'Home', icon: '⌂', path: '/home' },
-    { name: 'Documents', icon: '⊟', path: '/home/hedrum/documents' },
-    { name: 'Applications', icon: '⊞', path: '/home/hedrum/apps' },
     { name: 'System', icon: '⚙', path: '/system' },
-  ];
+  ]);
+  
+  // Update sidebar locations once file system is loaded
+  useEffect(() => {
+    if (!fileSystem) return;
+    
+    const locations = [
+      { name: 'My Computer', icon: '⌘', path: '/' },
+      { name: 'Home', icon: '⌂', path: '/home' }
+    ];
+    
+    // Only add paths that exist
+    if (fileSystem.exists('/home/hedrum')) {
+      if (fileSystem.exists('/home/hedrum/documents')) {
+        locations.push({ name: 'Documents', icon: '⊟', path: '/home/hedrum/documents' });
+      }
+      
+      if (fileSystem.exists('/home/hedrum/apps')) {
+        locations.push({ name: 'Applications', icon: '⊞', path: '/home/hedrum/apps' });
+      }
+    }
+    
+    if (fileSystem.exists('/system')) {
+      locations.push({ name: 'System', icon: '⚙', path: '/system' });
+    }
+    
+    setSidebarLocations(locations);
+  }, [fileSystem]);
 
   // Import formatFileSize and formatDate from utils.ts when needed
 
