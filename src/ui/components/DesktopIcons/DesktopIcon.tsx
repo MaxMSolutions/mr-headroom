@@ -232,6 +232,23 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({
             <div className="status-bar"></div>
           </div>
         )}
+        {iconType === 'executable' && (
+          <div className="executable-icon">
+            <div className="probe-core"></div>
+            <div className="scan-beam"></div>
+            <div className="orbit-ring orbit-ring-1"></div>
+            <div className="orbit-ring orbit-ring-2"></div>
+            <div className="orbit-ring orbit-ring-3"></div>
+            <div className="particle particle-1"></div>
+            <div className="particle particle-2"></div>
+            <div className="particle particle-3"></div>
+            <div className="data-node data-node-1"></div>
+            <div className="data-node data-node-2"></div>
+            <div className="reality-fragment fragment-1"></div>
+            <div className="reality-fragment fragment-2"></div>
+            <div className="glitch-overlay"></div>
+          </div>
+        )}
         {iconType === 'texteditor' && (
           <div className="texteditor-icon">
             <div className="text-line"></div>

@@ -12,6 +12,7 @@ import './calculator-icon.css'; // Import calculator icon style
 import './text-editor-icon.css'; // Import text editor icon style
 import './terminal-icon.css'; // Import terminal icon style
 import './folder-icon.css'; // Import folder icon style
+import './executable-icon.css'; // Import executable icon style
 import './doom-icon.css'; // Import doom game icon style
 import './wolf3d-icon.css'; // Import Wolfenstein 3D game icon style
 import './keen-icon.css'; // Import Commander Keen game icon style

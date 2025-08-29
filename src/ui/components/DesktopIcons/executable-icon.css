@@ -1,0 +1,322 @@
+/* REALITY_PROBE.EXE Icon styles */
+.executable-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; /* Standardized icon size */
+  height: 52px; /* Standardized icon size */
+  min-width: 52px; /* Prevent shrinking */
+  min-height: 52px; /* Prevent shrinking */
+  background: linear-gradient(135deg, #440080, #000000);
+  border-radius: 4px;
+  border: 1px solid rgba(140, 0, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(140, 0, 255, 0.2);
+  overflow: hidden;
+}
+
+/* Pulsating core of the probe */
+.executable-icon .probe-core {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 0, 255, 1) 0%, rgba(140, 0, 255, 0.7) 50%, rgba(0, 0, 0, 0) 70%);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+  animation: pulsateCore 3s infinite alternate;
+}
+
+/* Scanning beam */
+.executable-icon .scan-beam {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(140, 0, 255, 0), rgba(140, 0, 255, 0.7), rgba(140, 0, 255, 0));
+  box-shadow: 0 0 8px rgba(140, 0, 255, 0.8);
+  animation: scanBeam 3s infinite;
+}
+
+/* Circular orbit rings */
+.executable-icon .orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(140, 0, 255, 0.4);
+  box-shadow: 0 0 5px rgba(140, 0, 255, 0.3) inset;
+}
+
+.executable-icon .orbit-ring-1 {
+  width: 26px;
+  height: 26px;
+  border-color: rgba(140, 0, 255, 0.5);
+  animation: rotate 8s linear infinite;
+}
+
+.executable-icon .orbit-ring-2 {
+  width: 36px;
+  height: 36px;
+  border-color: rgba(140, 0, 255, 0.4);
+  animation: rotate 12s linear infinite reverse;
+}
+
+.executable-icon .orbit-ring-3 {
+  width: 46px;
+  height: 46px;
+  border-color: rgba(140, 0, 255, 0.3);
+  animation: rotate 16s linear infinite;
+}
+
+/* Orbital particles */
+.executable-icon .particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 0, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(255, 0, 255, 0.8);
+}
+
+.executable-icon .particle-1 {
+  animation: orbitParticle1 8s linear infinite;
+}
+
+.executable-icon .particle-2 {
+  animation: orbitParticle2 12s linear infinite;
+}
+
+.executable-icon .particle-3 {
+  animation: orbitParticle3 16s linear infinite;
+}
+
+/* Data nodes at intersection points */
+.executable-icon .data-node {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+}
+
+.executable-icon .data-node-1 {
+  top: 10px;
+  right: 15px;
+  animation: pulseNode 2s infinite alternate;
+}
+
+.executable-icon .data-node-2 {
+  bottom: 15px;
+  left: 12px;
+  animation: pulseNode 2s infinite 0.5s alternate;
+}
+
+/* Reality fragments */
+.executable-icon .reality-fragment {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(255, 0, 255, 0.7), rgba(0, 255, 255, 0.7));
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.5;
+  animation: rotateFragment 10s linear infinite;
+}
+
+.executable-icon .fragment-1 {
+  width: 8px;
+  height: 8px;
+  top: 8px;
+  left: 10px;
+}
+
+.executable-icon .fragment-2 {
+  width: 6px;
+  height: 6px;
+  bottom: 12px;
+  right: 14px;
+  animation-delay: 0.5s;
+  animation-direction: reverse;
+}
+
+/* EXE Label */
+.executable-icon:after {
+  content: 'PROBE';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 7px;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: rgba(140, 0, 255, 0.9);
+  letter-spacing: 0px;
+  text-shadow: 0 0 3px rgba(140, 0, 255, 0.7);
+}
+
+/* Glitch effect overlay */
+.executable-icon .glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(255, 0, 255, 0) 0%,
+    rgba(255, 0, 255, 0.1) 50%,
+    rgba(255, 0, 255, 0) 100%
+  );
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+  animation: glitchMove 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes pulsateCore {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes scanBeam {
+  0% {
+    top: 0;
+    opacity: 0.3;
+  }
+  50% {
+    top: 100%;
+    opacity: 0.8;
+  }
+  100% {
+    top: 0;
+    opacity: 0.3;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitParticle1 {
+  0% {
+    transform: translate(13px, 0);
+  }
+  25% {
+    transform: translate(0, 13px);
+  }
+  50% {
+    transform: translate(-13px, 0);
+  }
+  75% {
+    transform: translate(0, -13px);
+  }
+  100% {
+    transform: translate(13px, 0);
+  }
+}
+
+@keyframes orbitParticle2 {
+  0% {
+    transform: translate(18px, 0);
+  }
+  25% {
+    transform: translate(0, 18px);
+  }
+  50% {
+    transform: translate(-18px, 0);
+  }
+  75% {
+    transform: translate(0, -18px);
+  }
+  100% {
+    transform: translate(18px, 0);
+  }
+}
+
+@keyframes orbitParticle3 {
+  0% {
+    transform: translate(23px, 0);
+  }
+  25% {
+    transform: translate(0, 23px);
+  }
+  50% {
+    transform: translate(-23px, 0);
+  }
+  75% {
+    transform: translate(0, -23px);
+  }
+  100% {
+    transform: translate(23px, 0);
+  }
+}
+
+@keyframes pulseNode {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateFragment {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glitchMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Hover effects */
+.desktop-icon:hover .executable-icon {
+  border-color: rgba(180, 0, 255, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(180, 0, 255, 0.5);
+  background: linear-gradient(135deg, #5500aa, #000000);
+}
+
+.desktop-icon:hover .executable-icon .probe-core {
+  animation: pulsateCore 1.5s infinite alternate;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 1);
+}
+
+.desktop-icon:hover .executable-icon .scan-beam {
+  background: linear-gradient(90deg, rgba(180, 0, 255, 0), rgba(180, 0, 255, 0.9), rgba(180, 0, 255, 0));
+  box-shadow: 0 0 12px rgba(180, 0, 255, 1);
+}
+
+.desktop-icon:hover .executable-icon .orbit-ring {
+  border-color: rgba(180, 0, 255, 0.7);
+  box-shadow: 0 0 8px rgba(180, 0, 255, 0.5);
+}
+
+.desktop-icon:hover .executable-icon .particle {
+  background: rgba(255, 0, 255, 1);
+  box-shadow: 0 0 8px rgba(255, 0, 255, 1);
+}
+
+.desktop-icon:hover .executable-icon .data-node {
+  background: rgba(0, 255, 255, 1);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 1);
+}
+
+.desktop-icon:hover .executable-icon .reality-fragment {
+  opacity: 0.8;
+}
